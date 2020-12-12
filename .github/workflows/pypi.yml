@@ -17,8 +17,11 @@ jobs:
         with:
           name: python-package-distributions
           path: dist/
-      - name: List packages
-        run: ls -la ./dist/
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@v1
+        with:
+            user: __token__
+            password: ${{ secrets.pypi_password }}
 
   build-src:
     name: sdist
