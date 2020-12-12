@@ -1,0 +1,20 @@
+name: Deploy to PyPI
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: "Deploy to PyPI"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v1
+        with:
+            python-version: '3.x'
+      - name: Install dependencies
+        run: python setup.py sdist
