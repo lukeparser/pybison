@@ -1,5 +1,8 @@
 name: Latest Versions
 
+on:
+  - push
+
 jobs:
 
   build-manylinux:
