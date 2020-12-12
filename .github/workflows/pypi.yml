@@ -13,6 +13,8 @@ jobs:
         include:
           - python-version: 2.7
             pep-425-tag: 'cp27-cp27m'
+          - python-version: 2.7
+            pep-425-tag: 'cp27-cp27mu'
           - python-version: 3.5
             pep-425-tag: 'cp35-cp35m'
           - python-version: 3.6
