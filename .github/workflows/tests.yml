@@ -1,7 +1,10 @@
 name: Latest Versions
 
 on:
-  - push
+  push:
+    branches:
+      - '*'
+      - '!master'
 
 jobs:
 
