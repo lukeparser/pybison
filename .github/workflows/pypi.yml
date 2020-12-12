@@ -60,7 +60,7 @@ jobs:
           system-packages: 'atlas-devel'
 
   build-macos:
-    name: macOS (${{ matrix.python-version }})
+    name: macOS (py${{ matrix.python-version }})
     runs-on: macos-latest
     strategy:
       fail-fast: false
@@ -82,7 +82,7 @@ jobs:
         run: python setup.py bdist_wheel
 
   build-windows:
-    name: Windows (${{ matrix.python-version }})
+    name: Windows (py${{ matrix.python-version }})
     runs-on: windows-latest
     strategy:
       fail-fast: false
