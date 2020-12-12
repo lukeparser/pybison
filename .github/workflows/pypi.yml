@@ -92,8 +92,8 @@ jobs:
             pep-425-tag: 'cp37-cp37m'
           - python-version: 3.8
             pep-425-tag: 'cp38-cp38'
-          # - python-version: 3.9
-          #   pep-425-tag: 'cp39-cp39'
+          - python-version: 3.9
+            pep-425-tag: 'cp39-cp39'
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -121,7 +121,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: [2.7, 3.6, 3.7, 3.8]  # , 3.9]
+        python-version: [2.7, 3.6, 3.7, 3.8, 3.9]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -150,7 +150,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: [3.6, 3.7, 3.8]  # , 3.9]
+        python-version: [3.6, 3.7, 3.8, 3.9]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
