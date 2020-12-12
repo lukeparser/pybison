@@ -52,7 +52,7 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version:  ${{ matrix.python-version }}
-      - name: Build manylinux Python wheels
+      - name: Build wheel for ${{ matrix.python-version }} on manylinux
         uses: RalfG/python-wheels-manylinux-build@v0.3.3-manylinux2010_x86_64
         with:
           python-versions: ${{ matrix.pep-425-tag }}
@@ -83,7 +83,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install wheel setuptools
-      - name: Build sdist
+      - name: Build wheel for ${{ matrix.python-version }} on ${{ matrix.os }}
         run: python setup.py bdist_wheel
 
   build-windows:
@@ -110,5 +110,5 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install wheel setuptools
-      - name: Build sdist
+      - name: Build wheel for ${{ matrix.python-version }} on ${{ matrix.os }}
         run: python setup.py bdist_wheel
