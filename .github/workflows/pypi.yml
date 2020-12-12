@@ -39,5 +39,4 @@ jobs:
         with:
           python-versions: ${{ matrix.pep-425-tag }}
           build-requirements: 'six Cython'
-          pre-build-command: 'ls -la /opt/python/'
           system-packages: 'atlas-devel'
