@@ -6,7 +6,23 @@ on:
       - master
 
 jobs:
-  deploy:
+
+  build-src:
+    name: sdist
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Switch to using Python 3.x by default
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x
+    - name: Build sdist
+      run: python setup.py bdist_wheel
+
+  build-manylinux:
+    name: manylinux (${{ matrix.python-version }})
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
@@ -25,18 +41,60 @@ jobs:
             pep-425-tag: 'cp38-cp38'
           - python-version: 3.9
             pep-425-tag: 'cp39-cp39'
-    runs-on: ubuntu-latest
-    name: "Deploy to PyPI"
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-            python-version:  ${{ matrix.python-version }}
+          python-version:  ${{ matrix.python-version }}
       - name: Build manylinux Python wheels
         uses: RalfG/python-wheels-manylinux-build@v0.3.3-manylinux2010_x86_64
         with:
           python-versions: ${{ matrix.pep-425-tag }}
           build-requirements: 'six Cython'
           system-packages: 'atlas-devel'
+
+  build-macos:
+    name: macOS (${{ matrix.python-version }})
+    runs-on: macos-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: 
+          - 2.7
+          - 3.6
+          - 3.7
+          - 3.8
+          - 3.9
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version:  ${{ matrix.python-version }}
+      - name: Build sdist
+        run: python setup.py bdist_wheel
+
+  build-windows:
+    name: Windows (${{ matrix.python-version }})
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: 
+          - 2.7
+          - 3.6
+          - 3.7
+          - 3.8
+          - 3.9
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version:  ${{ matrix.python-version }}
+      - name: Build sdist
+        run: python setup.py bdist_wheel
