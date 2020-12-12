@@ -25,7 +25,7 @@ jobs:
             pep-425-tag: 'cp38-cp38'
           - python-version: 3.9
             pep-425-tag: 'cp39-cp39'
-    runs-on: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ubuntu-latest
     name: "Deploy to PyPI"
     steps:
       - name: Checkout
