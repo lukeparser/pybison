@@ -5,9 +5,9 @@ import codecs
 import os
 import re
 import sys
+import fnmatch
 from os.path import join
 from setuptools import find_packages, setup
-from glob import glob
 
 
 ###################################################################
@@ -15,7 +15,7 @@ from glob import glob
 ###################################################################
 
 NAME = "pybison"
-DESCRIPTION='Python bindings for bison/flex parser engine'
+DESCRIPTION = "Python bindings for bison/flex parser engine"
 META_PATH = os.path.join("src", "bison", "__init__.py")
 PACKAGES = find_packages(where="src")
 KEYWORDS = []
@@ -28,6 +28,7 @@ CLASSIFIERS = [
     'Operating System :: POSIX',
     'Operating System :: Microsoft :: Windows',
     'Operating System :: MacOS :: MacOS X',
+    'Programming Language :: C',
     'Programming Language :: Python',
     'Programming Language :: Python :: 2',
     'Programming Language :: Python :: 2.7',
@@ -36,7 +37,6 @@ CLASSIFIERS = [
     'Programming Language :: Python :: 3.6',
     'Programming Language :: Python :: 3.7',
     'Programming Language :: Python :: 3.8',
-    'Programming Language :: Python :: Implementation :: CPython',
     'Topic :: Software Development :: Libraries :: Python Modules',
     'Topic :: Text Processing'
 ]
@@ -56,10 +56,10 @@ PACKAGE_DATA = [
 SCRIPTS = ['utils/bison2py']
 
 
-
 ###################################################################
 
 HERE = os.path.abspath(os.path.dirname(__file__))
+
 
 def read(*parts):
     """
@@ -68,7 +68,6 @@ def read(*parts):
     """
     with codecs.open(os.path.join(HERE, *parts), "rb", "utf-8") as f:
         return f.read()
-
 
 
 META_FILE = read(META_PATH)
@@ -117,8 +116,11 @@ else:
 
 PACKAGE_DATA.append(bisondynlibModule)
 
-
-
+PY_MODULES = set()
+for file_root, dir_names, filenames in os.walk('src'):
+    for filename in fnmatch.filter(filenames, '*.py'):
+        PY_MODULES |= {file_root}
+        break
 
 # cython
 SOURCES = [
@@ -135,28 +137,26 @@ define_macros = []
 try:
     from Cython.Distutils import build_ext
     from Cython.Distutils.extension import Extension
-    cmdclass={'build_ext' : build_ext}
-    extension_kwargs={'cython_compile_time_env': {"PY3": sys.version_info.major >= 3}}
+    cmd_class = {'build_ext': build_ext}
+    cython_args = {'cython_compile_time_env': {"PY3": sys.version_info.major >= 3}}
 except ImportError:
-    from distutils.extension import Extension
+    from setuptools import Extension
     print('Cython does not appear to be installed.  Attempting to use pre-made cpp file...')
-    cmdclass={}
-    extension_kwargs={}
-    SOURCES = [s.replace(".pyx",".c") for s in SOURCES]
+    cmd_class = {}
+    cython_args = {}
+    SOURCES = [s.replace(".pyx", ".c") for s in SOURCES]
 
 
 ext_modules = [
     Extension(
         'bison.bison_',
-        sources = SOURCES,
+        sources=SOURCES,
         extra_compile_args=extra_compile_args,
         libraries=libs,
         extra_link_args=extra_link_args,
-        **extension_kwargs
+        **cython_args
     )
 ]
-
-
 
 
 if __name__ == "__main__":
@@ -177,12 +177,10 @@ if __name__ == "__main__":
         classifiers=CLASSIFIERS,
         install_requires=INSTALL_REQUIRES,
         setup_requires=SETUP_REQUIRES,
-
         # from old setup
-        cmdclass=cmdclass,
+        cmdclass=cmd_class,
         ext_modules=ext_modules,
-        py_modules=[splitext(basename(path))[0] for path in glob('src/*.py')],
+        py_modules=PY_MODULES,
         scripts=SCRIPTS,
         package_data={'bison': PACKAGE_DATA},
     )
-
