@@ -336,7 +336,7 @@ cdef class ParserEngine:
             '#include "lex.yy.h"',
             '#include "Python.h"',
             # '' if sys.platform == 'win32' else 'extern int yylineno;'
-            '#define YYSTYPE void*',
+            # '#define YYSTYPE void*',
             #'extern void *py_callback(void *, char *, int, void*, ...);',
             'void *(*py_callback)(void *, char *, int, int, ...);',
             'void (*py_input)(void *, char *, int *, int);',

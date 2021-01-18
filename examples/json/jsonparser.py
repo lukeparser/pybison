@@ -41,7 +41,6 @@ class Parser(BisonParser):
 #include <stdio.h>
 #include <string.h>
 #include "Python.h"
-#define YYSTYPE void *
 #include "tmp.tab.h"
 int yycolumn = 1;
 int yywrap() { return(1); }

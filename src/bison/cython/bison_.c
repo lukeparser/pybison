@@ -1888,7 +1888,6 @@ static const char __pyx_k_code_top[] = "%code top {";
     static const char __pyx_k_link_shared_object[] = "link_shared_object";
     static const char __pyx_k_yylex_init_scanner[] = "yylex_init(&scanner);";
     static const char __pyx_k_yypstate_delete_ps[] = "yypstate_delete(ps);";
-    static const char __pyx_k_define_YYSTYPE_void[] = "#define YYSTYPE void*";
     static const char __pyx_k_distutils_ccompiler[] = "distutils.ccompiler";
     static const char __pyx_k_distutils_sysconfig[] = "distutils.sysconfig";
     static const char __pyx_k_report_syntax_error[] = "                                        \"report_syntax_error\");";
@@ -2061,7 +2060,6 @@ static const char __pyx_k_code_top[] = "%code top {";
     static PyObject *__pyx_n_s_dedent;
     static PyObject *__pyx_kp_u_define_YYERROR_VERBOSE_1;
     static PyObject *__pyx_kp_u_define_YYLTYPE_YYLTYPE;
-    static PyObject *__pyx_kp_u_define_YYSTYPE_void;
     static PyObject *__pyx_kp_u_define_api_pure_full;
     static PyObject *__pyx_n_s_define_macro;
     static PyObject *__pyx_n_s_direction;
@@ -5156,7 +5154,7 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_14buildLib(struct __pyx_
  *             '',
  */
   __Pyx_TraceLine(332,0,__PYX_ERR(0, 332, __pyx_L1_error))
-  __pyx_t_5 = PyList_New(32); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 332, __pyx_L1_error)
+  __pyx_t_5 = PyList_New(31); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 332, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_INCREF(__pyx_kp_u_code_top);
   __Pyx_GIVEREF(__pyx_kp_u_code_top);
@@ -5173,86 +5171,83 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_14buildLib(struct __pyx_
   __Pyx_INCREF(__pyx_kp_u_include_Python_h);
   __Pyx_GIVEREF(__pyx_kp_u_include_Python_h);
   PyList_SET_ITEM(__pyx_t_5, 4, __pyx_kp_u_include_Python_h);
-  __Pyx_INCREF(__pyx_kp_u_define_YYSTYPE_void);
-  __Pyx_GIVEREF(__pyx_kp_u_define_YYSTYPE_void);
-  PyList_SET_ITEM(__pyx_t_5, 5, __pyx_kp_u_define_YYSTYPE_void);
   __Pyx_INCREF(__pyx_kp_u_void_py_callback_void_char_int_i);
   __Pyx_GIVEREF(__pyx_kp_u_void_py_callback_void_char_int_i);
-  PyList_SET_ITEM(__pyx_t_5, 6, __pyx_kp_u_void_py_callback_void_char_int_i);
+  PyList_SET_ITEM(__pyx_t_5, 5, __pyx_kp_u_void_py_callback_void_char_int_i);
   __Pyx_INCREF(__pyx_kp_u_void_py_input_void_char_int_int);
   __Pyx_GIVEREF(__pyx_kp_u_void_py_input_void_char_int_int);
-  PyList_SET_ITEM(__pyx_t_5, 7, __pyx_kp_u_void_py_input_void_char_int_int);
+  PyList_SET_ITEM(__pyx_t_5, 6, __pyx_kp_u_void_py_input_void_char_int_int);
   __Pyx_INCREF(__pyx_kp_u_void_py_parser);
   __Pyx_GIVEREF(__pyx_kp_u_void_py_parser);
-  PyList_SET_ITEM(__pyx_t_5, 8, __pyx_kp_u_void_py_parser);
+  PyList_SET_ITEM(__pyx_t_5, 7, __pyx_kp_u_void_py_parser);
   __Pyx_GIVEREF(__pyx_t_4);
-  PyList_SET_ITEM(__pyx_t_5, 9, __pyx_t_4);
+  PyList_SET_ITEM(__pyx_t_5, 8, __pyx_t_4);
   __Pyx_INCREF(__pyx_kp_u_define_YYERROR_VERBOSE_1);
   __Pyx_GIVEREF(__pyx_kp_u_define_YYERROR_VERBOSE_1);
-  PyList_SET_ITEM(__pyx_t_5, 10, __pyx_kp_u_define_YYERROR_VERBOSE_1);
+  PyList_SET_ITEM(__pyx_t_5, 9, __pyx_kp_u_define_YYERROR_VERBOSE_1);
   __Pyx_INCREF(__pyx_kp_u__2);
   __Pyx_GIVEREF(__pyx_kp_u__2);
-  PyList_SET_ITEM(__pyx_t_5, 11, __pyx_kp_u__2);
+  PyList_SET_ITEM(__pyx_t_5, 10, __pyx_kp_u__2);
   __Pyx_INCREF(__pyx_kp_u__12);
   __Pyx_GIVEREF(__pyx_kp_u__12);
-  PyList_SET_ITEM(__pyx_t_5, 12, __pyx_kp_u__12);
+  PyList_SET_ITEM(__pyx_t_5, 11, __pyx_kp_u__12);
   __Pyx_INCREF(__pyx_kp_u__2);
   __Pyx_GIVEREF(__pyx_kp_u__2);
-  PyList_SET_ITEM(__pyx_t_5, 13, __pyx_kp_u__2);
+  PyList_SET_ITEM(__pyx_t_5, 12, __pyx_kp_u__2);
   __Pyx_INCREF(__pyx_kp_u_code_requires);
   __Pyx_GIVEREF(__pyx_kp_u_code_requires);
-  PyList_SET_ITEM(__pyx_t_5, 14, __pyx_kp_u_code_requires);
+  PyList_SET_ITEM(__pyx_t_5, 13, __pyx_kp_u_code_requires);
   __Pyx_INCREF(__pyx_kp_u__2);
   __Pyx_GIVEREF(__pyx_kp_u__2);
-  PyList_SET_ITEM(__pyx_t_5, 15, __pyx_kp_u__2);
+  PyList_SET_ITEM(__pyx_t_5, 14, __pyx_kp_u__2);
   __Pyx_INCREF(__pyx_kp_u_typedef_void_yyscan_t);
   __Pyx_GIVEREF(__pyx_kp_u_typedef_void_yyscan_t);
-  PyList_SET_ITEM(__pyx_t_5, 16, __pyx_kp_u_typedef_void_yyscan_t);
+  PyList_SET_ITEM(__pyx_t_5, 15, __pyx_kp_u_typedef_void_yyscan_t);
   __Pyx_INCREF(__pyx_kp_u_define_YYLTYPE_YYLTYPE);
   __Pyx_GIVEREF(__pyx_kp_u_define_YYLTYPE_YYLTYPE);
-  PyList_SET_ITEM(__pyx_t_5, 17, __pyx_kp_u_define_YYLTYPE_YYLTYPE);
+  PyList_SET_ITEM(__pyx_t_5, 16, __pyx_kp_u_define_YYLTYPE_YYLTYPE);
   __Pyx_INCREF(__pyx_kp_u_typedef_struct_YYLTYPE);
   __Pyx_GIVEREF(__pyx_kp_u_typedef_struct_YYLTYPE);
-  PyList_SET_ITEM(__pyx_t_5, 18, __pyx_kp_u_typedef_struct_YYLTYPE);
+  PyList_SET_ITEM(__pyx_t_5, 17, __pyx_kp_u_typedef_struct_YYLTYPE);
   __Pyx_INCREF(__pyx_kp_u__13);
   __Pyx_GIVEREF(__pyx_kp_u__13);
-  PyList_SET_ITEM(__pyx_t_5, 19, __pyx_kp_u__13);
+  PyList_SET_ITEM(__pyx_t_5, 18, __pyx_kp_u__13);
   __Pyx_INCREF(__pyx_kp_u_int_first_line);
   __Pyx_GIVEREF(__pyx_kp_u_int_first_line);
-  PyList_SET_ITEM(__pyx_t_5, 20, __pyx_kp_u_int_first_line);
+  PyList_SET_ITEM(__pyx_t_5, 19, __pyx_kp_u_int_first_line);
   __Pyx_INCREF(__pyx_kp_u_int_first_column);
   __Pyx_GIVEREF(__pyx_kp_u_int_first_column);
-  PyList_SET_ITEM(__pyx_t_5, 21, __pyx_kp_u_int_first_column);
+  PyList_SET_ITEM(__pyx_t_5, 20, __pyx_kp_u_int_first_column);
   __Pyx_INCREF(__pyx_kp_u_int_last_line);
   __Pyx_GIVEREF(__pyx_kp_u_int_last_line);
-  PyList_SET_ITEM(__pyx_t_5, 22, __pyx_kp_u_int_last_line);
+  PyList_SET_ITEM(__pyx_t_5, 21, __pyx_kp_u_int_last_line);
   __Pyx_INCREF(__pyx_kp_u_int_last_column);
   __Pyx_GIVEREF(__pyx_kp_u_int_last_column);
-  PyList_SET_ITEM(__pyx_t_5, 23, __pyx_kp_u_int_last_column);
+  PyList_SET_ITEM(__pyx_t_5, 22, __pyx_kp_u_int_last_column);
   __Pyx_INCREF(__pyx_kp_u_char_filename);
   __Pyx_GIVEREF(__pyx_kp_u_char_filename);
-  PyList_SET_ITEM(__pyx_t_5, 24, __pyx_kp_u_char_filename);
+  PyList_SET_ITEM(__pyx_t_5, 23, __pyx_kp_u_char_filename);
   __Pyx_INCREF(__pyx_kp_u_YYLTYPE);
   __Pyx_GIVEREF(__pyx_kp_u_YYLTYPE);
-  PyList_SET_ITEM(__pyx_t_5, 25, __pyx_kp_u_YYLTYPE);
+  PyList_SET_ITEM(__pyx_t_5, 24, __pyx_kp_u_YYLTYPE);
   __Pyx_INCREF(__pyx_kp_u__2);
   __Pyx_GIVEREF(__pyx_kp_u__2);
-  PyList_SET_ITEM(__pyx_t_5, 26, __pyx_kp_u__2);
+  PyList_SET_ITEM(__pyx_t_5, 25, __pyx_kp_u__2);
   __Pyx_INCREF(__pyx_v_error_def);
   __Pyx_GIVEREF(__pyx_v_error_def);
-  PyList_SET_ITEM(__pyx_t_5, 27, __pyx_v_error_def);
+  PyList_SET_ITEM(__pyx_t_5, 26, __pyx_v_error_def);
   __Pyx_INCREF(__pyx_kp_u__12);
   __Pyx_GIVEREF(__pyx_kp_u__12);
-  PyList_SET_ITEM(__pyx_t_5, 28, __pyx_kp_u__12);
+  PyList_SET_ITEM(__pyx_t_5, 27, __pyx_kp_u__12);
   __Pyx_INCREF(__pyx_kp_u__2);
   __Pyx_GIVEREF(__pyx_kp_u__2);
-  PyList_SET_ITEM(__pyx_t_5, 29, __pyx_kp_u__2);
+  PyList_SET_ITEM(__pyx_t_5, 28, __pyx_kp_u__2);
   __Pyx_INCREF(__pyx_kp_u_locations);
   __Pyx_GIVEREF(__pyx_kp_u_locations);
-  PyList_SET_ITEM(__pyx_t_5, 30, __pyx_kp_u_locations);
+  PyList_SET_ITEM(__pyx_t_5, 29, __pyx_kp_u_locations);
   __Pyx_INCREF(__pyx_kp_u__2);
   __Pyx_GIVEREF(__pyx_kp_u__2);
-  PyList_SET_ITEM(__pyx_t_5, 31, __pyx_kp_u__2);
+  PyList_SET_ITEM(__pyx_t_5, 30, __pyx_kp_u__2);
   __pyx_t_4 = 0;
   __pyx_t_4 = PyUnicode_Join(__pyx_kp_u__11, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 332, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
@@ -13637,7 +13632,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_dedent, __pyx_k_dedent, sizeof(__pyx_k_dedent), 0, 0, 1, 1},
   {&__pyx_kp_u_define_YYERROR_VERBOSE_1, __pyx_k_define_YYERROR_VERBOSE_1, sizeof(__pyx_k_define_YYERROR_VERBOSE_1), 0, 1, 0, 0},
   {&__pyx_kp_u_define_YYLTYPE_YYLTYPE, __pyx_k_define_YYLTYPE_YYLTYPE, sizeof(__pyx_k_define_YYLTYPE_YYLTYPE), 0, 1, 0, 0},
-  {&__pyx_kp_u_define_YYSTYPE_void, __pyx_k_define_YYSTYPE_void, sizeof(__pyx_k_define_YYSTYPE_void), 0, 1, 0, 0},
   {&__pyx_kp_u_define_api_pure_full, __pyx_k_define_api_pure_full, sizeof(__pyx_k_define_api_pure_full), 0, 1, 0, 0},
   {&__pyx_n_s_define_macro, __pyx_k_define_macro, sizeof(__pyx_k_define_macro), 0, 0, 1, 1},
   {&__pyx_n_s_direction, __pyx_k_direction, sizeof(__pyx_k_direction), 0, 0, 1, 1},
