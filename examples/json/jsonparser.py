@@ -42,7 +42,7 @@ class Parser(BisonParser):
 #include <string.h>
 #include "Python.h"
 #define YYSTYPE void *
-#include "tokens.h"
+#include "tmp.tab.h"
 int yycolumn = 1;
 int yywrap() { return(1); }
 extern void *py_parser;
