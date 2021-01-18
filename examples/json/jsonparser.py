@@ -177,12 +177,12 @@ if __name__ == '__main__':
     with open(file) as fh:
         result_json = json.load(fh)
     duration = time.time() - start
-    print('json', duration)
+    print('json {}'.format(duration))
 
     start = time.time()
     result_bison = j.run(file=file, debug=0)
     duration = time.time() - start
-    print('bison-based JSONParser', duration)
-    print('result equal to json:', result_json == result_bison)
+    print('bison-based JSONParser {}'.format(duration))
+    print('result equal to json: {}'.format(result_json == result_bison))
 
     print('filesize: {} kB'.format(os.stat(file).st_size / 1024))
