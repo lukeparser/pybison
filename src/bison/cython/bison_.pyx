@@ -681,6 +681,11 @@ cdef class ParserEngine:
         if parser._buildOnlyCFiles:
             return
 
+        libFileName = buildDirectory + parser.bisonEngineLibName \
+                      + machinery.EXTENSION_SUFFIXES[0]
+
+        if parser.verbose:
+            print("Compiling: {}".format(libFileName))
         # -----------------------------------------
         # Now compile the files into a shared lib
         objs = env.compile([buildDirectory + parser.bisonCFile1,
@@ -688,9 +693,6 @@ cdef class ParserEngine:
                            extra_preargs=parser.cflags_pre,
                            extra_postargs=parser.cflags_post,
                            debug=parser.debugSymbols)
-
-        libFileName = buildDirectory + parser.bisonEngineLibName \
-                      + machinery.EXTENSION_SUFFIXES[0]
 
         if os.path.isfile(libFileName+".bak"):
             os.unlink(libFileName+".bak")
