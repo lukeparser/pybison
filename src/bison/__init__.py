@@ -93,16 +93,16 @@ class BisonParser(object):
     # Bison-generated header file gets renamed to this.
     bisonHFile1 = bisonHFile  # 'tokens.h'
 
+    # flex file names
+    flexFile = 'tmp.l'
+    flexCFile = 'lex.yy.c'
+    flexHFile = 'lex.yy.h'
     # command and options for running [f]lex, except for filename arg.
     flexCmd = ['flex']
     if sys.platform == 'win32':
         # flexCmd.append('-DYY_NO_UNISTD_H=false')
         flexCmd = [WIN_FLEX, '--wincompat']
-    flexCmd += ['-v']
-
-    flexFile = 'tmp.l'
-    flexCFile = 'lex.yy.c'
-    flexHFile = 'lex.yy.h'
+    flexCmd += ['-v', '--header-file="{}"'.format(flexHFile)]
 
     # C output file from flex gets renamed to this.
     flexCFile1 = flexCFile  # 'tmp.lex.c'
