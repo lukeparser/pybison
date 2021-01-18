@@ -332,8 +332,8 @@ cdef class ParserEngine:
         write('\n'.join([
             '%code top {',
             '',
-            '#include "tokens.h"',
-            '#include "tmp.lex.h"',
+            '#include "tmp.tab.h"',
+            '#include "lex.yy.h"',
             '#include "Python.h"',
             # '' if sys.platform == 'win32' else 'extern int yylineno;'
             '#define YYSTYPE void*',
