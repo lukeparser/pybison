@@ -168,7 +168,7 @@ class JSONParser(Parser):
 if __name__ == '__main__':
 
     start = time.time()
-    j = JSONParser(verbose=False, debugSymbols=False)
+    j = JSONParser(verbose=True, debugSymbols=False)
     duration = time.time() - start
     print('instantiate parser', duration)
 
