@@ -94,12 +94,11 @@ class BisonParser(object):
     bisonHFile1 = bisonHFile  # 'tokens.h'
 
     # command and options for running [f]lex, except for filename arg.
-    flexCmd = []
+    flexCmd = ['flex']
     if sys.platform == 'win32':
         # flexCmd.append('-DYY_NO_UNISTD_H=false')
         flexCmd = [WIN_FLEX, '--wincompat']
-    else:
-        flexCmd = ['flex']
+    flexCmd += ['-v']
 
     flexFile = 'tmp.l'
     flexCFile = 'lex.yy.c'
