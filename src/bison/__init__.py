@@ -76,12 +76,11 @@ class BisonParser(object):
     raw_c_rules = ''
 
     # Command and options for running yacc/bison, except for filename arg
-    bisonCmd = []
+    bisonCmd = ['bison']
     if sys.platform == 'win32':
-        bisonCmd = [WIN_BISON, '-d', '-v', '-t']
-    else:
-        bisonCmd.append('bison')
-        bisonCmd = ['bison', '-d', '-v', '-t']
+        bisonCmd = [WIN_BISON]
+    # add bison args
+    bisonCmd += ['-d', '-v', '-t']
 
     bisonFile = 'tmp.y'
     bisonCFile = 'tmp.tab.c'
