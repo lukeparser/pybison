@@ -842,7 +842,7 @@ struct __pyx_obj_5bison_6bison__ParserEngine {
 };
 
 
-/* "src/bison/cython/bison_.pyx":812
+/* "src/bison/cython/bison_.pyx":814
  * 
  * 
  * def hashParserObject(parser):             # <<<<<<<<<<<<<<
@@ -1786,6 +1786,7 @@ static const char __pyx_k_code_top[] = "%code top {";
   static const char __pyx_k_setstate[] = "__setstate__";
   static const char __pyx_k_textwrap[] = "textwrap";
   static const char __pyx_k_unquoted[] = "unquoted";
+  static const char __pyx_k_Compiling[] = "Compiling: {}";
   static const char __pyx_k_TypeError[] = "TypeError";
   static const char __pyx_k_bisonFile[] = "bisonFile";
   static const char __pyx_k_bison_cmd[] = "bison cmd: {}";
@@ -1871,13 +1872,13 @@ static const char __pyx_k_code_top[] = "%code top {";
     static const char __pyx_k_setstate_cython[] = "__setstate_cython__";
     static const char __pyx_k_hashParserObject[] = "hashParserObject";
     static const char __pyx_k_include_Python_h[] = "#include \"Python.h\"";
-    static const char __pyx_k_include_tokens_h[] = "#include \"tokens.h\"";
+    static const char __pyx_k_include_lex_yy_h[] = "#include \"lex.yy.h\"";
     static const char __pyx_k_int_first_column[] = "  int first_column;";
     static const char __pyx_k_yyscan_t_scanner[] = "yyscan_t scanner;";
     static const char __pyx_k_Py_DECREF_lasterr[] = "             Py_DECREF(lasterr);\n";
     static const char __pyx_k_Py_INCREF_Py_None[] = "             Py_INCREF(Py_None);\n";
     static const char __pyx_k_char_rules_hash_s[] = "char *rules_hash = \"%s\";";
-    static const char __pyx_k_include_tmp_lex_h[] = "#include \"tmp.lex.h\"";
+    static const char __pyx_k_include_tmp_tab_h[] = "#include \"tmp.tab.h\"";
     static const char __pyx_k_py_parser_parser1[] = "   py_parser = parser1;";
     static const char __pyx_k_EXTENSION_SUFFIXES[] = "EXTENSION_SUFFIXES";
     static const char __pyx_k_bisonEngineLibName[] = "bisonEngineLibName";
@@ -1948,6 +1949,7 @@ static const char __pyx_k_code_top[] = "%code top {";
   static const char __pyx_k_yylloc_first_line_yylloc_first_c[] = "yylloc.first_line = yylloc.first_column = yylloc.last_line = yylloc.last_column = 1;";
   static const char __pyx_k_void_yyerror_YYLTYPE_locp_yyscan_2[] = "void yyerror(YYLTYPE *locp, yyscan_t scanner, char const *msg) {";
     static PyObject *__pyx_kp_u_CMD_Output;
+    static PyObject *__pyx_kp_u_Compiling;
     static PyObject *__pyx_kp_u_Deleting_temporary_bison_output;
     static PyObject *__pyx_n_s_EXTENSION_SUFFIXES;
     static PyObject *__pyx_kp_u_Hash_discrepancy_need_to_rebuild;
@@ -2115,8 +2117,8 @@ static const char __pyx_k_code_top[] = "%code top {";
     static PyObject *__pyx_n_s_import;
     static PyObject *__pyx_n_s_importlib;
     static PyObject *__pyx_kp_u_include_Python_h;
-    static PyObject *__pyx_kp_u_include_tmp_lex_h;
-    static PyObject *__pyx_kp_u_include_tokens_h;
+    static PyObject *__pyx_kp_u_include_lex_yy_h;
+    static PyObject *__pyx_kp_u_include_tmp_tab_h;
     static PyObject *__pyx_n_s_init;
     static PyObject *__pyx_n_s_initialize;
     static PyObject *__pyx_kp_u_int_debug;
@@ -4550,8 +4552,8 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_14buildLib(struct __pyx_
   PyObject *__pyx_v_out = NULL;
   PyObject *__pyx_v_err = NULL;
   PyObject *__pyx_v_flexCmd = NULL;
-  PyObject *__pyx_v_objs = NULL;
   PyObject *__pyx_v_libFileName = NULL;
+  PyObject *__pyx_v_objs = NULL;
   PyObject *__pyx_v_hitlist = NULL;
   PyObject *__pyx_v_name = NULL;
   PyObject *__pyx_v_fname = NULL;
@@ -5162,12 +5164,12 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_14buildLib(struct __pyx_
   __Pyx_INCREF(__pyx_kp_u__2);
   __Pyx_GIVEREF(__pyx_kp_u__2);
   PyList_SET_ITEM(__pyx_t_5, 1, __pyx_kp_u__2);
-  __Pyx_INCREF(__pyx_kp_u_include_tokens_h);
-  __Pyx_GIVEREF(__pyx_kp_u_include_tokens_h);
-  PyList_SET_ITEM(__pyx_t_5, 2, __pyx_kp_u_include_tokens_h);
-  __Pyx_INCREF(__pyx_kp_u_include_tmp_lex_h);
-  __Pyx_GIVEREF(__pyx_kp_u_include_tmp_lex_h);
-  PyList_SET_ITEM(__pyx_t_5, 3, __pyx_kp_u_include_tmp_lex_h);
+  __Pyx_INCREF(__pyx_kp_u_include_tmp_tab_h);
+  __Pyx_GIVEREF(__pyx_kp_u_include_tmp_tab_h);
+  PyList_SET_ITEM(__pyx_t_5, 2, __pyx_kp_u_include_tmp_tab_h);
+  __Pyx_INCREF(__pyx_kp_u_include_lex_yy_h);
+  __Pyx_GIVEREF(__pyx_kp_u_include_lex_yy_h);
+  PyList_SET_ITEM(__pyx_t_5, 3, __pyx_kp_u_include_lex_yy_h);
   __Pyx_INCREF(__pyx_kp_u_include_Python_h);
   __Pyx_GIVEREF(__pyx_kp_u_include_Python_h);
   PyList_SET_ITEM(__pyx_t_5, 4, __pyx_kp_u_include_Python_h);
@@ -9918,7 +9920,7 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_14buildLib(struct __pyx_
  *         if parser._buildOnlyCFiles:
  *             return             # <<<<<<<<<<<<<<
  * 
- *         # -----------------------------------------
+ *         libFileName = buildDirectory + parser.bisonEngineLibName \
  */
     __Pyx_TraceLine(682,0,__PYX_ERR(0, 682, __pyx_L1_error))
     __Pyx_XDECREF(__pyx_r);
@@ -9934,170 +9936,223 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_14buildLib(struct __pyx_
  */
   }
 
-  /* "src/bison/cython/bison_.pyx":686
+  /* "src/bison/cython/bison_.pyx":684
+ *             return
+ * 
+ *         libFileName = buildDirectory + parser.bisonEngineLibName \             # <<<<<<<<<<<<<<
+ *                       + machinery.EXTENSION_SUFFIXES[0]
+ * 
+ */
+  __Pyx_TraceLine(684,0,__PYX_ERR(0, 684, __pyx_L1_error))
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_bisonEngineLibName); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 684, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_12 = PyNumber_Add(__pyx_v_buildDirectory, __pyx_t_4); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 684, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_12);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+
+  /* "src/bison/cython/bison_.pyx":685
+ * 
+ *         libFileName = buildDirectory + parser.bisonEngineLibName \
+ *                       + machinery.EXTENSION_SUFFIXES[0]             # <<<<<<<<<<<<<<
+ * 
+ *         if parser.verbose:
+ */
+  __Pyx_TraceLine(685,0,__PYX_ERR(0, 685, __pyx_L1_error))
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_machinery); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 685, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_22 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_EXTENSION_SUFFIXES); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 685, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_22);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_22, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 685, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+  __pyx_t_22 = PyNumber_Add(__pyx_t_12, __pyx_t_4); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 685, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_22);
+  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_v_libFileName = __pyx_t_22;
+  __pyx_t_22 = 0;
+
+  /* "src/bison/cython/bison_.pyx":687
+ *                       + machinery.EXTENSION_SUFFIXES[0]
+ * 
+ *         if parser.verbose:             # <<<<<<<<<<<<<<
+ *             print("Compiling: {}".format(libFileName))
+ *         # -----------------------------------------
+ */
+  __Pyx_TraceLine(687,0,__PYX_ERR(0, 687, __pyx_L1_error))
+  __pyx_t_22 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_verbose); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 687, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_22);
+  __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_22); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 687, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+  if (__pyx_t_7) {
+
+    /* "src/bison/cython/bison_.pyx":688
+ * 
+ *         if parser.verbose:
+ *             print("Compiling: {}".format(libFileName))             # <<<<<<<<<<<<<<
+ *         # -----------------------------------------
+ *         # Now compile the files into a shared lib
+ */
+    __Pyx_TraceLine(688,0,__PYX_ERR(0, 688, __pyx_L1_error))
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_Compiling, __pyx_n_s_format); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 688, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_12 = NULL;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
+      __pyx_t_12 = PyMethod_GET_SELF(__pyx_t_4);
+      if (likely(__pyx_t_12)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+        __Pyx_INCREF(__pyx_t_12);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_4, function);
+      }
+    }
+    __pyx_t_22 = (__pyx_t_12) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_12, __pyx_v_libFileName) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_libFileName);
+    __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
+    if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 688, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_22);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_22); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 688, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+
+    /* "src/bison/cython/bison_.pyx":687
+ *                       + machinery.EXTENSION_SUFFIXES[0]
+ * 
+ *         if parser.verbose:             # <<<<<<<<<<<<<<
+ *             print("Compiling: {}".format(libFileName))
+ *         # -----------------------------------------
+ */
+  }
+
+  /* "src/bison/cython/bison_.pyx":691
  *         # -----------------------------------------
  *         # Now compile the files into a shared lib
  *         objs = env.compile([buildDirectory + parser.bisonCFile1,             # <<<<<<<<<<<<<<
  *                             buildDirectory + parser.flexCFile1],
  *                            extra_preargs=parser.cflags_pre,
  */
-  __Pyx_TraceLine(686,0,__PYX_ERR(0, 686, __pyx_L1_error))
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_env, __pyx_n_s_compile); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 686, __pyx_L1_error)
+  __Pyx_TraceLine(691,0,__PYX_ERR(0, 691, __pyx_L1_error))
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_env, __pyx_n_s_compile); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 691, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_bisonCFile1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 686, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_12);
-  __pyx_t_22 = PyNumber_Add(__pyx_v_buildDirectory, __pyx_t_12); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 686, __pyx_L1_error)
+  __pyx_t_22 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_bisonCFile1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 691, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_22);
-  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+  __pyx_t_12 = PyNumber_Add(__pyx_v_buildDirectory, __pyx_t_22); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 691, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_12);
+  __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
 
-  /* "src/bison/cython/bison_.pyx":687
+  /* "src/bison/cython/bison_.pyx":692
  *         # Now compile the files into a shared lib
  *         objs = env.compile([buildDirectory + parser.bisonCFile1,
  *                             buildDirectory + parser.flexCFile1],             # <<<<<<<<<<<<<<
  *                            extra_preargs=parser.cflags_pre,
  *                            extra_postargs=parser.cflags_post,
  */
-  __Pyx_TraceLine(687,0,__PYX_ERR(0, 687, __pyx_L1_error))
-  __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_flexCFile1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 687, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_12);
-  __pyx_t_1 = PyNumber_Add(__pyx_v_buildDirectory, __pyx_t_12); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 687, __pyx_L1_error)
+  __Pyx_TraceLine(692,0,__PYX_ERR(0, 692, __pyx_L1_error))
+  __pyx_t_22 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_flexCFile1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 692, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_22);
+  __pyx_t_1 = PyNumber_Add(__pyx_v_buildDirectory, __pyx_t_22); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 692, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+  __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
 
-  /* "src/bison/cython/bison_.pyx":686
+  /* "src/bison/cython/bison_.pyx":691
  *         # -----------------------------------------
  *         # Now compile the files into a shared lib
  *         objs = env.compile([buildDirectory + parser.bisonCFile1,             # <<<<<<<<<<<<<<
  *                             buildDirectory + parser.flexCFile1],
  *                            extra_preargs=parser.cflags_pre,
  */
-  __Pyx_TraceLine(686,0,__PYX_ERR(0, 686, __pyx_L1_error))
-  __pyx_t_12 = PyList_New(2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 686, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_12);
-  __Pyx_GIVEREF(__pyx_t_22);
-  PyList_SET_ITEM(__pyx_t_12, 0, __pyx_t_22);
-  __Pyx_GIVEREF(__pyx_t_1);
-  PyList_SET_ITEM(__pyx_t_12, 1, __pyx_t_1);
-  __pyx_t_22 = 0;
-  __pyx_t_1 = 0;
-  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 686, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_TraceLine(691,0,__PYX_ERR(0, 691, __pyx_L1_error))
+  __pyx_t_22 = PyList_New(2); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 691, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_22);
   __Pyx_GIVEREF(__pyx_t_12);
-  PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_12);
+  PyList_SET_ITEM(__pyx_t_22, 0, __pyx_t_12);
+  __Pyx_GIVEREF(__pyx_t_1);
+  PyList_SET_ITEM(__pyx_t_22, 1, __pyx_t_1);
   __pyx_t_12 = 0;
+  __pyx_t_1 = 0;
+  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 691, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_GIVEREF(__pyx_t_22);
+  PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_22);
+  __pyx_t_22 = 0;
 
-  /* "src/bison/cython/bison_.pyx":688
+  /* "src/bison/cython/bison_.pyx":693
  *         objs = env.compile([buildDirectory + parser.bisonCFile1,
  *                             buildDirectory + parser.flexCFile1],
  *                            extra_preargs=parser.cflags_pre,             # <<<<<<<<<<<<<<
  *                            extra_postargs=parser.cflags_post,
  *                            debug=parser.debugSymbols)
  */
-  __Pyx_TraceLine(688,0,__PYX_ERR(0, 688, __pyx_L1_error))
-  __pyx_t_12 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 688, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_12);
-  __pyx_t_22 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_cflags_pre); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 688, __pyx_L1_error)
+  __Pyx_TraceLine(693,0,__PYX_ERR(0, 693, __pyx_L1_error))
+  __pyx_t_22 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 693, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_22);
-  if (PyDict_SetItem(__pyx_t_12, __pyx_n_s_extra_preargs, __pyx_t_22) < 0) __PYX_ERR(0, 688, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+  __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_cflags_pre); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 693, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_12);
+  if (PyDict_SetItem(__pyx_t_22, __pyx_n_s_extra_preargs, __pyx_t_12) < 0) __PYX_ERR(0, 693, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-  /* "src/bison/cython/bison_.pyx":689
+  /* "src/bison/cython/bison_.pyx":694
  *                             buildDirectory + parser.flexCFile1],
  *                            extra_preargs=parser.cflags_pre,
  *                            extra_postargs=parser.cflags_post,             # <<<<<<<<<<<<<<
  *                            debug=parser.debugSymbols)
  * 
  */
-  __Pyx_TraceLine(689,0,__PYX_ERR(0, 689, __pyx_L1_error))
-  __pyx_t_22 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_cflags_post); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 689, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_22);
-  if (PyDict_SetItem(__pyx_t_12, __pyx_n_s_extra_postargs, __pyx_t_22) < 0) __PYX_ERR(0, 688, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+  __Pyx_TraceLine(694,0,__PYX_ERR(0, 694, __pyx_L1_error))
+  __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_cflags_post); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 694, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_12);
+  if (PyDict_SetItem(__pyx_t_22, __pyx_n_s_extra_postargs, __pyx_t_12) < 0) __PYX_ERR(0, 693, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-  /* "src/bison/cython/bison_.pyx":690
+  /* "src/bison/cython/bison_.pyx":695
  *                            extra_preargs=parser.cflags_pre,
  *                            extra_postargs=parser.cflags_post,
  *                            debug=parser.debugSymbols)             # <<<<<<<<<<<<<<
  * 
- *         libFileName = buildDirectory + parser.bisonEngineLibName \
+ *         if os.path.isfile(libFileName+".bak"):
  */
-  __Pyx_TraceLine(690,0,__PYX_ERR(0, 690, __pyx_L1_error))
-  __pyx_t_22 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_debugSymbols); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 690, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_22);
-  if (PyDict_SetItem(__pyx_t_12, __pyx_n_s_debug, __pyx_t_22) < 0) __PYX_ERR(0, 688, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+  __Pyx_TraceLine(695,0,__PYX_ERR(0, 695, __pyx_L1_error))
+  __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_debugSymbols); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 695, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_12);
+  if (PyDict_SetItem(__pyx_t_22, __pyx_n_s_debug, __pyx_t_12) < 0) __PYX_ERR(0, 693, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-  /* "src/bison/cython/bison_.pyx":686
+  /* "src/bison/cython/bison_.pyx":691
  *         # -----------------------------------------
  *         # Now compile the files into a shared lib
  *         objs = env.compile([buildDirectory + parser.bisonCFile1,             # <<<<<<<<<<<<<<
  *                             buildDirectory + parser.flexCFile1],
  *                            extra_preargs=parser.cflags_pre,
  */
-  __Pyx_TraceLine(686,0,__PYX_ERR(0, 686, __pyx_L1_error))
-  __pyx_t_22 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_1, __pyx_t_12); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 686, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_22);
+  __Pyx_TraceLine(691,0,__PYX_ERR(0, 691, __pyx_L1_error))
+  __pyx_t_12 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_1, __pyx_t_22); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 691, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_12);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-  __pyx_v_objs = __pyx_t_22;
-  __pyx_t_22 = 0;
+  __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+  __pyx_v_objs = __pyx_t_12;
+  __pyx_t_12 = 0;
 
-  /* "src/bison/cython/bison_.pyx":692
+  /* "src/bison/cython/bison_.pyx":697
  *                            debug=parser.debugSymbols)
- * 
- *         libFileName = buildDirectory + parser.bisonEngineLibName \             # <<<<<<<<<<<<<<
- *                       + machinery.EXTENSION_SUFFIXES[0]
- * 
- */
-  __Pyx_TraceLine(692,0,__PYX_ERR(0, 692, __pyx_L1_error))
-  __pyx_t_22 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_bisonEngineLibName); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 692, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_22);
-  __pyx_t_12 = PyNumber_Add(__pyx_v_buildDirectory, __pyx_t_22); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 692, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_12);
-  __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
-
-  /* "src/bison/cython/bison_.pyx":693
- * 
- *         libFileName = buildDirectory + parser.bisonEngineLibName \
- *                       + machinery.EXTENSION_SUFFIXES[0]             # <<<<<<<<<<<<<<
- * 
- *         if os.path.isfile(libFileName+".bak"):
- */
-  __Pyx_TraceLine(693,0,__PYX_ERR(0, 693, __pyx_L1_error))
-  __Pyx_GetModuleGlobalName(__pyx_t_22, __pyx_n_s_machinery); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 693, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_22);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_22, __pyx_n_s_EXTENSION_SUFFIXES); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 693, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
-  __pyx_t_22 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 693, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_22);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Add(__pyx_t_12, __pyx_t_22); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 693, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-  __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
-  __pyx_v_libFileName = __pyx_t_1;
-  __pyx_t_1 = 0;
-
-  /* "src/bison/cython/bison_.pyx":695
- *                       + machinery.EXTENSION_SUFFIXES[0]
  * 
  *         if os.path.isfile(libFileName+".bak"):             # <<<<<<<<<<<<<<
  *             os.unlink(libFileName+".bak")
  * 
  */
-  __Pyx_TraceLine(695,0,__PYX_ERR(0, 695, __pyx_L1_error))
-  __Pyx_GetModuleGlobalName(__pyx_t_22, __pyx_n_s_os); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 695, __pyx_L1_error)
+  __Pyx_TraceLine(697,0,__PYX_ERR(0, 697, __pyx_L1_error))
+  __Pyx_GetModuleGlobalName(__pyx_t_22, __pyx_n_s_os); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 697, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_22);
-  __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_22, __pyx_n_s_path); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 695, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_12);
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_22, __pyx_n_s_path); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 697, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
-  __pyx_t_22 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_isfile); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 695, __pyx_L1_error)
+  __pyx_t_22 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_isfile); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 697, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_22);
-  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-  __pyx_t_12 = PyNumber_Add(__pyx_v_libFileName, __pyx_kp_u_bak); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 695, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_12);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = PyNumber_Add(__pyx_v_libFileName, __pyx_kp_u_bak); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 697, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_22))) {
     __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_22);
@@ -10108,51 +10163,51 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_14buildLib(struct __pyx_
       __Pyx_DECREF_SET(__pyx_t_22, function);
     }
   }
-  __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_22, __pyx_t_4, __pyx_t_12) : __Pyx_PyObject_CallOneArg(__pyx_t_22, __pyx_t_12);
+  __pyx_t_12 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_22, __pyx_t_4, __pyx_t_1) : __Pyx_PyObject_CallOneArg(__pyx_t_22, __pyx_t_1);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 695, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
-  __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 695, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 697, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_12);
+  __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+  __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_12); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 697, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
   if (__pyx_t_7) {
 
-    /* "src/bison/cython/bison_.pyx":696
+    /* "src/bison/cython/bison_.pyx":698
  * 
  *         if os.path.isfile(libFileName+".bak"):
  *             os.unlink(libFileName+".bak")             # <<<<<<<<<<<<<<
  * 
  *         if os.path.isfile(libFileName):
  */
-    __Pyx_TraceLine(696,0,__PYX_ERR(0, 696, __pyx_L1_error))
-    __Pyx_GetModuleGlobalName(__pyx_t_22, __pyx_n_s_os); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 696, __pyx_L1_error)
+    __Pyx_TraceLine(698,0,__PYX_ERR(0, 698, __pyx_L1_error))
+    __Pyx_GetModuleGlobalName(__pyx_t_22, __pyx_n_s_os); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 698, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_22);
-    __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_22, __pyx_n_s_unlink); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 696, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_12);
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_22, __pyx_n_s_unlink); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 698, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
-    __pyx_t_22 = PyNumber_Add(__pyx_v_libFileName, __pyx_kp_u_bak); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 696, __pyx_L1_error)
+    __pyx_t_22 = PyNumber_Add(__pyx_v_libFileName, __pyx_kp_u_bak); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 698, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_22);
     __pyx_t_4 = NULL;
-    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_12))) {
-      __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_12);
+    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_1))) {
+      __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_1);
       if (likely(__pyx_t_4)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_12);
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
         __Pyx_INCREF(__pyx_t_4);
         __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_12, function);
+        __Pyx_DECREF_SET(__pyx_t_1, function);
       }
     }
-    __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_12, __pyx_t_4, __pyx_t_22) : __Pyx_PyObject_CallOneArg(__pyx_t_12, __pyx_t_22);
+    __pyx_t_12 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_4, __pyx_t_22) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_22);
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 696, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+    if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 698, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_12);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-    /* "src/bison/cython/bison_.pyx":695
- *                       + machinery.EXTENSION_SUFFIXES[0]
+    /* "src/bison/cython/bison_.pyx":697
+ *                            debug=parser.debugSymbols)
  * 
  *         if os.path.isfile(libFileName+".bak"):             # <<<<<<<<<<<<<<
  *             os.unlink(libFileName+".bak")
@@ -10160,56 +10215,56 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_14buildLib(struct __pyx_
  */
   }
 
-  /* "src/bison/cython/bison_.pyx":698
+  /* "src/bison/cython/bison_.pyx":700
  *             os.unlink(libFileName+".bak")
  * 
  *         if os.path.isfile(libFileName):             # <<<<<<<<<<<<<<
  *             os.rename(libFileName, libFileName+".bak")
  * 
  */
-  __Pyx_TraceLine(698,0,__PYX_ERR(0, 698, __pyx_L1_error))
-  __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_n_s_os); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 698, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_12);
-  __pyx_t_22 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_path); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 698, __pyx_L1_error)
+  __Pyx_TraceLine(700,0,__PYX_ERR(0, 700, __pyx_L1_error))
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_os); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 700, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_22 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_path); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 700, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_22);
-  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-  __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_22, __pyx_n_s_isfile); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 698, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_12);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_22, __pyx_n_s_isfile); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 700, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
   __pyx_t_22 = NULL;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_12))) {
-    __pyx_t_22 = PyMethod_GET_SELF(__pyx_t_12);
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
+    __pyx_t_22 = PyMethod_GET_SELF(__pyx_t_1);
     if (likely(__pyx_t_22)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_12);
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
       __Pyx_INCREF(__pyx_t_22);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_12, function);
+      __Pyx_DECREF_SET(__pyx_t_1, function);
     }
   }
-  __pyx_t_1 = (__pyx_t_22) ? __Pyx_PyObject_Call2Args(__pyx_t_12, __pyx_t_22, __pyx_v_libFileName) : __Pyx_PyObject_CallOneArg(__pyx_t_12, __pyx_v_libFileName);
+  __pyx_t_12 = (__pyx_t_22) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_22, __pyx_v_libFileName) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_v_libFileName);
   __Pyx_XDECREF(__pyx_t_22); __pyx_t_22 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 698, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-  __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 698, __pyx_L1_error)
+  if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 700, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_12);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_12); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 700, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
   if (__pyx_t_7) {
 
-    /* "src/bison/cython/bison_.pyx":699
+    /* "src/bison/cython/bison_.pyx":701
  * 
  *         if os.path.isfile(libFileName):
  *             os.rename(libFileName, libFileName+".bak")             # <<<<<<<<<<<<<<
  * 
  *         if parser.verbose:
  */
-    __Pyx_TraceLine(699,0,__PYX_ERR(0, 699, __pyx_L1_error))
-    __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_n_s_os); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 699, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_12);
-    __pyx_t_22 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_rename); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 699, __pyx_L1_error)
+    __Pyx_TraceLine(701,0,__PYX_ERR(0, 701, __pyx_L1_error))
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_os); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 701, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_22 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_rename); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 701, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_22);
-    __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-    __pyx_t_12 = PyNumber_Add(__pyx_v_libFileName, __pyx_kp_u_bak); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 699, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_12);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = PyNumber_Add(__pyx_v_libFileName, __pyx_kp_u_bak); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 701, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_4 = NULL;
     __pyx_t_13 = 0;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_22))) {
@@ -10224,24 +10279,24 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_14buildLib(struct __pyx_
     }
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_22)) {
-      PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_v_libFileName, __pyx_t_12};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_22, __pyx_temp+1-__pyx_t_13, 2+__pyx_t_13); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 699, __pyx_L1_error)
+      PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_v_libFileName, __pyx_t_1};
+      __pyx_t_12 = __Pyx_PyFunction_FastCall(__pyx_t_22, __pyx_temp+1-__pyx_t_13, 2+__pyx_t_13); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 701, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+      __Pyx_GOTREF(__pyx_t_12);
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     } else
     #endif
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_22)) {
-      PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_v_libFileName, __pyx_t_12};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_22, __pyx_temp+1-__pyx_t_13, 2+__pyx_t_13); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 699, __pyx_L1_error)
+      PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_v_libFileName, __pyx_t_1};
+      __pyx_t_12 = __Pyx_PyCFunction_FastCall(__pyx_t_22, __pyx_temp+1-__pyx_t_13, 2+__pyx_t_13); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 701, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+      __Pyx_GOTREF(__pyx_t_12);
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     } else
     #endif
     {
-      __pyx_t_14 = PyTuple_New(2+__pyx_t_13); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 699, __pyx_L1_error)
+      __pyx_t_14 = PyTuple_New(2+__pyx_t_13); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 701, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
       if (__pyx_t_4) {
         __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -10249,17 +10304,17 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_14buildLib(struct __pyx_
       __Pyx_INCREF(__pyx_v_libFileName);
       __Pyx_GIVEREF(__pyx_v_libFileName);
       PyTuple_SET_ITEM(__pyx_t_14, 0+__pyx_t_13, __pyx_v_libFileName);
-      __Pyx_GIVEREF(__pyx_t_12);
-      PyTuple_SET_ITEM(__pyx_t_14, 1+__pyx_t_13, __pyx_t_12);
-      __pyx_t_12 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_22, __pyx_t_14, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 699, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_GIVEREF(__pyx_t_1);
+      PyTuple_SET_ITEM(__pyx_t_14, 1+__pyx_t_13, __pyx_t_1);
+      __pyx_t_1 = 0;
+      __pyx_t_12 = __Pyx_PyObject_Call(__pyx_t_22, __pyx_t_14, NULL); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 701, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_12);
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
     }
     __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-    /* "src/bison/cython/bison_.pyx":698
+    /* "src/bison/cython/bison_.pyx":700
  *             os.unlink(libFileName+".bak")
  * 
  *         if os.path.isfile(libFileName):             # <<<<<<<<<<<<<<
@@ -10268,39 +10323,39 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_14buildLib(struct __pyx_
  */
   }
 
-  /* "src/bison/cython/bison_.pyx":701
+  /* "src/bison/cython/bison_.pyx":703
  *             os.rename(libFileName, libFileName+".bak")
  * 
  *         if parser.verbose:             # <<<<<<<<<<<<<<
  *             print("linking: {} => {}".format(', '.join(objs), libFileName))
  * 
  */
-  __Pyx_TraceLine(701,0,__PYX_ERR(0, 701, __pyx_L1_error))
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_verbose); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 701, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 701, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_TraceLine(703,0,__PYX_ERR(0, 703, __pyx_L1_error))
+  __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_verbose); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 703, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_12);
+  __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_12); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 703, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
   if (__pyx_t_7) {
 
-    /* "src/bison/cython/bison_.pyx":702
+    /* "src/bison/cython/bison_.pyx":704
  * 
  *         if parser.verbose:
  *             print("linking: {} => {}".format(', '.join(objs), libFileName))             # <<<<<<<<<<<<<<
  * 
  *         if sys.platform.startswith("darwin"):
  */
-    __Pyx_TraceLine(702,0,__PYX_ERR(0, 702, __pyx_L1_error))
-    __pyx_t_22 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_linking, __pyx_n_s_format); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 702, __pyx_L1_error)
+    __Pyx_TraceLine(704,0,__PYX_ERR(0, 704, __pyx_L1_error))
+    __pyx_t_22 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_linking, __pyx_n_s_format); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 704, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_22);
-    __pyx_t_14 = PyUnicode_Join(__pyx_kp_u__35, __pyx_v_objs); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 702, __pyx_L1_error)
+    __pyx_t_14 = PyUnicode_Join(__pyx_kp_u__35, __pyx_v_objs); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 704, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
-    __pyx_t_12 = NULL;
+    __pyx_t_1 = NULL;
     __pyx_t_13 = 0;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_22))) {
-      __pyx_t_12 = PyMethod_GET_SELF(__pyx_t_22);
-      if (likely(__pyx_t_12)) {
+      __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_22);
+      if (likely(__pyx_t_1)) {
         PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_22);
-        __Pyx_INCREF(__pyx_t_12);
+        __Pyx_INCREF(__pyx_t_1);
         __Pyx_INCREF(function);
         __Pyx_DECREF_SET(__pyx_t_22, function);
         __pyx_t_13 = 1;
@@ -10308,27 +10363,27 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_14buildLib(struct __pyx_
     }
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_22)) {
-      PyObject *__pyx_temp[3] = {__pyx_t_12, __pyx_t_14, __pyx_v_libFileName};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_22, __pyx_temp+1-__pyx_t_13, 2+__pyx_t_13); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 702, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
-      __Pyx_GOTREF(__pyx_t_1);
+      PyObject *__pyx_temp[3] = {__pyx_t_1, __pyx_t_14, __pyx_v_libFileName};
+      __pyx_t_12 = __Pyx_PyFunction_FastCall(__pyx_t_22, __pyx_temp+1-__pyx_t_13, 2+__pyx_t_13); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 704, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+      __Pyx_GOTREF(__pyx_t_12);
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
     } else
     #endif
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_22)) {
-      PyObject *__pyx_temp[3] = {__pyx_t_12, __pyx_t_14, __pyx_v_libFileName};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_22, __pyx_temp+1-__pyx_t_13, 2+__pyx_t_13); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 702, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
-      __Pyx_GOTREF(__pyx_t_1);
+      PyObject *__pyx_temp[3] = {__pyx_t_1, __pyx_t_14, __pyx_v_libFileName};
+      __pyx_t_12 = __Pyx_PyCFunction_FastCall(__pyx_t_22, __pyx_temp+1-__pyx_t_13, 2+__pyx_t_13); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 704, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+      __Pyx_GOTREF(__pyx_t_12);
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
     } else
     #endif
     {
-      __pyx_t_4 = PyTuple_New(2+__pyx_t_13); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 702, __pyx_L1_error)
+      __pyx_t_4 = PyTuple_New(2+__pyx_t_13); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 704, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      if (__pyx_t_12) {
-        __Pyx_GIVEREF(__pyx_t_12); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_12); __pyx_t_12 = NULL;
+      if (__pyx_t_1) {
+        __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1); __pyx_t_1 = NULL;
       }
       __Pyx_GIVEREF(__pyx_t_14);
       PyTuple_SET_ITEM(__pyx_t_4, 0+__pyx_t_13, __pyx_t_14);
@@ -10336,17 +10391,17 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_14buildLib(struct __pyx_
       __Pyx_GIVEREF(__pyx_v_libFileName);
       PyTuple_SET_ITEM(__pyx_t_4, 1+__pyx_t_13, __pyx_v_libFileName);
       __pyx_t_14 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_22, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 702, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
+      __pyx_t_12 = __Pyx_PyObject_Call(__pyx_t_22, __pyx_t_4, NULL); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 704, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_12);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
     __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
-    __pyx_t_22 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 702, __pyx_L1_error)
+    __pyx_t_22 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_12); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 704, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_22);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
     __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
 
-    /* "src/bison/cython/bison_.pyx":701
+    /* "src/bison/cython/bison_.pyx":703
  *             os.rename(libFileName, libFileName+".bak")
  * 
  *         if parser.verbose:             # <<<<<<<<<<<<<<
@@ -10355,67 +10410,67 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_14buildLib(struct __pyx_
  */
   }
 
-  /* "src/bison/cython/bison_.pyx":704
+  /* "src/bison/cython/bison_.pyx":706
  *             print("linking: {} => {}".format(', '.join(objs), libFileName))
  * 
  *         if sys.platform.startswith("darwin"):             # <<<<<<<<<<<<<<
  *             # on OSX, ld throws undefined symbol for shared library references
  *             # however, we would like to link against libpython dynamically, so that
  */
-  __Pyx_TraceLine(704,0,__PYX_ERR(0, 704, __pyx_L1_error))
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_sys); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 704, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_platform); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 704, __pyx_L1_error)
+  __Pyx_TraceLine(706,0,__PYX_ERR(0, 706, __pyx_L1_error))
+  __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_n_s_sys); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 706, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_12);
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_platform); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 706, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_startswith); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 704, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+  __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_startswith); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 706, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_12);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = NULL;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
-    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_1);
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_12))) {
+    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_12);
     if (likely(__pyx_t_4)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_12);
       __Pyx_INCREF(__pyx_t_4);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_1, function);
+      __Pyx_DECREF_SET(__pyx_t_12, function);
     }
   }
-  __pyx_t_22 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_4, __pyx_n_u_darwin) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_n_u_darwin);
+  __pyx_t_22 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_12, __pyx_t_4, __pyx_n_u_darwin) : __Pyx_PyObject_CallOneArg(__pyx_t_12, __pyx_n_u_darwin);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 704, __pyx_L1_error)
+  if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 706, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_22);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_22); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 704, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+  __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_22); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 706, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
   if (__pyx_t_7) {
 
-    /* "src/bison/cython/bison_.pyx":708
+    /* "src/bison/cython/bison_.pyx":710
  *             # however, we would like to link against libpython dynamically, so that
  *             # the built .so will not depend on which python interpreter it runs on
  *             env.linker_so += ["-undefined", "dynamic_lookup"]             # <<<<<<<<<<<<<<
  * 
  *         # link 'em into a shared lib
  */
-    __Pyx_TraceLine(708,0,__PYX_ERR(0, 708, __pyx_L1_error))
-    __pyx_t_22 = __Pyx_PyObject_GetAttrStr(__pyx_v_env, __pyx_n_s_linker_so); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 708, __pyx_L1_error)
+    __Pyx_TraceLine(710,0,__PYX_ERR(0, 710, __pyx_L1_error))
+    __pyx_t_22 = __Pyx_PyObject_GetAttrStr(__pyx_v_env, __pyx_n_s_linker_so); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 710, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_22);
-    __pyx_t_1 = PyList_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 708, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_12 = PyList_New(2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 710, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_12);
     __Pyx_INCREF(__pyx_kp_u_undefined);
     __Pyx_GIVEREF(__pyx_kp_u_undefined);
-    PyList_SET_ITEM(__pyx_t_1, 0, __pyx_kp_u_undefined);
+    PyList_SET_ITEM(__pyx_t_12, 0, __pyx_kp_u_undefined);
     __Pyx_INCREF(__pyx_n_u_dynamic_lookup);
     __Pyx_GIVEREF(__pyx_n_u_dynamic_lookup);
-    PyList_SET_ITEM(__pyx_t_1, 1, __pyx_n_u_dynamic_lookup);
-    __pyx_t_4 = PyNumber_InPlaceAdd(__pyx_t_22, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 708, __pyx_L1_error)
+    PyList_SET_ITEM(__pyx_t_12, 1, __pyx_n_u_dynamic_lookup);
+    __pyx_t_4 = PyNumber_InPlaceAdd(__pyx_t_22, __pyx_t_12); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 710, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (__Pyx_PyObject_SetAttrStr(__pyx_v_env, __pyx_n_s_linker_so, __pyx_t_4) < 0) __PYX_ERR(0, 708, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_env, __pyx_n_s_linker_so, __pyx_t_4) < 0) __PYX_ERR(0, 710, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "src/bison/cython/bison_.pyx":704
+    /* "src/bison/cython/bison_.pyx":706
  *             print("linking: {} => {}".format(', '.join(objs), libFileName))
  * 
  *         if sys.platform.startswith("darwin"):             # <<<<<<<<<<<<<<
@@ -10424,46 +10479,46 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_14buildLib(struct __pyx_
  */
   }
 
-  /* "src/bison/cython/bison_.pyx":711
+  /* "src/bison/cython/bison_.pyx":713
  * 
  *         # link 'em into a shared lib
  *         env.link_shared_object(objs, libFileName)             # <<<<<<<<<<<<<<
  * 
  *         #cdef char *incdir
  */
-  __Pyx_TraceLine(711,0,__PYX_ERR(0, 711, __pyx_L1_error))
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_env, __pyx_n_s_link_shared_object); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 711, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_TraceLine(713,0,__PYX_ERR(0, 713, __pyx_L1_error))
+  __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_v_env, __pyx_n_s_link_shared_object); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 713, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_12);
   __pyx_t_22 = NULL;
   __pyx_t_13 = 0;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
-    __pyx_t_22 = PyMethod_GET_SELF(__pyx_t_1);
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_12))) {
+    __pyx_t_22 = PyMethod_GET_SELF(__pyx_t_12);
     if (likely(__pyx_t_22)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_12);
       __Pyx_INCREF(__pyx_t_22);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_1, function);
+      __Pyx_DECREF_SET(__pyx_t_12, function);
       __pyx_t_13 = 1;
     }
   }
   #if CYTHON_FAST_PYCALL
-  if (PyFunction_Check(__pyx_t_1)) {
+  if (PyFunction_Check(__pyx_t_12)) {
     PyObject *__pyx_temp[3] = {__pyx_t_22, __pyx_v_objs, __pyx_v_libFileName};
-    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_13, 2+__pyx_t_13); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 711, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_12, __pyx_temp+1-__pyx_t_13, 2+__pyx_t_13); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 713, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_22); __pyx_t_22 = 0;
     __Pyx_GOTREF(__pyx_t_4);
   } else
   #endif
   #if CYTHON_FAST_PYCCALL
-  if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
+  if (__Pyx_PyFastCFunction_Check(__pyx_t_12)) {
     PyObject *__pyx_temp[3] = {__pyx_t_22, __pyx_v_objs, __pyx_v_libFileName};
-    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_13, 2+__pyx_t_13); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 711, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_12, __pyx_temp+1-__pyx_t_13, 2+__pyx_t_13); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 713, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_22); __pyx_t_22 = 0;
     __Pyx_GOTREF(__pyx_t_4);
   } else
   #endif
   {
-    __pyx_t_14 = PyTuple_New(2+__pyx_t_13); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 711, __pyx_L1_error)
+    __pyx_t_14 = PyTuple_New(2+__pyx_t_13); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 713, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
     if (__pyx_t_22) {
       __Pyx_GIVEREF(__pyx_t_22); PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_t_22); __pyx_t_22 = NULL;
@@ -10474,70 +10529,70 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_14buildLib(struct __pyx_
     __Pyx_INCREF(__pyx_v_libFileName);
     __Pyx_GIVEREF(__pyx_v_libFileName);
     PyTuple_SET_ITEM(__pyx_t_14, 1+__pyx_t_13, __pyx_v_libFileName);
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_14, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 711, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_12, __pyx_t_14, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 713, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
   }
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "src/bison/cython/bison_.pyx":720
+  /* "src/bison/cython/bison_.pyx":722
  *         # clean up, if we succeeded
  *         # hitlist = objs[:]
  *         hitlist = []             # <<<<<<<<<<<<<<
  * 
  *         if os.path.isfile(self.libFilename_py):
  */
-  __Pyx_TraceLine(720,0,__PYX_ERR(0, 720, __pyx_L1_error))
-  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 720, __pyx_L1_error)
+  __Pyx_TraceLine(722,0,__PYX_ERR(0, 722, __pyx_L1_error))
+  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 722, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_v_hitlist = ((PyObject*)__pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "src/bison/cython/bison_.pyx":722
+  /* "src/bison/cython/bison_.pyx":724
  *         hitlist = []
  * 
  *         if os.path.isfile(self.libFilename_py):             # <<<<<<<<<<<<<<
  *             for name in ['bisonFile', 'bisonCFile', 'bisonHFile',
  *                          'bisonCFile1', 'bisonHFile1', 'flexFile',
  */
-  __Pyx_TraceLine(722,0,__PYX_ERR(0, 722, __pyx_L1_error))
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_os); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 722, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_path); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 722, __pyx_L1_error)
+  __Pyx_TraceLine(724,0,__PYX_ERR(0, 724, __pyx_L1_error))
+  __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_n_s_os); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 724, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_12);
+  __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_path); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 724, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_isfile); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 722, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+  __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_isfile); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 724, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_12);
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
   __pyx_t_14 = NULL;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
-    __pyx_t_14 = PyMethod_GET_SELF(__pyx_t_1);
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_12))) {
+    __pyx_t_14 = PyMethod_GET_SELF(__pyx_t_12);
     if (likely(__pyx_t_14)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_12);
       __Pyx_INCREF(__pyx_t_14);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_1, function);
+      __Pyx_DECREF_SET(__pyx_t_12, function);
     }
   }
-  __pyx_t_4 = (__pyx_t_14) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_14, __pyx_v_self->libFilename_py) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_v_self->libFilename_py);
+  __pyx_t_4 = (__pyx_t_14) ? __Pyx_PyObject_Call2Args(__pyx_t_12, __pyx_t_14, __pyx_v_self->libFilename_py) : __Pyx_PyObject_CallOneArg(__pyx_t_12, __pyx_v_self->libFilename_py);
   __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
-  if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 722, __pyx_L1_error)
+  if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 724, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 722, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+  __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 724, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (__pyx_t_7) {
 
-    /* "src/bison/cython/bison_.pyx":723
+    /* "src/bison/cython/bison_.pyx":725
  * 
  *         if os.path.isfile(self.libFilename_py):
  *             for name in ['bisonFile', 'bisonCFile', 'bisonHFile',             # <<<<<<<<<<<<<<
  *                          'bisonCFile1', 'bisonHFile1', 'flexFile',
  *                          'flexCFile', 'flexCFile1',
  */
-    __Pyx_TraceLine(723,0,__PYX_ERR(0, 723, __pyx_L1_error))
-    __pyx_t_4 = PyList_New(8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 723, __pyx_L1_error)
+    __Pyx_TraceLine(725,0,__PYX_ERR(0, 725, __pyx_L1_error))
+    __pyx_t_4 = PyList_New(8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 725, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_INCREF(__pyx_n_u_bisonFile);
     __Pyx_GIVEREF(__pyx_n_u_bisonFile);
@@ -10564,175 +10619,175 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_14buildLib(struct __pyx_
     __Pyx_GIVEREF(__pyx_n_u_flexCFile1);
     PyList_SET_ITEM(__pyx_t_4, 7, __pyx_n_u_flexCFile1);
 
-    /* "src/bison/cython/bison_.pyx":726
+    /* "src/bison/cython/bison_.pyx":728
  *                          'bisonCFile1', 'bisonHFile1', 'flexFile',
  *                          'flexCFile', 'flexCFile1',
  *                          ] + objs:             # <<<<<<<<<<<<<<
  *                 if hasattr(parser, name):
  *                     fname = buildDirectory + getattr(parser, name)
  */
-    __Pyx_TraceLine(726,0,__PYX_ERR(0, 726, __pyx_L1_error))
-    __pyx_t_1 = PyNumber_Add(__pyx_t_4, __pyx_v_objs); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 726, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_TraceLine(728,0,__PYX_ERR(0, 728, __pyx_L1_error))
+    __pyx_t_12 = PyNumber_Add(__pyx_t_4, __pyx_v_objs); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 728, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_12);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "src/bison/cython/bison_.pyx":723
+    /* "src/bison/cython/bison_.pyx":725
  * 
  *         if os.path.isfile(self.libFilename_py):
  *             for name in ['bisonFile', 'bisonCFile', 'bisonHFile',             # <<<<<<<<<<<<<<
  *                          'bisonCFile1', 'bisonHFile1', 'flexFile',
  *                          'flexCFile', 'flexCFile1',
  */
-    __Pyx_TraceLine(723,0,__PYX_ERR(0, 723, __pyx_L1_error))
-    if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
-      __pyx_t_4 = __pyx_t_1; __Pyx_INCREF(__pyx_t_4); __pyx_t_2 = 0;
+    __Pyx_TraceLine(725,0,__PYX_ERR(0, 725, __pyx_L1_error))
+    if (likely(PyList_CheckExact(__pyx_t_12)) || PyTuple_CheckExact(__pyx_t_12)) {
+      __pyx_t_4 = __pyx_t_12; __Pyx_INCREF(__pyx_t_4); __pyx_t_2 = 0;
       __pyx_t_3 = NULL;
     } else {
-      __pyx_t_2 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 723, __pyx_L1_error)
+      __pyx_t_2 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_t_12); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 725, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_3 = Py_TYPE(__pyx_t_4)->tp_iternext; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 723, __pyx_L1_error)
+      __pyx_t_3 = Py_TYPE(__pyx_t_4)->tp_iternext; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 725, __pyx_L1_error)
     }
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
     for (;;) {
       if (likely(!__pyx_t_3)) {
         if (likely(PyList_CheckExact(__pyx_t_4))) {
           if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_4)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_1 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_2); __Pyx_INCREF(__pyx_t_1); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 723, __pyx_L1_error)
+          __pyx_t_12 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_2); __Pyx_INCREF(__pyx_t_12); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 725, __pyx_L1_error)
           #else
-          __pyx_t_1 = PySequence_ITEM(__pyx_t_4, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 723, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_1);
+          __pyx_t_12 = PySequence_ITEM(__pyx_t_4, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 725, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_12);
           #endif
         } else {
           if (__pyx_t_2 >= PyTuple_GET_SIZE(__pyx_t_4)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_2); __Pyx_INCREF(__pyx_t_1); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 723, __pyx_L1_error)
+          __pyx_t_12 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_2); __Pyx_INCREF(__pyx_t_12); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 725, __pyx_L1_error)
           #else
-          __pyx_t_1 = PySequence_ITEM(__pyx_t_4, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 723, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_1);
+          __pyx_t_12 = PySequence_ITEM(__pyx_t_4, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 725, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_12);
           #endif
         }
       } else {
-        __pyx_t_1 = __pyx_t_3(__pyx_t_4);
-        if (unlikely(!__pyx_t_1)) {
+        __pyx_t_12 = __pyx_t_3(__pyx_t_4);
+        if (unlikely(!__pyx_t_12)) {
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 723, __pyx_L1_error)
+            else __PYX_ERR(0, 725, __pyx_L1_error)
           }
           break;
         }
-        __Pyx_GOTREF(__pyx_t_1);
+        __Pyx_GOTREF(__pyx_t_12);
       }
-      __Pyx_XDECREF_SET(__pyx_v_name, __pyx_t_1);
-      __pyx_t_1 = 0;
+      __Pyx_XDECREF_SET(__pyx_v_name, __pyx_t_12);
+      __pyx_t_12 = 0;
 
-      /* "src/bison/cython/bison_.pyx":727
+      /* "src/bison/cython/bison_.pyx":729
  *                          'flexCFile', 'flexCFile1',
  *                          ] + objs:
  *                 if hasattr(parser, name):             # <<<<<<<<<<<<<<
  *                     fname = buildDirectory + getattr(parser, name)
  *                 else:
  */
-      __Pyx_TraceLine(727,0,__PYX_ERR(0, 727, __pyx_L1_error))
-      __pyx_t_7 = __Pyx_HasAttr(__pyx_v_parser, __pyx_v_name); if (unlikely(__pyx_t_7 == ((int)-1))) __PYX_ERR(0, 727, __pyx_L1_error)
+      __Pyx_TraceLine(729,0,__PYX_ERR(0, 729, __pyx_L1_error))
+      __pyx_t_7 = __Pyx_HasAttr(__pyx_v_parser, __pyx_v_name); if (unlikely(__pyx_t_7 == ((int)-1))) __PYX_ERR(0, 729, __pyx_L1_error)
       __pyx_t_9 = (__pyx_t_7 != 0);
       if (__pyx_t_9) {
 
-        /* "src/bison/cython/bison_.pyx":728
+        /* "src/bison/cython/bison_.pyx":730
  *                          ] + objs:
  *                 if hasattr(parser, name):
  *                     fname = buildDirectory + getattr(parser, name)             # <<<<<<<<<<<<<<
  *                 else:
  *                     fname = None
  */
-        __Pyx_TraceLine(728,0,__PYX_ERR(0, 728, __pyx_L1_error))
-        __pyx_t_1 = __Pyx_GetAttr(__pyx_v_parser, __pyx_v_name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 728, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_14 = PyNumber_Add(__pyx_v_buildDirectory, __pyx_t_1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 728, __pyx_L1_error)
+        __Pyx_TraceLine(730,0,__PYX_ERR(0, 730, __pyx_L1_error))
+        __pyx_t_12 = __Pyx_GetAttr(__pyx_v_parser, __pyx_v_name); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 730, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_12);
+        __pyx_t_14 = PyNumber_Add(__pyx_v_buildDirectory, __pyx_t_12); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 730, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
         __Pyx_XDECREF_SET(__pyx_v_fname, __pyx_t_14);
         __pyx_t_14 = 0;
 
-        /* "src/bison/cython/bison_.pyx":727
+        /* "src/bison/cython/bison_.pyx":729
  *                          'flexCFile', 'flexCFile1',
  *                          ] + objs:
  *                 if hasattr(parser, name):             # <<<<<<<<<<<<<<
  *                     fname = buildDirectory + getattr(parser, name)
  *                 else:
  */
-        goto __pyx_L77;
+        goto __pyx_L78;
       }
 
-      /* "src/bison/cython/bison_.pyx":730
+      /* "src/bison/cython/bison_.pyx":732
  *                     fname = buildDirectory + getattr(parser, name)
  *                 else:
  *                     fname = None             # <<<<<<<<<<<<<<
  *                 if fname and os.path.isfile(fname):
  *                     hitlist.append(fname)
  */
-      __Pyx_TraceLine(730,0,__PYX_ERR(0, 730, __pyx_L1_error))
+      __Pyx_TraceLine(732,0,__PYX_ERR(0, 732, __pyx_L1_error))
       /*else*/ {
         __Pyx_INCREF(Py_None);
         __Pyx_XDECREF_SET(__pyx_v_fname, Py_None);
       }
-      __pyx_L77:;
+      __pyx_L78:;
 
-      /* "src/bison/cython/bison_.pyx":731
+      /* "src/bison/cython/bison_.pyx":733
  *                 else:
  *                     fname = None
  *                 if fname and os.path.isfile(fname):             # <<<<<<<<<<<<<<
  *                     hitlist.append(fname)
  * 
  */
-      __Pyx_TraceLine(731,0,__PYX_ERR(0, 731, __pyx_L1_error))
-      __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_v_fname); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 731, __pyx_L1_error)
+      __Pyx_TraceLine(733,0,__PYX_ERR(0, 733, __pyx_L1_error))
+      __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_v_fname); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 733, __pyx_L1_error)
       if (__pyx_t_7) {
       } else {
         __pyx_t_9 = __pyx_t_7;
-        goto __pyx_L79_bool_binop_done;
+        goto __pyx_L80_bool_binop_done;
       }
-      __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_os); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 731, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_22 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_path); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 731, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_n_s_os); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 733, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_12);
+      __pyx_t_22 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_path); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 733, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_22);
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_22, __pyx_n_s_isfile); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 731, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+      __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_22, __pyx_n_s_isfile); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 733, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_12);
       __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
       __pyx_t_22 = NULL;
-      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
-        __pyx_t_22 = PyMethod_GET_SELF(__pyx_t_1);
+      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_12))) {
+        __pyx_t_22 = PyMethod_GET_SELF(__pyx_t_12);
         if (likely(__pyx_t_22)) {
-          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_12);
           __Pyx_INCREF(__pyx_t_22);
           __Pyx_INCREF(function);
-          __Pyx_DECREF_SET(__pyx_t_1, function);
+          __Pyx_DECREF_SET(__pyx_t_12, function);
         }
       }
-      __pyx_t_14 = (__pyx_t_22) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_22, __pyx_v_fname) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_v_fname);
+      __pyx_t_14 = (__pyx_t_22) ? __Pyx_PyObject_Call2Args(__pyx_t_12, __pyx_t_22, __pyx_v_fname) : __Pyx_PyObject_CallOneArg(__pyx_t_12, __pyx_v_fname);
       __Pyx_XDECREF(__pyx_t_22); __pyx_t_22 = 0;
-      if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 731, __pyx_L1_error)
+      if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 733, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 731, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+      __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 733, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
       __pyx_t_9 = __pyx_t_7;
-      __pyx_L79_bool_binop_done:;
+      __pyx_L80_bool_binop_done:;
       if (__pyx_t_9) {
 
-        /* "src/bison/cython/bison_.pyx":732
+        /* "src/bison/cython/bison_.pyx":734
  *                     fname = None
  *                 if fname and os.path.isfile(fname):
  *                     hitlist.append(fname)             # <<<<<<<<<<<<<<
  * 
  *         if not parser.keepfiles:
  */
-        __Pyx_TraceLine(732,0,__PYX_ERR(0, 732, __pyx_L1_error))
-        __pyx_t_8 = __Pyx_PyList_Append(__pyx_v_hitlist, __pyx_v_fname); if (unlikely(__pyx_t_8 == ((int)-1))) __PYX_ERR(0, 732, __pyx_L1_error)
+        __Pyx_TraceLine(734,0,__PYX_ERR(0, 734, __pyx_L1_error))
+        __pyx_t_8 = __Pyx_PyList_Append(__pyx_v_hitlist, __pyx_v_fname); if (unlikely(__pyx_t_8 == ((int)-1))) __PYX_ERR(0, 734, __pyx_L1_error)
 
-        /* "src/bison/cython/bison_.pyx":731
+        /* "src/bison/cython/bison_.pyx":733
  *                 else:
  *                     fname = None
  *                 if fname and os.path.isfile(fname):             # <<<<<<<<<<<<<<
@@ -10741,18 +10796,18 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_14buildLib(struct __pyx_
  */
       }
 
-      /* "src/bison/cython/bison_.pyx":723
+      /* "src/bison/cython/bison_.pyx":725
  * 
  *         if os.path.isfile(self.libFilename_py):
  *             for name in ['bisonFile', 'bisonCFile', 'bisonHFile',             # <<<<<<<<<<<<<<
  *                          'bisonCFile1', 'bisonHFile1', 'flexFile',
  *                          'flexCFile', 'flexCFile1',
  */
-      __Pyx_TraceLine(723,0,__PYX_ERR(0, 723, __pyx_L1_error))
+      __Pyx_TraceLine(725,0,__PYX_ERR(0, 725, __pyx_L1_error))
     }
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "src/bison/cython/bison_.pyx":722
+    /* "src/bison/cython/bison_.pyx":724
  *         hitlist = []
  * 
  *         if os.path.isfile(self.libFilename_py):             # <<<<<<<<<<<<<<
@@ -10761,49 +10816,49 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_14buildLib(struct __pyx_
  */
   }
 
-  /* "src/bison/cython/bison_.pyx":734
+  /* "src/bison/cython/bison_.pyx":736
  *                     hitlist.append(fname)
  * 
  *         if not parser.keepfiles:             # <<<<<<<<<<<<<<
  *             for f in hitlist:
  *                 try:
  */
-  __Pyx_TraceLine(734,0,__PYX_ERR(0, 734, __pyx_L1_error))
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_keepfiles); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 734, __pyx_L1_error)
+  __Pyx_TraceLine(736,0,__PYX_ERR(0, 736, __pyx_L1_error))
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_keepfiles); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 736, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 734, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 736, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_7 = ((!__pyx_t_9) != 0);
   if (__pyx_t_7) {
 
-    /* "src/bison/cython/bison_.pyx":735
+    /* "src/bison/cython/bison_.pyx":737
  * 
  *         if not parser.keepfiles:
  *             for f in hitlist:             # <<<<<<<<<<<<<<
  *                 try:
  *                     os.remove(f)
  */
-    __Pyx_TraceLine(735,0,__PYX_ERR(0, 735, __pyx_L1_error))
+    __Pyx_TraceLine(737,0,__PYX_ERR(0, 737, __pyx_L1_error))
     __pyx_t_4 = __pyx_v_hitlist; __Pyx_INCREF(__pyx_t_4); __pyx_t_2 = 0;
     for (;;) {
       if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_4)) break;
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-      __pyx_t_14 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_2); __Pyx_INCREF(__pyx_t_14); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 735, __pyx_L1_error)
+      __pyx_t_14 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_2); __Pyx_INCREF(__pyx_t_14); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 737, __pyx_L1_error)
       #else
-      __pyx_t_14 = PySequence_ITEM(__pyx_t_4, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 735, __pyx_L1_error)
+      __pyx_t_14 = PySequence_ITEM(__pyx_t_4, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 737, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
       #endif
       __Pyx_DECREF_SET(__pyx_v_f, __pyx_t_14);
       __pyx_t_14 = 0;
 
-      /* "src/bison/cython/bison_.pyx":736
+      /* "src/bison/cython/bison_.pyx":738
  *         if not parser.keepfiles:
  *             for f in hitlist:
  *                 try:             # <<<<<<<<<<<<<<
  *                     os.remove(f)
  *                 except:
  */
-      __Pyx_TraceLine(736,0,__PYX_ERR(0, 736, __pyx_L1_error))
+      __Pyx_TraceLine(738,0,__PYX_ERR(0, 738, __pyx_L1_error))
       {
         __Pyx_PyThreadState_declare
         __Pyx_PyThreadState_assign
@@ -10813,37 +10868,37 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_14buildLib(struct __pyx_
         __Pyx_XGOTREF(__pyx_t_16);
         /*try:*/ {
 
-          /* "src/bison/cython/bison_.pyx":737
+          /* "src/bison/cython/bison_.pyx":739
  *             for f in hitlist:
  *                 try:
  *                     os.remove(f)             # <<<<<<<<<<<<<<
  *                 except:
  *                     print("Warning: failed to delete temporary file {}".format(f))
  */
-          __Pyx_TraceLine(737,0,__PYX_ERR(0, 737, __pyx_L84_error))
-          __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_os); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 737, __pyx_L84_error)
-          __Pyx_GOTREF(__pyx_t_1);
-          __pyx_t_22 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_remove); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 737, __pyx_L84_error)
+          __Pyx_TraceLine(739,0,__PYX_ERR(0, 739, __pyx_L85_error))
+          __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_n_s_os); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 739, __pyx_L85_error)
+          __Pyx_GOTREF(__pyx_t_12);
+          __pyx_t_22 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_remove); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 739, __pyx_L85_error)
           __Pyx_GOTREF(__pyx_t_22);
-          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-          __pyx_t_1 = NULL;
+          __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+          __pyx_t_12 = NULL;
           if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_22))) {
-            __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_22);
-            if (likely(__pyx_t_1)) {
+            __pyx_t_12 = PyMethod_GET_SELF(__pyx_t_22);
+            if (likely(__pyx_t_12)) {
               PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_22);
-              __Pyx_INCREF(__pyx_t_1);
+              __Pyx_INCREF(__pyx_t_12);
               __Pyx_INCREF(function);
               __Pyx_DECREF_SET(__pyx_t_22, function);
             }
           }
-          __pyx_t_14 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_22, __pyx_t_1, __pyx_v_f) : __Pyx_PyObject_CallOneArg(__pyx_t_22, __pyx_v_f);
-          __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-          if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 737, __pyx_L84_error)
+          __pyx_t_14 = (__pyx_t_12) ? __Pyx_PyObject_Call2Args(__pyx_t_22, __pyx_t_12, __pyx_v_f) : __Pyx_PyObject_CallOneArg(__pyx_t_22, __pyx_v_f);
+          __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
+          if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 739, __pyx_L85_error)
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-          /* "src/bison/cython/bison_.pyx":736
+          /* "src/bison/cython/bison_.pyx":738
  *         if not parser.keepfiles:
  *             for f in hitlist:
  *                 try:             # <<<<<<<<<<<<<<
@@ -10854,8 +10909,8 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_14buildLib(struct __pyx_
         __Pyx_XDECREF(__pyx_t_18); __pyx_t_18 = 0;
         __Pyx_XDECREF(__pyx_t_17); __pyx_t_17 = 0;
         __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
-        goto __pyx_L91_try_end;
-        __pyx_L84_error:;
+        goto __pyx_L92_try_end;
+        __pyx_L85_error:;
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
         __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
@@ -10863,30 +10918,30 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_14buildLib(struct __pyx_
         __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-        /* "src/bison/cython/bison_.pyx":738
+        /* "src/bison/cython/bison_.pyx":740
  *                 try:
  *                     os.remove(f)
  *                 except:             # <<<<<<<<<<<<<<
  *                     print("Warning: failed to delete temporary file {}".format(f))
  * 
  */
-        __Pyx_TraceLine(738,0,__PYX_ERR(0, 738, __pyx_L86_except_error))
+        __Pyx_TraceLine(740,0,__PYX_ERR(0, 740, __pyx_L87_except_error))
         /*except:*/ {
           __Pyx_AddTraceback("bison.bison_.ParserEngine.buildLib", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_14, &__pyx_t_22, &__pyx_t_1) < 0) __PYX_ERR(0, 738, __pyx_L86_except_error)
+          if (__Pyx_GetException(&__pyx_t_14, &__pyx_t_22, &__pyx_t_12) < 0) __PYX_ERR(0, 740, __pyx_L87_except_error)
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_GOTREF(__pyx_t_22);
-          __Pyx_GOTREF(__pyx_t_1);
+          __Pyx_GOTREF(__pyx_t_12);
 
-          /* "src/bison/cython/bison_.pyx":739
+          /* "src/bison/cython/bison_.pyx":741
  *                     os.remove(f)
  *                 except:
  *                     print("Warning: failed to delete temporary file {}".format(f))             # <<<<<<<<<<<<<<
  * 
  *             if parser.verbose:
  */
-          __Pyx_TraceLine(739,0,__PYX_ERR(0, 739, __pyx_L86_except_error))
-          __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_Warning_failed_to_delete_tempora, __pyx_n_s_format); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 739, __pyx_L86_except_error)
+          __Pyx_TraceLine(741,0,__PYX_ERR(0, 741, __pyx_L87_except_error))
+          __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_Warning_failed_to_delete_tempora, __pyx_n_s_format); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 741, __pyx_L87_except_error)
           __Pyx_GOTREF(__pyx_t_5);
           __pyx_t_6 = NULL;
           if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
@@ -10898,23 +10953,23 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_14buildLib(struct __pyx_
               __Pyx_DECREF_SET(__pyx_t_5, function);
             }
           }
-          __pyx_t_12 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_6, __pyx_v_f) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_v_f);
+          __pyx_t_1 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_6, __pyx_v_f) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_v_f);
           __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-          if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 739, __pyx_L86_except_error)
-          __Pyx_GOTREF(__pyx_t_12);
+          if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 741, __pyx_L87_except_error)
+          __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-          __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_12); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 739, __pyx_L86_except_error)
+          __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 741, __pyx_L87_except_error)
           __Pyx_GOTREF(__pyx_t_5);
-          __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
           __Pyx_XDECREF(__pyx_t_22); __pyx_t_22 = 0;
-          __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-          goto __pyx_L85_exception_handled;
+          __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
+          goto __pyx_L86_exception_handled;
         }
-        __pyx_L86_except_error:;
+        __pyx_L87_except_error:;
 
-        /* "src/bison/cython/bison_.pyx":736
+        /* "src/bison/cython/bison_.pyx":738
  *         if not parser.keepfiles:
  *             for f in hitlist:
  *                 try:             # <<<<<<<<<<<<<<
@@ -10926,52 +10981,52 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_14buildLib(struct __pyx_
         __Pyx_XGIVEREF(__pyx_t_16);
         __Pyx_ExceptionReset(__pyx_t_18, __pyx_t_17, __pyx_t_16);
         goto __pyx_L1_error;
-        __pyx_L85_exception_handled:;
+        __pyx_L86_exception_handled:;
         __Pyx_XGIVEREF(__pyx_t_18);
         __Pyx_XGIVEREF(__pyx_t_17);
         __Pyx_XGIVEREF(__pyx_t_16);
         __Pyx_ExceptionReset(__pyx_t_18, __pyx_t_17, __pyx_t_16);
-        __pyx_L91_try_end:;
+        __pyx_L92_try_end:;
       }
 
-      /* "src/bison/cython/bison_.pyx":735
+      /* "src/bison/cython/bison_.pyx":737
  * 
  *         if not parser.keepfiles:
  *             for f in hitlist:             # <<<<<<<<<<<<<<
  *                 try:
  *                     os.remove(f)
  */
-      __Pyx_TraceLine(735,0,__PYX_ERR(0, 735, __pyx_L1_error))
+      __Pyx_TraceLine(737,0,__PYX_ERR(0, 737, __pyx_L1_error))
     }
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "src/bison/cython/bison_.pyx":741
+    /* "src/bison/cython/bison_.pyx":743
  *                     print("Warning: failed to delete temporary file {}".format(f))
  * 
  *             if parser.verbose:             # <<<<<<<<<<<<<<
  *                 print("Deleting temporary bison output files:")
  * 
  */
-    __Pyx_TraceLine(741,0,__PYX_ERR(0, 741, __pyx_L1_error))
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_verbose); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 741, __pyx_L1_error)
+    __Pyx_TraceLine(743,0,__PYX_ERR(0, 743, __pyx_L1_error))
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_verbose); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 743, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 741, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 743, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     if (__pyx_t_7) {
 
-      /* "src/bison/cython/bison_.pyx":742
+      /* "src/bison/cython/bison_.pyx":744
  * 
  *             if parser.verbose:
  *                 print("Deleting temporary bison output files:")             # <<<<<<<<<<<<<<
  * 
  *             for f in [parser.bisonCFile, parser.bisonHFile, parser.flexCFile, "tmp.output"]:
  */
-      __Pyx_TraceLine(742,0,__PYX_ERR(0, 742, __pyx_L1_error))
-      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_tuple__36, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 742, __pyx_L1_error)
+      __Pyx_TraceLine(744,0,__PYX_ERR(0, 744, __pyx_L1_error))
+      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_tuple__36, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 744, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "src/bison/cython/bison_.pyx":741
+      /* "src/bison/cython/bison_.pyx":743
  *                     print("Warning: failed to delete temporary file {}".format(f))
  * 
  *             if parser.verbose:             # <<<<<<<<<<<<<<
@@ -10980,127 +11035,127 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_14buildLib(struct __pyx_
  */
     }
 
-    /* "src/bison/cython/bison_.pyx":744
+    /* "src/bison/cython/bison_.pyx":746
  *                 print("Deleting temporary bison output files:")
  * 
  *             for f in [parser.bisonCFile, parser.bisonHFile, parser.flexCFile, "tmp.output"]:             # <<<<<<<<<<<<<<
  *                 if os.path.isfile(f):
  *                     if parser.verbose:
  */
-    __Pyx_TraceLine(744,0,__PYX_ERR(0, 744, __pyx_L1_error))
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_bisonCFile); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 744, __pyx_L1_error)
+    __Pyx_TraceLine(746,0,__PYX_ERR(0, 746, __pyx_L1_error))
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_bisonCFile); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 746, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_bisonHFile); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 744, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_22 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_flexCFile); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 744, __pyx_L1_error)
+    __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_bisonHFile); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 746, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_12);
+    __pyx_t_22 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_flexCFile); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 746, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_22);
-    __pyx_t_14 = PyTuple_New(4); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 744, __pyx_L1_error)
+    __pyx_t_14 = PyTuple_New(4); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 746, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
     __Pyx_GIVEREF(__pyx_t_4);
     PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_t_4);
-    __Pyx_GIVEREF(__pyx_t_1);
-    PyTuple_SET_ITEM(__pyx_t_14, 1, __pyx_t_1);
+    __Pyx_GIVEREF(__pyx_t_12);
+    PyTuple_SET_ITEM(__pyx_t_14, 1, __pyx_t_12);
     __Pyx_GIVEREF(__pyx_t_22);
     PyTuple_SET_ITEM(__pyx_t_14, 2, __pyx_t_22);
     __Pyx_INCREF(__pyx_kp_u_tmp_output);
     __Pyx_GIVEREF(__pyx_kp_u_tmp_output);
     PyTuple_SET_ITEM(__pyx_t_14, 3, __pyx_kp_u_tmp_output);
     __pyx_t_4 = 0;
-    __pyx_t_1 = 0;
+    __pyx_t_12 = 0;
     __pyx_t_22 = 0;
     __pyx_t_22 = __pyx_t_14; __Pyx_INCREF(__pyx_t_22); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
     for (;;) {
       if (__pyx_t_2 >= 4) break;
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-      __pyx_t_14 = PyTuple_GET_ITEM(__pyx_t_22, __pyx_t_2); __Pyx_INCREF(__pyx_t_14); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 744, __pyx_L1_error)
+      __pyx_t_14 = PyTuple_GET_ITEM(__pyx_t_22, __pyx_t_2); __Pyx_INCREF(__pyx_t_14); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 746, __pyx_L1_error)
       #else
-      __pyx_t_14 = PySequence_ITEM(__pyx_t_22, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 744, __pyx_L1_error)
+      __pyx_t_14 = PySequence_ITEM(__pyx_t_22, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 746, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
       #endif
       __Pyx_DECREF_SET(__pyx_v_f, __pyx_t_14);
       __pyx_t_14 = 0;
 
-      /* "src/bison/cython/bison_.pyx":745
+      /* "src/bison/cython/bison_.pyx":747
  * 
  *             for f in [parser.bisonCFile, parser.bisonHFile, parser.flexCFile, "tmp.output"]:
  *                 if os.path.isfile(f):             # <<<<<<<<<<<<<<
  *                     if parser.verbose:
  *                         print('rm {}'.format(f))
  */
-      __Pyx_TraceLine(745,0,__PYX_ERR(0, 745, __pyx_L1_error))
-      __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_os); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 745, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_path); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 745, __pyx_L1_error)
+      __Pyx_TraceLine(747,0,__PYX_ERR(0, 747, __pyx_L1_error))
+      __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_n_s_os); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 747, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_12);
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_path); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 747, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_isfile); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 745, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+      __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_isfile); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 747, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_12);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __pyx_t_4 = NULL;
-      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
-        __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_1);
+      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_12))) {
+        __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_12);
         if (likely(__pyx_t_4)) {
-          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_12);
           __Pyx_INCREF(__pyx_t_4);
           __Pyx_INCREF(function);
-          __Pyx_DECREF_SET(__pyx_t_1, function);
+          __Pyx_DECREF_SET(__pyx_t_12, function);
         }
       }
-      __pyx_t_14 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_4, __pyx_v_f) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_v_f);
+      __pyx_t_14 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_12, __pyx_t_4, __pyx_v_f) : __Pyx_PyObject_CallOneArg(__pyx_t_12, __pyx_v_f);
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 745, __pyx_L1_error)
+      if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 747, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 745, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+      __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 747, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
       if (__pyx_t_7) {
 
-        /* "src/bison/cython/bison_.pyx":746
+        /* "src/bison/cython/bison_.pyx":748
  *             for f in [parser.bisonCFile, parser.bisonHFile, parser.flexCFile, "tmp.output"]:
  *                 if os.path.isfile(f):
  *                     if parser.verbose:             # <<<<<<<<<<<<<<
  *                         print('rm {}'.format(f))
  *                     os.remove(f)
  */
-        __Pyx_TraceLine(746,0,__PYX_ERR(0, 746, __pyx_L1_error))
-        __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_verbose); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 746, __pyx_L1_error)
+        __Pyx_TraceLine(748,0,__PYX_ERR(0, 748, __pyx_L1_error))
+        __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_verbose); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 748, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
-        __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 746, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 748, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
         if (__pyx_t_7) {
 
-          /* "src/bison/cython/bison_.pyx":747
+          /* "src/bison/cython/bison_.pyx":749
  *                 if os.path.isfile(f):
  *                     if parser.verbose:
  *                         print('rm {}'.format(f))             # <<<<<<<<<<<<<<
  *                     os.remove(f)
  * 
  */
-          __Pyx_TraceLine(747,0,__PYX_ERR(0, 747, __pyx_L1_error))
-          __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_rm, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 747, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_1);
+          __Pyx_TraceLine(749,0,__PYX_ERR(0, 749, __pyx_L1_error))
+          __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_rm, __pyx_n_s_format); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 749, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_12);
           __pyx_t_4 = NULL;
-          if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
-            __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_1);
+          if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_12))) {
+            __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_12);
             if (likely(__pyx_t_4)) {
-              PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
+              PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_12);
               __Pyx_INCREF(__pyx_t_4);
               __Pyx_INCREF(function);
-              __Pyx_DECREF_SET(__pyx_t_1, function);
+              __Pyx_DECREF_SET(__pyx_t_12, function);
             }
           }
-          __pyx_t_14 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_4, __pyx_v_f) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_v_f);
+          __pyx_t_14 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_12, __pyx_t_4, __pyx_v_f) : __Pyx_PyObject_CallOneArg(__pyx_t_12, __pyx_v_f);
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 747, __pyx_L1_error)
+          if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 749, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
-          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-          __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_14); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 747, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_1);
+          __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+          __pyx_t_12 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_14); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 749, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_12);
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+          __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-          /* "src/bison/cython/bison_.pyx":746
+          /* "src/bison/cython/bison_.pyx":748
  *             for f in [parser.bisonCFile, parser.bisonHFile, parser.flexCFile, "tmp.output"]:
  *                 if os.path.isfile(f):
  *                     if parser.verbose:             # <<<<<<<<<<<<<<
@@ -11109,17 +11164,17 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_14buildLib(struct __pyx_
  */
         }
 
-        /* "src/bison/cython/bison_.pyx":748
+        /* "src/bison/cython/bison_.pyx":750
  *                     if parser.verbose:
  *                         print('rm {}'.format(f))
  *                     os.remove(f)             # <<<<<<<<<<<<<<
  * 
  *     def closeLib(self):
  */
-        __Pyx_TraceLine(748,0,__PYX_ERR(0, 748, __pyx_L1_error))
-        __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_os); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 748, __pyx_L1_error)
+        __Pyx_TraceLine(750,0,__PYX_ERR(0, 750, __pyx_L1_error))
+        __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_os); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 750, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
-        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_remove); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 748, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_remove); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 750, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
         __pyx_t_14 = NULL;
@@ -11132,14 +11187,14 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_14buildLib(struct __pyx_
             __Pyx_DECREF_SET(__pyx_t_4, function);
           }
         }
-        __pyx_t_1 = (__pyx_t_14) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_14, __pyx_v_f) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_f);
+        __pyx_t_12 = (__pyx_t_14) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_14, __pyx_v_f) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_f);
         __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
-        if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 748, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_1);
+        if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 750, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_12);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-        /* "src/bison/cython/bison_.pyx":745
+        /* "src/bison/cython/bison_.pyx":747
  * 
  *             for f in [parser.bisonCFile, parser.bisonHFile, parser.flexCFile, "tmp.output"]:
  *                 if os.path.isfile(f):             # <<<<<<<<<<<<<<
@@ -11148,18 +11203,18 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_14buildLib(struct __pyx_
  */
       }
 
-      /* "src/bison/cython/bison_.pyx":744
+      /* "src/bison/cython/bison_.pyx":746
  *                 print("Deleting temporary bison output files:")
  * 
  *             for f in [parser.bisonCFile, parser.bisonHFile, parser.flexCFile, "tmp.output"]:             # <<<<<<<<<<<<<<
  *                 if os.path.isfile(f):
  *                     if parser.verbose:
  */
-      __Pyx_TraceLine(744,0,__PYX_ERR(0, 744, __pyx_L1_error))
+      __Pyx_TraceLine(746,0,__PYX_ERR(0, 746, __pyx_L1_error))
     }
     __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
 
-    /* "src/bison/cython/bison_.pyx":734
+    /* "src/bison/cython/bison_.pyx":736
  *                     hitlist.append(fname)
  * 
  *         if not parser.keepfiles:             # <<<<<<<<<<<<<<
@@ -11229,8 +11284,8 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_14buildLib(struct __pyx_
   __Pyx_XDECREF(__pyx_v_out);
   __Pyx_XDECREF(__pyx_v_err);
   __Pyx_XDECREF(__pyx_v_flexCmd);
-  __Pyx_XDECREF(__pyx_v_objs);
   __Pyx_XDECREF(__pyx_v_libFileName);
+  __Pyx_XDECREF(__pyx_v_objs);
   __Pyx_XDECREF(__pyx_v_hitlist);
   __Pyx_XDECREF(__pyx_v_name);
   __Pyx_XDECREF(__pyx_v_fname);
@@ -11241,7 +11296,7 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_14buildLib(struct __pyx_
   return __pyx_r;
 }
 
-/* "src/bison/cython/bison_.pyx":750
+/* "src/bison/cython/bison_.pyx":752
  *                     os.remove(f)
  * 
  *     def closeLib(self):             # <<<<<<<<<<<<<<
@@ -11271,19 +11326,19 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_16closeLib(struct __pyx_
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("closeLib", 0);
-  __Pyx_TraceCall("closeLib", __pyx_f[0], 750, 0, __PYX_ERR(0, 750, __pyx_L1_error));
+  __Pyx_TraceCall("closeLib", __pyx_f[0], 752, 0, __PYX_ERR(0, 752, __pyx_L1_error));
 
-  /* "src/bison/cython/bison_.pyx":754
+  /* "src/bison/cython/bison_.pyx":756
  *         Does the necessary cleanups and closes the parser library
  *         """
  *         bisondynlib_close(self.libHandle)             # <<<<<<<<<<<<<<
  * 
  *     def runEngine(self, debug=0):
  */
-  __Pyx_TraceLine(754,0,__PYX_ERR(0, 754, __pyx_L1_error))
+  __Pyx_TraceLine(756,0,__PYX_ERR(0, 756, __pyx_L1_error))
   (void)(bisondynlib_close(__pyx_v_self->libHandle));
 
-  /* "src/bison/cython/bison_.pyx":750
+  /* "src/bison/cython/bison_.pyx":752
  *                     os.remove(f)
  * 
  *     def closeLib(self):             # <<<<<<<<<<<<<<
@@ -11304,7 +11359,7 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_16closeLib(struct __pyx_
   return __pyx_r;
 }
 
-/* "src/bison/cython/bison_.pyx":756
+/* "src/bison/cython/bison_.pyx":758
  *         bisondynlib_close(self.libHandle)
  * 
  *     def runEngine(self, debug=0):             # <<<<<<<<<<<<<<
@@ -11345,7 +11400,7 @@ static PyObject *__pyx_pw_5bison_6bison__12ParserEngine_19runEngine(PyObject *__
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "runEngine") < 0)) __PYX_ERR(0, 756, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "runEngine") < 0)) __PYX_ERR(0, 758, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -11359,7 +11414,7 @@ static PyObject *__pyx_pw_5bison_6bison__12ParserEngine_19runEngine(PyObject *__
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("runEngine", 0, 0, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 756, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("runEngine", 0, 0, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 758, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("bison.bison_.ParserEngine.runEngine", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -11402,60 +11457,60 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_18runEngine(struct __pyx
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("runEngine", 0);
-  __Pyx_TraceCall("runEngine", __pyx_f[0], 756, 0, __PYX_ERR(0, 756, __pyx_L1_error));
+  __Pyx_TraceCall("runEngine", __pyx_f[0], 758, 0, __PYX_ERR(0, 758, __pyx_L1_error));
 
-  /* "src/bison/cython/bison_.pyx":765
+  /* "src/bison/cython/bison_.pyx":767
  *         cdef void *invoid
  * 
  *         handle = self.libHandle             # <<<<<<<<<<<<<<
  *         parser = self.parser
  * 
  */
-  __Pyx_TraceLine(765,0,__PYX_ERR(0, 765, __pyx_L1_error))
+  __Pyx_TraceLine(767,0,__PYX_ERR(0, 767, __pyx_L1_error))
   __pyx_t_1 = __pyx_v_self->libHandle;
   __pyx_v_handle = __pyx_t_1;
 
-  /* "src/bison/cython/bison_.pyx":766
+  /* "src/bison/cython/bison_.pyx":768
  * 
  *         handle = self.libHandle
  *         parser = self.parser             # <<<<<<<<<<<<<<
  * 
  *         cbvoid = <void *>py_callback
  */
-  __Pyx_TraceLine(766,0,__PYX_ERR(0, 766, __pyx_L1_error))
+  __Pyx_TraceLine(768,0,__PYX_ERR(0, 768, __pyx_L1_error))
   __pyx_t_2 = __pyx_v_self->parser;
   __Pyx_INCREF(__pyx_t_2);
   __pyx_v_parser = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "src/bison/cython/bison_.pyx":768
+  /* "src/bison/cython/bison_.pyx":770
  *         parser = self.parser
  * 
  *         cbvoid = <void *>py_callback             # <<<<<<<<<<<<<<
  *         invoid = <void *>py_input
  * 
  */
-  __Pyx_TraceLine(768,0,__PYX_ERR(0, 768, __pyx_L1_error))
+  __Pyx_TraceLine(770,0,__PYX_ERR(0, 770, __pyx_L1_error))
   __pyx_v_cbvoid = ((void *)py_callback);
 
-  /* "src/bison/cython/bison_.pyx":769
+  /* "src/bison/cython/bison_.pyx":771
  * 
  *         cbvoid = <void *>py_callback
  *         invoid = <void *>py_input             # <<<<<<<<<<<<<<
  * 
  *         try:
  */
-  __Pyx_TraceLine(769,0,__PYX_ERR(0, 769, __pyx_L1_error))
+  __Pyx_TraceLine(771,0,__PYX_ERR(0, 771, __pyx_L1_error))
   __pyx_v_invoid = ((void *)py_input);
 
-  /* "src/bison/cython/bison_.pyx":771
+  /* "src/bison/cython/bison_.pyx":773
  *         invoid = <void *>py_input
  * 
  *         try:             # <<<<<<<<<<<<<<
  *             ret = bisondynlib_run(handle, parser, cbvoid, invoid, debug)
  *         except Exception as e:
  */
-  __Pyx_TraceLine(771,0,__PYX_ERR(0, 771, __pyx_L1_error))
+  __Pyx_TraceLine(773,0,__PYX_ERR(0, 773, __pyx_L1_error))
   {
     __Pyx_PyThreadState_declare
     __Pyx_PyThreadState_assign
@@ -11465,21 +11520,21 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_18runEngine(struct __pyx
     __Pyx_XGOTREF(__pyx_t_5);
     /*try:*/ {
 
-      /* "src/bison/cython/bison_.pyx":772
+      /* "src/bison/cython/bison_.pyx":774
  * 
  *         try:
  *             ret = bisondynlib_run(handle, parser, cbvoid, invoid, debug)             # <<<<<<<<<<<<<<
  *         except Exception as e:
  *             ret=None
  */
-      __Pyx_TraceLine(772,0,__PYX_ERR(0, 772, __pyx_L3_error))
-      __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_v_debug); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 772, __pyx_L3_error)
-      __pyx_t_2 = bisondynlib_run(__pyx_v_handle, __pyx_v_parser, __pyx_v_cbvoid, __pyx_v_invoid, __pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 772, __pyx_L3_error)
+      __Pyx_TraceLine(774,0,__PYX_ERR(0, 774, __pyx_L3_error))
+      __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_v_debug); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 774, __pyx_L3_error)
+      __pyx_t_2 = bisondynlib_run(__pyx_v_handle, __pyx_v_parser, __pyx_v_cbvoid, __pyx_v_invoid, __pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 774, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_v_ret = __pyx_t_2;
       __pyx_t_2 = 0;
 
-      /* "src/bison/cython/bison_.pyx":771
+      /* "src/bison/cython/bison_.pyx":773
  *         invoid = <void *>py_input
  * 
  *         try:             # <<<<<<<<<<<<<<
@@ -11494,18 +11549,18 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_18runEngine(struct __pyx
     __pyx_L3_error:;
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "src/bison/cython/bison_.pyx":773
+    /* "src/bison/cython/bison_.pyx":775
  *         try:
  *             ret = bisondynlib_run(handle, parser, cbvoid, invoid, debug)
  *         except Exception as e:             # <<<<<<<<<<<<<<
  *             ret=None
  * 
  */
-    __Pyx_TraceLine(773,0,__PYX_ERR(0, 773, __pyx_L5_except_error))
+    __Pyx_TraceLine(775,0,__PYX_ERR(0, 775, __pyx_L5_except_error))
     __pyx_t_6 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
     if (__pyx_t_6) {
       __Pyx_AddTraceback("bison.bison_.ParserEngine.runEngine", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_2, &__pyx_t_7, &__pyx_t_8) < 0) __PYX_ERR(0, 773, __pyx_L5_except_error)
+      if (__Pyx_GetException(&__pyx_t_2, &__pyx_t_7, &__pyx_t_8) < 0) __PYX_ERR(0, 775, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_GOTREF(__pyx_t_8);
@@ -11513,26 +11568,26 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_18runEngine(struct __pyx
       __pyx_v_e = __pyx_t_7;
       /*try:*/ {
 
-        /* "src/bison/cython/bison_.pyx":774
+        /* "src/bison/cython/bison_.pyx":776
  *             ret = bisondynlib_run(handle, parser, cbvoid, invoid, debug)
  *         except Exception as e:
  *             ret=None             # <<<<<<<<<<<<<<
  * 
  *         return ret
  */
-        __Pyx_TraceLine(774,0,__PYX_ERR(0, 774, __pyx_L14_error))
+        __Pyx_TraceLine(776,0,__PYX_ERR(0, 776, __pyx_L14_error))
         __Pyx_INCREF(Py_None);
         __Pyx_XDECREF_SET(__pyx_v_ret, Py_None);
       }
 
-      /* "src/bison/cython/bison_.pyx":773
+      /* "src/bison/cython/bison_.pyx":775
  *         try:
  *             ret = bisondynlib_run(handle, parser, cbvoid, invoid, debug)
  *         except Exception as e:             # <<<<<<<<<<<<<<
  *             ret=None
  * 
  */
-      __Pyx_TraceLine(773,0,__PYX_ERR(0, 773, __pyx_L14_error))
+      __Pyx_TraceLine(775,0,__PYX_ERR(0, 775, __pyx_L14_error))
       /*finally:*/ {
         /*normal exit:*/{
           __Pyx_DECREF(__pyx_v_e);
@@ -11581,7 +11636,7 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_18runEngine(struct __pyx
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
 
-    /* "src/bison/cython/bison_.pyx":771
+    /* "src/bison/cython/bison_.pyx":773
  *         invoid = <void *>py_input
  * 
  *         try:             # <<<<<<<<<<<<<<
@@ -11601,20 +11656,20 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_18runEngine(struct __pyx
     __pyx_L8_try_end:;
   }
 
-  /* "src/bison/cython/bison_.pyx":776
+  /* "src/bison/cython/bison_.pyx":778
  *             ret=None
  * 
  *         return ret             # <<<<<<<<<<<<<<
  * 
  *     def __del__(self):
  */
-  __Pyx_TraceLine(776,0,__PYX_ERR(0, 776, __pyx_L1_error))
+  __Pyx_TraceLine(778,0,__PYX_ERR(0, 778, __pyx_L1_error))
   __Pyx_XDECREF(__pyx_r);
   __Pyx_INCREF(__pyx_v_ret);
   __pyx_r = __pyx_v_ret;
   goto __pyx_L0;
 
-  /* "src/bison/cython/bison_.pyx":756
+  /* "src/bison/cython/bison_.pyx":758
  *         bisondynlib_close(self.libHandle)
  * 
  *     def runEngine(self, debug=0):             # <<<<<<<<<<<<<<
@@ -11639,7 +11694,7 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_18runEngine(struct __pyx
   return __pyx_r;
 }
 
-/* "src/bison/cython/bison_.pyx":778
+/* "src/bison/cython/bison_.pyx":780
  *         return ret
  * 
  *     def __del__(self):             # <<<<<<<<<<<<<<
@@ -11672,17 +11727,17 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_20__del__(struct __pyx_o
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__del__", 0);
-  __Pyx_TraceCall("__del__", __pyx_f[0], 778, 0, __PYX_ERR(0, 778, __pyx_L1_error));
+  __Pyx_TraceCall("__del__", __pyx_f[0], 780, 0, __PYX_ERR(0, 780, __pyx_L1_error));
 
-  /* "src/bison/cython/bison_.pyx":782
+  /* "src/bison/cython/bison_.pyx":784
  *         Clean up and bail
  *         """
  *         self.closeLib()             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __Pyx_TraceLine(782,0,__PYX_ERR(0, 782, __pyx_L1_error))
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_closeLib); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 782, __pyx_L1_error)
+  __Pyx_TraceLine(784,0,__PYX_ERR(0, 784, __pyx_L1_error))
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_closeLib); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 784, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -11696,12 +11751,12 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_20__del__(struct __pyx_o
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 782, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 784, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "src/bison/cython/bison_.pyx":778
+  /* "src/bison/cython/bison_.pyx":780
  *         return ret
  * 
  *     def __del__(self):             # <<<<<<<<<<<<<<
@@ -11846,7 +11901,7 @@ static PyObject *__pyx_pf_5bison_6bison__12ParserEngine_24__setstate_cython__(CY
   return __pyx_r;
 }
 
-/* "src/bison/cython/bison_.pyx":785
+/* "src/bison/cython/bison_.pyx":787
  * 
  * 
  * def cmpLines(meth1, meth2):             # <<<<<<<<<<<<<<
@@ -11890,11 +11945,11 @@ static PyObject *__pyx_pw_5bison_6bison__1cmpLines(PyObject *__pyx_self, PyObjec
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_meth2)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("cmpLines", 1, 2, 2, 1); __PYX_ERR(0, 785, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("cmpLines", 1, 2, 2, 1); __PYX_ERR(0, 787, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "cmpLines") < 0)) __PYX_ERR(0, 785, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "cmpLines") < 0)) __PYX_ERR(0, 787, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -11907,7 +11962,7 @@ static PyObject *__pyx_pw_5bison_6bison__1cmpLines(PyObject *__pyx_self, PyObjec
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("cmpLines", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 785, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("cmpLines", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 787, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("bison.bison_.cmpLines", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -11939,16 +11994,16 @@ static PyObject *__pyx_pf_5bison_6bison__cmpLines(CYTHON_UNUSED PyObject *__pyx_
   int __pyx_clineno = 0;
   __Pyx_TraceFrameInit(__pyx_codeobj__39)
   __Pyx_RefNannySetupContext("cmpLines", 0);
-  __Pyx_TraceCall("cmpLines", __pyx_f[0], 785, 0, __PYX_ERR(0, 785, __pyx_L1_error));
+  __Pyx_TraceCall("cmpLines", __pyx_f[0], 787, 0, __PYX_ERR(0, 787, __pyx_L1_error));
 
-  /* "src/bison/cython/bison_.pyx":790
+  /* "src/bison/cython/bison_.pyx":792
  *     the order of their declaration in their source file.
  *     """
  *     try:             # <<<<<<<<<<<<<<
  *         line1 = meth1.__code__.co_firstlineno
  *         line2 = meth2.__code__.co_firstlineno
  */
-  __Pyx_TraceLine(790,0,__PYX_ERR(0, 790, __pyx_L1_error))
+  __Pyx_TraceLine(792,0,__PYX_ERR(0, 792, __pyx_L1_error))
   {
     __Pyx_PyThreadState_declare
     __Pyx_PyThreadState_assign
@@ -11958,39 +12013,39 @@ static PyObject *__pyx_pf_5bison_6bison__cmpLines(CYTHON_UNUSED PyObject *__pyx_
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "src/bison/cython/bison_.pyx":791
+      /* "src/bison/cython/bison_.pyx":793
  *     """
  *     try:
  *         line1 = meth1.__code__.co_firstlineno             # <<<<<<<<<<<<<<
  *         line2 = meth2.__code__.co_firstlineno
  *     except:
  */
-      __Pyx_TraceLine(791,0,__PYX_ERR(0, 791, __pyx_L3_error))
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_meth1, __pyx_n_s_code); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 791, __pyx_L3_error)
+      __Pyx_TraceLine(793,0,__PYX_ERR(0, 793, __pyx_L3_error))
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_meth1, __pyx_n_s_code); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 793, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_co_firstlineno); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 791, __pyx_L3_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_co_firstlineno); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 793, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __pyx_v_line1 = __pyx_t_5;
       __pyx_t_5 = 0;
 
-      /* "src/bison/cython/bison_.pyx":792
+      /* "src/bison/cython/bison_.pyx":794
  *     try:
  *         line1 = meth1.__code__.co_firstlineno
  *         line2 = meth2.__code__.co_firstlineno             # <<<<<<<<<<<<<<
  *     except:
  *         line1 = meth1.__init__.__code__.co_firstlineno
  */
-      __Pyx_TraceLine(792,0,__PYX_ERR(0, 792, __pyx_L3_error))
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_meth2, __pyx_n_s_code); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 792, __pyx_L3_error)
+      __Pyx_TraceLine(794,0,__PYX_ERR(0, 794, __pyx_L3_error))
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_meth2, __pyx_n_s_code); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 794, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_co_firstlineno); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 792, __pyx_L3_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_co_firstlineno); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 794, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __pyx_v_line2 = __pyx_t_4;
       __pyx_t_4 = 0;
 
-      /* "src/bison/cython/bison_.pyx":790
+      /* "src/bison/cython/bison_.pyx":792
  *     the order of their declaration in their source file.
  *     """
  *     try:             # <<<<<<<<<<<<<<
@@ -12006,54 +12061,54 @@ static PyObject *__pyx_pf_5bison_6bison__cmpLines(CYTHON_UNUSED PyObject *__pyx_
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "src/bison/cython/bison_.pyx":793
+    /* "src/bison/cython/bison_.pyx":795
  *         line1 = meth1.__code__.co_firstlineno
  *         line2 = meth2.__code__.co_firstlineno
  *     except:             # <<<<<<<<<<<<<<
  *         line1 = meth1.__init__.__code__.co_firstlineno
  *         line2 = meth2.__init__.__code__.co_firstlineno
  */
-    __Pyx_TraceLine(793,0,__PYX_ERR(0, 793, __pyx_L5_except_error))
+    __Pyx_TraceLine(795,0,__PYX_ERR(0, 795, __pyx_L5_except_error))
     /*except:*/ {
       __Pyx_AddTraceback("bison.bison_.cmpLines", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_5, &__pyx_t_6) < 0) __PYX_ERR(0, 793, __pyx_L5_except_error)
+      if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_5, &__pyx_t_6) < 0) __PYX_ERR(0, 795, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GOTREF(__pyx_t_6);
 
-      /* "src/bison/cython/bison_.pyx":794
+      /* "src/bison/cython/bison_.pyx":796
  *         line2 = meth2.__code__.co_firstlineno
  *     except:
  *         line1 = meth1.__init__.__code__.co_firstlineno             # <<<<<<<<<<<<<<
  *         line2 = meth2.__init__.__code__.co_firstlineno
  * 
  */
-      __Pyx_TraceLine(794,0,__PYX_ERR(0, 794, __pyx_L5_except_error))
-      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_meth1, __pyx_n_s_init); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 794, __pyx_L5_except_error)
+      __Pyx_TraceLine(796,0,__PYX_ERR(0, 796, __pyx_L5_except_error))
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_meth1, __pyx_n_s_init); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 796, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_code); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 794, __pyx_L5_except_error)
+      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_code); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 796, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_co_firstlineno); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 794, __pyx_L5_except_error)
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_co_firstlineno); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 796, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_XDECREF_SET(__pyx_v_line1, __pyx_t_7);
       __pyx_t_7 = 0;
 
-      /* "src/bison/cython/bison_.pyx":795
+      /* "src/bison/cython/bison_.pyx":797
  *     except:
  *         line1 = meth1.__init__.__code__.co_firstlineno
  *         line2 = meth2.__init__.__code__.co_firstlineno             # <<<<<<<<<<<<<<
  * 
  *     return (line1 > line2) - (line1 < line2)
  */
-      __Pyx_TraceLine(795,0,__PYX_ERR(0, 795, __pyx_L5_except_error))
-      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_meth2, __pyx_n_s_init); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 795, __pyx_L5_except_error)
+      __Pyx_TraceLine(797,0,__PYX_ERR(0, 797, __pyx_L5_except_error))
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_meth2, __pyx_n_s_init); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 797, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_code); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 795, __pyx_L5_except_error)
+      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_code); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 797, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_co_firstlineno); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 795, __pyx_L5_except_error)
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_co_firstlineno); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 797, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_XDECREF_SET(__pyx_v_line2, __pyx_t_7);
@@ -12065,7 +12120,7 @@ static PyObject *__pyx_pf_5bison_6bison__cmpLines(CYTHON_UNUSED PyObject *__pyx_
     }
     __pyx_L5_except_error:;
 
-    /* "src/bison/cython/bison_.pyx":790
+    /* "src/bison/cython/bison_.pyx":792
  *     the order of their declaration in their source file.
  *     """
  *     try:             # <<<<<<<<<<<<<<
@@ -12085,18 +12140,18 @@ static PyObject *__pyx_pf_5bison_6bison__cmpLines(CYTHON_UNUSED PyObject *__pyx_
     __pyx_L8_try_end:;
   }
 
-  /* "src/bison/cython/bison_.pyx":797
+  /* "src/bison/cython/bison_.pyx":799
  *         line2 = meth2.__init__.__code__.co_firstlineno
  * 
  *     return (line1 > line2) - (line1 < line2)             # <<<<<<<<<<<<<<
  * 
  * def keyLines(meth):
  */
-  __Pyx_TraceLine(797,0,__PYX_ERR(0, 797, __pyx_L1_error))
+  __Pyx_TraceLine(799,0,__PYX_ERR(0, 799, __pyx_L1_error))
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_6 = PyObject_RichCompare(__pyx_v_line1, __pyx_v_line2, Py_GT); __Pyx_XGOTREF(__pyx_t_6); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 797, __pyx_L1_error)
-  __pyx_t_5 = PyObject_RichCompare(__pyx_v_line1, __pyx_v_line2, Py_LT); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 797, __pyx_L1_error)
-  __pyx_t_4 = PyNumber_Subtract(__pyx_t_6, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 797, __pyx_L1_error)
+  __pyx_t_6 = PyObject_RichCompare(__pyx_v_line1, __pyx_v_line2, Py_GT); __Pyx_XGOTREF(__pyx_t_6); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 799, __pyx_L1_error)
+  __pyx_t_5 = PyObject_RichCompare(__pyx_v_line1, __pyx_v_line2, Py_LT); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 799, __pyx_L1_error)
+  __pyx_t_4 = PyNumber_Subtract(__pyx_t_6, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 799, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -12104,7 +12159,7 @@ static PyObject *__pyx_pf_5bison_6bison__cmpLines(CYTHON_UNUSED PyObject *__pyx_
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "src/bison/cython/bison_.pyx":785
+  /* "src/bison/cython/bison_.pyx":787
  * 
  * 
  * def cmpLines(meth1, meth2):             # <<<<<<<<<<<<<<
@@ -12130,7 +12185,7 @@ static PyObject *__pyx_pf_5bison_6bison__cmpLines(CYTHON_UNUSED PyObject *__pyx_
   return __pyx_r;
 }
 
-/* "src/bison/cython/bison_.pyx":799
+/* "src/bison/cython/bison_.pyx":801
  *     return (line1 > line2) - (line1 < line2)
  * 
  * def keyLines(meth):             # <<<<<<<<<<<<<<
@@ -12171,16 +12226,16 @@ static PyObject *__pyx_pf_5bison_6bison__2keyLines(CYTHON_UNUSED PyObject *__pyx
   int __pyx_clineno = 0;
   __Pyx_TraceFrameInit(__pyx_codeobj__40)
   __Pyx_RefNannySetupContext("keyLines", 0);
-  __Pyx_TraceCall("keyLines", __pyx_f[0], 799, 0, __PYX_ERR(0, 799, __pyx_L1_error));
+  __Pyx_TraceCall("keyLines", __pyx_f[0], 801, 0, __PYX_ERR(0, 801, __pyx_L1_error));
 
-  /* "src/bison/cython/bison_.pyx":804
+  /* "src/bison/cython/bison_.pyx":806
  *     the order of their declaration in their source file.
  *     """
  *     try:             # <<<<<<<<<<<<<<
  *         line = meth.__code__.co_firstlineno
  *     except:
  */
-  __Pyx_TraceLine(804,0,__PYX_ERR(0, 804, __pyx_L1_error))
+  __Pyx_TraceLine(806,0,__PYX_ERR(0, 806, __pyx_L1_error))
   {
     __Pyx_PyThreadState_declare
     __Pyx_PyThreadState_assign
@@ -12190,23 +12245,23 @@ static PyObject *__pyx_pf_5bison_6bison__2keyLines(CYTHON_UNUSED PyObject *__pyx
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "src/bison/cython/bison_.pyx":805
+      /* "src/bison/cython/bison_.pyx":807
  *     """
  *     try:
  *         line = meth.__code__.co_firstlineno             # <<<<<<<<<<<<<<
  *     except:
  *         line = meth.__init__.__code__.co_firstlineno
  */
-      __Pyx_TraceLine(805,0,__PYX_ERR(0, 805, __pyx_L3_error))
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_meth, __pyx_n_s_code); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 805, __pyx_L3_error)
+      __Pyx_TraceLine(807,0,__PYX_ERR(0, 807, __pyx_L3_error))
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_meth, __pyx_n_s_code); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 807, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_co_firstlineno); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 805, __pyx_L3_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_co_firstlineno); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 807, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __pyx_v_line = __pyx_t_5;
       __pyx_t_5 = 0;
 
-      /* "src/bison/cython/bison_.pyx":804
+      /* "src/bison/cython/bison_.pyx":806
  *     the order of their declaration in their source file.
  *     """
  *     try:             # <<<<<<<<<<<<<<
@@ -12222,35 +12277,35 @@ static PyObject *__pyx_pf_5bison_6bison__2keyLines(CYTHON_UNUSED PyObject *__pyx
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "src/bison/cython/bison_.pyx":806
+    /* "src/bison/cython/bison_.pyx":808
  *     try:
  *         line = meth.__code__.co_firstlineno
  *     except:             # <<<<<<<<<<<<<<
  *         line = meth.__init__.__code__.co_firstlineno
  * 
  */
-    __Pyx_TraceLine(806,0,__PYX_ERR(0, 806, __pyx_L5_except_error))
+    __Pyx_TraceLine(808,0,__PYX_ERR(0, 808, __pyx_L5_except_error))
     /*except:*/ {
       __Pyx_AddTraceback("bison.bison_.keyLines", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_4, &__pyx_t_6) < 0) __PYX_ERR(0, 806, __pyx_L5_except_error)
+      if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_4, &__pyx_t_6) < 0) __PYX_ERR(0, 808, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GOTREF(__pyx_t_6);
 
-      /* "src/bison/cython/bison_.pyx":807
+      /* "src/bison/cython/bison_.pyx":809
  *         line = meth.__code__.co_firstlineno
  *     except:
  *         line = meth.__init__.__code__.co_firstlineno             # <<<<<<<<<<<<<<
  * 
  *     return line
  */
-      __Pyx_TraceLine(807,0,__PYX_ERR(0, 807, __pyx_L5_except_error))
-      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_meth, __pyx_n_s_init); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 807, __pyx_L5_except_error)
+      __Pyx_TraceLine(809,0,__PYX_ERR(0, 809, __pyx_L5_except_error))
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_meth, __pyx_n_s_init); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 809, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_code); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 807, __pyx_L5_except_error)
+      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_code); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 809, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_co_firstlineno); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 807, __pyx_L5_except_error)
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_co_firstlineno); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 809, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_XDECREF_SET(__pyx_v_line, __pyx_t_7);
@@ -12262,7 +12317,7 @@ static PyObject *__pyx_pf_5bison_6bison__2keyLines(CYTHON_UNUSED PyObject *__pyx
     }
     __pyx_L5_except_error:;
 
-    /* "src/bison/cython/bison_.pyx":804
+    /* "src/bison/cython/bison_.pyx":806
  *     the order of their declaration in their source file.
  *     """
  *     try:             # <<<<<<<<<<<<<<
@@ -12282,20 +12337,20 @@ static PyObject *__pyx_pf_5bison_6bison__2keyLines(CYTHON_UNUSED PyObject *__pyx
     __pyx_L8_try_end:;
   }
 
-  /* "src/bison/cython/bison_.pyx":809
+  /* "src/bison/cython/bison_.pyx":811
  *         line = meth.__init__.__code__.co_firstlineno
  * 
  *     return line             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __Pyx_TraceLine(809,0,__PYX_ERR(0, 809, __pyx_L1_error))
+  __Pyx_TraceLine(811,0,__PYX_ERR(0, 811, __pyx_L1_error))
   __Pyx_XDECREF(__pyx_r);
   __Pyx_INCREF(__pyx_v_line);
   __pyx_r = __pyx_v_line;
   goto __pyx_L0;
 
-  /* "src/bison/cython/bison_.pyx":799
+  /* "src/bison/cython/bison_.pyx":801
  *     return (line1 > line2) - (line1 < line2)
  * 
  * def keyLines(meth):             # <<<<<<<<<<<<<<
@@ -12320,7 +12375,7 @@ static PyObject *__pyx_pf_5bison_6bison__2keyLines(CYTHON_UNUSED PyObject *__pyx
   return __pyx_r;
 }
 
-/* "src/bison/cython/bison_.pyx":812
+/* "src/bison/cython/bison_.pyx":814
  * 
  * 
  * def hashParserObject(parser):             # <<<<<<<<<<<<<<
@@ -12343,7 +12398,7 @@ static PyObject *__pyx_pw_5bison_6bison__5hashParserObject(PyObject *__pyx_self,
   return __pyx_r;
 }
 
-/* "src/bison/cython/bison_.pyx":826
+/* "src/bison/cython/bison_.pyx":828
  *     hasher = hashlib.new('sha1')
  * 
  *     def update(o):             # <<<<<<<<<<<<<<
@@ -12381,31 +12436,31 @@ static PyObject *__pyx_pf_5bison_6bison__16hashParserObject_update(PyObject *__p
   __Pyx_RefNannySetupContext("update", 0);
   __pyx_outer_scope = (struct __pyx_obj_5bison_6bison____pyx_scope_struct__hashParserObject *) __Pyx_CyFunction_GetClosure(__pyx_self);
   __pyx_cur_scope = __pyx_outer_scope;
-  __Pyx_TraceCall("update", __pyx_f[0], 826, 0, __PYX_ERR(0, 826, __pyx_L1_error));
+  __Pyx_TraceCall("update", __pyx_f[0], 828, 0, __PYX_ERR(0, 828, __pyx_L1_error));
   __Pyx_INCREF(__pyx_v_o);
 
-  /* "src/bison/cython/bison_.pyx":827
+  /* "src/bison/cython/bison_.pyx":829
  * 
  *     def update(o):
  *         if type(o) == type(""):             # <<<<<<<<<<<<<<
  *             o=o.encode("utf-8")
  *         hasher.update(o)
  */
-  __Pyx_TraceLine(827,0,__PYX_ERR(0, 827, __pyx_L1_error))
-  __pyx_t_1 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_o)), ((PyObject *)Py_TYPE(__pyx_kp_u__2)), Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 827, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 827, __pyx_L1_error)
+  __Pyx_TraceLine(829,0,__PYX_ERR(0, 829, __pyx_L1_error))
+  __pyx_t_1 = PyObject_RichCompare(((PyObject *)Py_TYPE(__pyx_v_o)), ((PyObject *)Py_TYPE(__pyx_kp_u__2)), Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 829, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 829, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_2) {
 
-    /* "src/bison/cython/bison_.pyx":828
+    /* "src/bison/cython/bison_.pyx":830
  *     def update(o):
  *         if type(o) == type(""):
  *             o=o.encode("utf-8")             # <<<<<<<<<<<<<<
  *         hasher.update(o)
  * 
  */
-    __Pyx_TraceLine(828,0,__PYX_ERR(0, 828, __pyx_L1_error))
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_o, __pyx_n_s_encode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 828, __pyx_L1_error)
+    __Pyx_TraceLine(830,0,__PYX_ERR(0, 830, __pyx_L1_error))
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_o, __pyx_n_s_encode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 830, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_4 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -12419,13 +12474,13 @@ static PyObject *__pyx_pf_5bison_6bison__16hashParserObject_update(PyObject *__p
     }
     __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_kp_u_utf_8) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_kp_u_utf_8);
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 828, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 830, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF_SET(__pyx_v_o, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "src/bison/cython/bison_.pyx":827
+    /* "src/bison/cython/bison_.pyx":829
  * 
  *     def update(o):
  *         if type(o) == type(""):             # <<<<<<<<<<<<<<
@@ -12434,16 +12489,16 @@ static PyObject *__pyx_pf_5bison_6bison__16hashParserObject_update(PyObject *__p
  */
   }
 
-  /* "src/bison/cython/bison_.pyx":829
+  /* "src/bison/cython/bison_.pyx":831
  *         if type(o) == type(""):
  *             o=o.encode("utf-8")
  *         hasher.update(o)             # <<<<<<<<<<<<<<
  * 
  *     # add the lex script
  */
-  __Pyx_TraceLine(829,0,__PYX_ERR(0, 829, __pyx_L1_error))
-  if (unlikely(!__pyx_cur_scope->__pyx_v_hasher)) { __Pyx_RaiseClosureNameError("hasher"); __PYX_ERR(0, 829, __pyx_L1_error) }
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_hasher, __pyx_n_s_update); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 829, __pyx_L1_error)
+  __Pyx_TraceLine(831,0,__PYX_ERR(0, 831, __pyx_L1_error))
+  if (unlikely(!__pyx_cur_scope->__pyx_v_hasher)) { __Pyx_RaiseClosureNameError("hasher"); __PYX_ERR(0, 831, __pyx_L1_error) }
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_hasher, __pyx_n_s_update); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 831, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -12457,12 +12512,12 @@ static PyObject *__pyx_pf_5bison_6bison__16hashParserObject_update(PyObject *__p
   }
   __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_v_o) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_o);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 829, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 831, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "src/bison/cython/bison_.pyx":826
+  /* "src/bison/cython/bison_.pyx":828
  *     hasher = hashlib.new('sha1')
  * 
  *     def update(o):             # <<<<<<<<<<<<<<
@@ -12487,7 +12542,7 @@ static PyObject *__pyx_pf_5bison_6bison__16hashParserObject_update(PyObject *__p
   return __pyx_r;
 }
 
-/* "src/bison/cython/bison_.pyx":812
+/* "src/bison/cython/bison_.pyx":814
  * 
  * 
  * def hashParserObject(parser):             # <<<<<<<<<<<<<<
@@ -12531,23 +12586,23 @@ static PyObject *__pyx_pf_5bison_6bison__4hashParserObject(CYTHON_UNUSED PyObjec
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_5bison_6bison____pyx_scope_struct__hashParserObject *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 812, __pyx_L1_error)
+    __PYX_ERR(0, 814, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
-  __Pyx_TraceCall("hashParserObject", __pyx_f[0], 812, 0, __PYX_ERR(0, 812, __pyx_L1_error));
+  __Pyx_TraceCall("hashParserObject", __pyx_f[0], 814, 0, __PYX_ERR(0, 814, __pyx_L1_error));
 
-  /* "src/bison/cython/bison_.pyx":824
+  /* "src/bison/cython/bison_.pyx":826
  *     is required.
  *     """
  *     hasher = hashlib.new('sha1')             # <<<<<<<<<<<<<<
  * 
  *     def update(o):
  */
-  __Pyx_TraceLine(824,0,__PYX_ERR(0, 824, __pyx_L1_error))
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_hashlib); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 824, __pyx_L1_error)
+  __Pyx_TraceLine(826,0,__PYX_ERR(0, 826, __pyx_L1_error))
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_hashlib); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 826, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_new); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 824, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_new); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 826, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -12562,89 +12617,89 @@ static PyObject *__pyx_pf_5bison_6bison__4hashParserObject(CYTHON_UNUSED PyObjec
   }
   __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_2, __pyx_n_u_sha1) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_n_u_sha1);
   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 824, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 826, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_GIVEREF(__pyx_t_1);
   __pyx_cur_scope->__pyx_v_hasher = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "src/bison/cython/bison_.pyx":826
+  /* "src/bison/cython/bison_.pyx":828
  *     hasher = hashlib.new('sha1')
  * 
  *     def update(o):             # <<<<<<<<<<<<<<
  *         if type(o) == type(""):
  *             o=o.encode("utf-8")
  */
-  __Pyx_TraceLine(826,0,__PYX_ERR(0, 826, __pyx_L1_error))
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_5bison_6bison__16hashParserObject_1update, 0, __pyx_n_s_hashParserObject_locals_update, ((PyObject*)__pyx_cur_scope), __pyx_n_s_bison_bison, __pyx_d, ((PyObject *)__pyx_codeobj__43)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 826, __pyx_L1_error)
+  __Pyx_TraceLine(828,0,__PYX_ERR(0, 828, __pyx_L1_error))
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_5bison_6bison__16hashParserObject_1update, 0, __pyx_n_s_hashParserObject_locals_update, ((PyObject*)__pyx_cur_scope), __pyx_n_s_bison_bison, __pyx_d, ((PyObject *)__pyx_codeobj__43)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 828, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_update = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "src/bison/cython/bison_.pyx":832
+  /* "src/bison/cython/bison_.pyx":834
  * 
  *     # add the lex script
  *     update(parser.lexscript)             # <<<<<<<<<<<<<<
  * 
  *     # add the tokens
  */
-  __Pyx_TraceLine(832,0,__PYX_ERR(0, 832, __pyx_L1_error))
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_lexscript); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 832, __pyx_L1_error)
+  __Pyx_TraceLine(834,0,__PYX_ERR(0, 834, __pyx_L1_error))
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_lexscript); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 834, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __pyx_pf_5bison_6bison__16hashParserObject_update(__pyx_v_update, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 832, __pyx_L1_error)
+  __pyx_t_3 = __pyx_pf_5bison_6bison__16hashParserObject_update(__pyx_v_update, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 834, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "src/bison/cython/bison_.pyx":837
+  /* "src/bison/cython/bison_.pyx":839
  *     # workaround pyrex weirdness
  *     # tokens = list(parser.tokens)
  *     tokens = parser.tokens[0]             # <<<<<<<<<<<<<<
  *     update(",".join(tokens))
  * 
  */
-  __Pyx_TraceLine(837,0,__PYX_ERR(0, 837, __pyx_L1_error))
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_tokens); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 837, __pyx_L1_error)
+  __Pyx_TraceLine(839,0,__PYX_ERR(0, 839, __pyx_L1_error))
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_tokens); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 839, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_3, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 837, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_3, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 839, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_tokens = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "src/bison/cython/bison_.pyx":838
+  /* "src/bison/cython/bison_.pyx":840
  *     # tokens = list(parser.tokens)
  *     tokens = parser.tokens[0]
  *     update(",".join(tokens))             # <<<<<<<<<<<<<<
  * 
  *     # add the precedences
  */
-  __Pyx_TraceLine(838,0,__PYX_ERR(0, 838, __pyx_L1_error))
-  __pyx_t_1 = PyUnicode_Join(__pyx_kp_u__44, __pyx_v_tokens); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 838, __pyx_L1_error)
+  __Pyx_TraceLine(840,0,__PYX_ERR(0, 840, __pyx_L1_error))
+  __pyx_t_1 = PyUnicode_Join(__pyx_kp_u__44, __pyx_v_tokens); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 840, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __pyx_pf_5bison_6bison__16hashParserObject_update(__pyx_v_update, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 838, __pyx_L1_error)
+  __pyx_t_3 = __pyx_pf_5bison_6bison__16hashParserObject_update(__pyx_v_update, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 840, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "src/bison/cython/bison_.pyx":841
+  /* "src/bison/cython/bison_.pyx":843
  * 
  *     # add the precedences
  *     for direction, tokens in parser.precedences:             # <<<<<<<<<<<<<<
  *         tokens = tokens[0]
  *         update(direction + "".join(tokens))
  */
-  __Pyx_TraceLine(841,0,__PYX_ERR(0, 841, __pyx_L1_error))
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_precedences); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 841, __pyx_L1_error)
+  __Pyx_TraceLine(843,0,__PYX_ERR(0, 843, __pyx_L1_error))
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_parser, __pyx_n_s_precedences); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 843, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   if (likely(PyList_CheckExact(__pyx_t_3)) || PyTuple_CheckExact(__pyx_t_3)) {
     __pyx_t_1 = __pyx_t_3; __Pyx_INCREF(__pyx_t_1); __pyx_t_4 = 0;
     __pyx_t_5 = NULL;
   } else {
-    __pyx_t_4 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 841, __pyx_L1_error)
+    __pyx_t_4 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 843, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 841, __pyx_L1_error)
+    __pyx_t_5 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 843, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   for (;;) {
@@ -12652,17 +12707,17 @@ static PyObject *__pyx_pf_5bison_6bison__4hashParserObject(CYTHON_UNUSED PyObjec
       if (likely(PyList_CheckExact(__pyx_t_1))) {
         if (__pyx_t_4 >= PyList_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_4); __Pyx_INCREF(__pyx_t_3); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 841, __pyx_L1_error)
+        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_4); __Pyx_INCREF(__pyx_t_3); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 843, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 841, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 843, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       } else {
         if (__pyx_t_4 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_4); __Pyx_INCREF(__pyx_t_3); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 841, __pyx_L1_error)
+        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_4); __Pyx_INCREF(__pyx_t_3); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 843, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 841, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 843, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       }
@@ -12672,7 +12727,7 @@ static PyObject *__pyx_pf_5bison_6bison__4hashParserObject(CYTHON_UNUSED PyObjec
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 841, __pyx_L1_error)
+          else __PYX_ERR(0, 843, __pyx_L1_error)
         }
         break;
       }
@@ -12684,7 +12739,7 @@ static PyObject *__pyx_pf_5bison_6bison__4hashParserObject(CYTHON_UNUSED PyObjec
       if (unlikely(size != 2)) {
         if (size > 2) __Pyx_RaiseTooManyValuesError(2);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 841, __pyx_L1_error)
+        __PYX_ERR(0, 843, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -12697,15 +12752,15 @@ static PyObject *__pyx_pf_5bison_6bison__4hashParserObject(CYTHON_UNUSED PyObjec
       __Pyx_INCREF(__pyx_t_2);
       __Pyx_INCREF(__pyx_t_6);
       #else
-      __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 841, __pyx_L1_error)
+      __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 843, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_6 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 841, __pyx_L1_error)
+      __pyx_t_6 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 843, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       #endif
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_7 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 841, __pyx_L1_error)
+      __pyx_t_7 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 843, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __pyx_t_8 = Py_TYPE(__pyx_t_7)->tp_iternext;
@@ -12713,7 +12768,7 @@ static PyObject *__pyx_pf_5bison_6bison__4hashParserObject(CYTHON_UNUSED PyObjec
       __Pyx_GOTREF(__pyx_t_2);
       index = 1; __pyx_t_6 = __pyx_t_8(__pyx_t_7); if (unlikely(!__pyx_t_6)) goto __pyx_L5_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_6);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_8(__pyx_t_7), 2) < 0) __PYX_ERR(0, 841, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_8(__pyx_t_7), 2) < 0) __PYX_ERR(0, 843, __pyx_L1_error)
       __pyx_t_8 = NULL;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       goto __pyx_L6_unpacking_done;
@@ -12721,7 +12776,7 @@ static PyObject *__pyx_pf_5bison_6bison__4hashParserObject(CYTHON_UNUSED PyObjec
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __pyx_t_8 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 841, __pyx_L1_error)
+      __PYX_ERR(0, 843, __pyx_L1_error)
       __pyx_L6_unpacking_done:;
     }
     __Pyx_XDECREF_SET(__pyx_v_direction, __pyx_t_2);
@@ -12729,106 +12784,106 @@ static PyObject *__pyx_pf_5bison_6bison__4hashParserObject(CYTHON_UNUSED PyObjec
     __Pyx_DECREF_SET(__pyx_v_tokens, __pyx_t_6);
     __pyx_t_6 = 0;
 
-    /* "src/bison/cython/bison_.pyx":842
+    /* "src/bison/cython/bison_.pyx":844
  *     # add the precedences
  *     for direction, tokens in parser.precedences:
  *         tokens = tokens[0]             # <<<<<<<<<<<<<<
  *         update(direction + "".join(tokens))
  * 
  */
-    __Pyx_TraceLine(842,0,__PYX_ERR(0, 842, __pyx_L1_error))
-    __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_tokens, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 842, __pyx_L1_error)
+    __Pyx_TraceLine(844,0,__PYX_ERR(0, 844, __pyx_L1_error))
+    __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_tokens, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 844, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF_SET(__pyx_v_tokens, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "src/bison/cython/bison_.pyx":843
+    /* "src/bison/cython/bison_.pyx":845
  *     for direction, tokens in parser.precedences:
  *         tokens = tokens[0]
  *         update(direction + "".join(tokens))             # <<<<<<<<<<<<<<
  * 
  *     # extract the parser target handler names
  */
-    __Pyx_TraceLine(843,0,__PYX_ERR(0, 843, __pyx_L1_error))
-    __pyx_t_3 = PyUnicode_Join(__pyx_kp_u__2, __pyx_v_tokens); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 843, __pyx_L1_error)
+    __Pyx_TraceLine(845,0,__PYX_ERR(0, 845, __pyx_L1_error))
+    __pyx_t_3 = PyUnicode_Join(__pyx_kp_u__2, __pyx_v_tokens); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 845, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_6 = PyNumber_Add(__pyx_v_direction, __pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 843, __pyx_L1_error)
+    __pyx_t_6 = PyNumber_Add(__pyx_v_direction, __pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 845, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __pyx_pf_5bison_6bison__16hashParserObject_update(__pyx_v_update, __pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 843, __pyx_L1_error)
+    __pyx_t_3 = __pyx_pf_5bison_6bison__16hashParserObject_update(__pyx_v_update, __pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 845, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "src/bison/cython/bison_.pyx":841
+    /* "src/bison/cython/bison_.pyx":843
  * 
  *     # add the precedences
  *     for direction, tokens in parser.precedences:             # <<<<<<<<<<<<<<
  *         tokens = tokens[0]
  *         update(direction + "".join(tokens))
  */
-    __Pyx_TraceLine(841,0,__PYX_ERR(0, 841, __pyx_L1_error))
+    __Pyx_TraceLine(843,0,__PYX_ERR(0, 843, __pyx_L1_error))
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "src/bison/cython/bison_.pyx":846
+  /* "src/bison/cython/bison_.pyx":848
  * 
  *     # extract the parser target handler names
  *     handlerNames = dir(parser)             # <<<<<<<<<<<<<<
  * 
  *     #handlerNames = filter(lambda m: m.startswith('on_'), dir(parser))
  */
-  __Pyx_TraceLine(846,0,__PYX_ERR(0, 846, __pyx_L1_error))
-  __pyx_t_1 = PyObject_Dir(__pyx_v_parser); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 846, __pyx_L1_error)
+  __Pyx_TraceLine(848,0,__PYX_ERR(0, 848, __pyx_L1_error))
+  __pyx_t_1 = PyObject_Dir(__pyx_v_parser); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 848, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_handlerNames = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "src/bison/cython/bison_.pyx":849
+  /* "src/bison/cython/bison_.pyx":851
  * 
  *     #handlerNames = filter(lambda m: m.startswith('on_'), dir(parser))
  *     tmp = []             # <<<<<<<<<<<<<<
  *     for name in handlerNames:
  *         if name.startswith('on_'):
  */
-  __Pyx_TraceLine(849,0,__PYX_ERR(0, 849, __pyx_L1_error))
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 849, __pyx_L1_error)
+  __Pyx_TraceLine(851,0,__PYX_ERR(0, 851, __pyx_L1_error))
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 851, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_tmp = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "src/bison/cython/bison_.pyx":850
+  /* "src/bison/cython/bison_.pyx":852
  *     #handlerNames = filter(lambda m: m.startswith('on_'), dir(parser))
  *     tmp = []
  *     for name in handlerNames:             # <<<<<<<<<<<<<<
  *         if name.startswith('on_'):
  *             tmp.append(name)
  */
-  __Pyx_TraceLine(850,0,__PYX_ERR(0, 850, __pyx_L1_error))
+  __Pyx_TraceLine(852,0,__PYX_ERR(0, 852, __pyx_L1_error))
   if (likely(PyList_CheckExact(__pyx_v_handlerNames)) || PyTuple_CheckExact(__pyx_v_handlerNames)) {
     __pyx_t_1 = __pyx_v_handlerNames; __Pyx_INCREF(__pyx_t_1); __pyx_t_4 = 0;
     __pyx_t_5 = NULL;
   } else {
-    __pyx_t_4 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_handlerNames); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 850, __pyx_L1_error)
+    __pyx_t_4 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_handlerNames); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 852, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 850, __pyx_L1_error)
+    __pyx_t_5 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 852, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_5)) {
       if (likely(PyList_CheckExact(__pyx_t_1))) {
         if (__pyx_t_4 >= PyList_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_4); __Pyx_INCREF(__pyx_t_3); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 850, __pyx_L1_error)
+        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_4); __Pyx_INCREF(__pyx_t_3); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 852, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 850, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 852, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       } else {
         if (__pyx_t_4 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_4); __Pyx_INCREF(__pyx_t_3); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 850, __pyx_L1_error)
+        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_4); __Pyx_INCREF(__pyx_t_3); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 852, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 850, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 852, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       }
@@ -12838,7 +12893,7 @@ static PyObject *__pyx_pf_5bison_6bison__4hashParserObject(CYTHON_UNUSED PyObjec
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 850, __pyx_L1_error)
+          else __PYX_ERR(0, 852, __pyx_L1_error)
         }
         break;
       }
@@ -12847,15 +12902,15 @@ static PyObject *__pyx_pf_5bison_6bison__4hashParserObject(CYTHON_UNUSED PyObjec
     __Pyx_XDECREF_SET(__pyx_v_name, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "src/bison/cython/bison_.pyx":851
+    /* "src/bison/cython/bison_.pyx":853
  *     tmp = []
  *     for name in handlerNames:
  *         if name.startswith('on_'):             # <<<<<<<<<<<<<<
  *             tmp.append(name)
  *     handlerNames = tmp
  */
-    __Pyx_TraceLine(851,0,__PYX_ERR(0, 851, __pyx_L1_error))
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_name, __pyx_n_s_startswith); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 851, __pyx_L1_error)
+    __Pyx_TraceLine(853,0,__PYX_ERR(0, 853, __pyx_L1_error))
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_name, __pyx_n_s_startswith); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 853, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __pyx_t_2 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_6))) {
@@ -12869,24 +12924,24 @@ static PyObject *__pyx_pf_5bison_6bison__4hashParserObject(CYTHON_UNUSED PyObjec
     }
     __pyx_t_3 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_2, __pyx_n_u_on) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_n_u_on);
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 851, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 853, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 851, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 853, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     if (__pyx_t_9) {
 
-      /* "src/bison/cython/bison_.pyx":852
+      /* "src/bison/cython/bison_.pyx":854
  *     for name in handlerNames:
  *         if name.startswith('on_'):
  *             tmp.append(name)             # <<<<<<<<<<<<<<
  *     handlerNames = tmp
  *     handlerNames.sort()
  */
-      __Pyx_TraceLine(852,0,__PYX_ERR(0, 852, __pyx_L1_error))
-      __pyx_t_10 = __Pyx_PyList_Append(__pyx_v_tmp, __pyx_v_name); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 852, __pyx_L1_error)
+      __Pyx_TraceLine(854,0,__PYX_ERR(0, 854, __pyx_L1_error))
+      __pyx_t_10 = __Pyx_PyList_Append(__pyx_v_tmp, __pyx_v_name); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 854, __pyx_L1_error)
 
-      /* "src/bison/cython/bison_.pyx":851
+      /* "src/bison/cython/bison_.pyx":853
  *     tmp = []
  *     for name in handlerNames:
  *         if name.startswith('on_'):             # <<<<<<<<<<<<<<
@@ -12895,37 +12950,37 @@ static PyObject *__pyx_pf_5bison_6bison__4hashParserObject(CYTHON_UNUSED PyObjec
  */
     }
 
-    /* "src/bison/cython/bison_.pyx":850
+    /* "src/bison/cython/bison_.pyx":852
  *     #handlerNames = filter(lambda m: m.startswith('on_'), dir(parser))
  *     tmp = []
  *     for name in handlerNames:             # <<<<<<<<<<<<<<
  *         if name.startswith('on_'):
  *             tmp.append(name)
  */
-    __Pyx_TraceLine(850,0,__PYX_ERR(0, 850, __pyx_L1_error))
+    __Pyx_TraceLine(852,0,__PYX_ERR(0, 852, __pyx_L1_error))
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "src/bison/cython/bison_.pyx":853
+  /* "src/bison/cython/bison_.pyx":855
  *         if name.startswith('on_'):
  *             tmp.append(name)
  *     handlerNames = tmp             # <<<<<<<<<<<<<<
  *     handlerNames.sort()
  * 
  */
-  __Pyx_TraceLine(853,0,__PYX_ERR(0, 853, __pyx_L1_error))
+  __Pyx_TraceLine(855,0,__PYX_ERR(0, 855, __pyx_L1_error))
   __Pyx_INCREF(__pyx_v_tmp);
   __Pyx_DECREF_SET(__pyx_v_handlerNames, __pyx_v_tmp);
 
-  /* "src/bison/cython/bison_.pyx":854
+  /* "src/bison/cython/bison_.pyx":856
  *             tmp.append(name)
  *     handlerNames = tmp
  *     handlerNames.sort()             # <<<<<<<<<<<<<<
  * 
  *     # extract method objects, filter down to callables
  */
-  __Pyx_TraceLine(854,0,__PYX_ERR(0, 854, __pyx_L1_error))
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_handlerNames, __pyx_n_s_sort); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 854, __pyx_L1_error)
+  __Pyx_TraceLine(856,0,__PYX_ERR(0, 856, __pyx_L1_error))
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_handlerNames, __pyx_n_s_sort); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 856, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_6 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -12939,80 +12994,80 @@ static PyObject *__pyx_pf_5bison_6bison__4hashParserObject(CYTHON_UNUSED PyObjec
   }
   __pyx_t_1 = (__pyx_t_6) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_6) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 854, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 856, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "src/bison/cython/bison_.pyx":859
+  /* "src/bison/cython/bison_.pyx":861
  *     #handlers = [getattr(parser, m) for m in handlerNames]
  *     #handlers = filter(lambda h: callable(h), handlers)
  *     tmp = []             # <<<<<<<<<<<<<<
  *     for m in handlerNames:
  *         attr = getattr(parser, m)
  */
-  __Pyx_TraceLine(859,0,__PYX_ERR(0, 859, __pyx_L1_error))
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 859, __pyx_L1_error)
+  __Pyx_TraceLine(861,0,__PYX_ERR(0, 861, __pyx_L1_error))
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 861, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF_SET(__pyx_v_tmp, ((PyObject*)__pyx_t_1));
   __pyx_t_1 = 0;
 
-  /* "src/bison/cython/bison_.pyx":860
+  /* "src/bison/cython/bison_.pyx":862
  *     #handlers = filter(lambda h: callable(h), handlers)
  *     tmp = []
  *     for m in handlerNames:             # <<<<<<<<<<<<<<
  *         attr = getattr(parser, m)
  *         if callable(attr):
  */
-  __Pyx_TraceLine(860,0,__PYX_ERR(0, 860, __pyx_L1_error))
+  __Pyx_TraceLine(862,0,__PYX_ERR(0, 862, __pyx_L1_error))
   __pyx_t_1 = __pyx_v_handlerNames; __Pyx_INCREF(__pyx_t_1); __pyx_t_4 = 0;
   for (;;) {
     if (__pyx_t_4 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_4); __Pyx_INCREF(__pyx_t_3); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 860, __pyx_L1_error)
+    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_4); __Pyx_INCREF(__pyx_t_3); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 862, __pyx_L1_error)
     #else
-    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 860, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 862, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
     __Pyx_XDECREF_SET(__pyx_v_m, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "src/bison/cython/bison_.pyx":861
+    /* "src/bison/cython/bison_.pyx":863
  *     tmp = []
  *     for m in handlerNames:
  *         attr = getattr(parser, m)             # <<<<<<<<<<<<<<
  *         if callable(attr):
  *             tmp.append(attr)
  */
-    __Pyx_TraceLine(861,0,__PYX_ERR(0, 861, __pyx_L1_error))
-    __pyx_t_3 = __Pyx_GetAttr(__pyx_v_parser, __pyx_v_m); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 861, __pyx_L1_error)
+    __Pyx_TraceLine(863,0,__PYX_ERR(0, 863, __pyx_L1_error))
+    __pyx_t_3 = __Pyx_GetAttr(__pyx_v_parser, __pyx_v_m); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 863, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_XDECREF_SET(__pyx_v_attr, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "src/bison/cython/bison_.pyx":862
+    /* "src/bison/cython/bison_.pyx":864
  *     for m in handlerNames:
  *         attr = getattr(parser, m)
  *         if callable(attr):             # <<<<<<<<<<<<<<
  *             tmp.append(attr)
  *     handlers = tmp
  */
-    __Pyx_TraceLine(862,0,__PYX_ERR(0, 862, __pyx_L1_error))
-    __pyx_t_9 = __Pyx_PyCallable_Check(__pyx_v_attr); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 862, __pyx_L1_error)
+    __Pyx_TraceLine(864,0,__PYX_ERR(0, 864, __pyx_L1_error))
+    __pyx_t_9 = __Pyx_PyCallable_Check(__pyx_v_attr); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 864, __pyx_L1_error)
     __pyx_t_11 = (__pyx_t_9 != 0);
     if (__pyx_t_11) {
 
-      /* "src/bison/cython/bison_.pyx":863
+      /* "src/bison/cython/bison_.pyx":865
  *         attr = getattr(parser, m)
  *         if callable(attr):
  *             tmp.append(attr)             # <<<<<<<<<<<<<<
  *     handlers = tmp
  * 
  */
-      __Pyx_TraceLine(863,0,__PYX_ERR(0, 863, __pyx_L1_error))
-      __pyx_t_10 = __Pyx_PyList_Append(__pyx_v_tmp, __pyx_v_attr); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 863, __pyx_L1_error)
+      __Pyx_TraceLine(865,0,__PYX_ERR(0, 865, __pyx_L1_error))
+      __pyx_t_10 = __Pyx_PyList_Append(__pyx_v_tmp, __pyx_v_attr); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 865, __pyx_L1_error)
 
-      /* "src/bison/cython/bison_.pyx":862
+      /* "src/bison/cython/bison_.pyx":864
  *     for m in handlerNames:
  *         attr = getattr(parser, m)
  *         if callable(attr):             # <<<<<<<<<<<<<<
@@ -13021,92 +13076,92 @@ static PyObject *__pyx_pf_5bison_6bison__4hashParserObject(CYTHON_UNUSED PyObjec
  */
     }
 
-    /* "src/bison/cython/bison_.pyx":860
+    /* "src/bison/cython/bison_.pyx":862
  *     #handlers = filter(lambda h: callable(h), handlers)
  *     tmp = []
  *     for m in handlerNames:             # <<<<<<<<<<<<<<
  *         attr = getattr(parser, m)
  *         if callable(attr):
  */
-    __Pyx_TraceLine(860,0,__PYX_ERR(0, 860, __pyx_L1_error))
+    __Pyx_TraceLine(862,0,__PYX_ERR(0, 862, __pyx_L1_error))
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "src/bison/cython/bison_.pyx":864
+  /* "src/bison/cython/bison_.pyx":866
  *         if callable(attr):
  *             tmp.append(attr)
  *     handlers = tmp             # <<<<<<<<<<<<<<
  * 
  *     # now add in the methods' docstrings
  */
-  __Pyx_TraceLine(864,0,__PYX_ERR(0, 864, __pyx_L1_error))
+  __Pyx_TraceLine(866,0,__PYX_ERR(0, 866, __pyx_L1_error))
   __Pyx_INCREF(__pyx_v_tmp);
   __pyx_v_handlers = __pyx_v_tmp;
 
-  /* "src/bison/cython/bison_.pyx":867
+  /* "src/bison/cython/bison_.pyx":869
  * 
  *     # now add in the methods' docstrings
  *     for h in handlers:             # <<<<<<<<<<<<<<
  *         docString = h.__doc__
  *         update(docString)
  */
-  __Pyx_TraceLine(867,0,__PYX_ERR(0, 867, __pyx_L1_error))
+  __Pyx_TraceLine(869,0,__PYX_ERR(0, 869, __pyx_L1_error))
   __pyx_t_1 = __pyx_v_handlers; __Pyx_INCREF(__pyx_t_1); __pyx_t_4 = 0;
   for (;;) {
     if (__pyx_t_4 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_4); __Pyx_INCREF(__pyx_t_3); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 867, __pyx_L1_error)
+    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_4); __Pyx_INCREF(__pyx_t_3); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 869, __pyx_L1_error)
     #else
-    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 867, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 869, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
     __Pyx_XDECREF_SET(__pyx_v_h, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "src/bison/cython/bison_.pyx":868
+    /* "src/bison/cython/bison_.pyx":870
  *     # now add in the methods' docstrings
  *     for h in handlers:
  *         docString = h.__doc__             # <<<<<<<<<<<<<<
  *         update(docString)
  * 
  */
-    __Pyx_TraceLine(868,0,__PYX_ERR(0, 868, __pyx_L1_error))
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_h, __pyx_n_s_doc); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 868, __pyx_L1_error)
+    __Pyx_TraceLine(870,0,__PYX_ERR(0, 870, __pyx_L1_error))
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_h, __pyx_n_s_doc); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 870, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_XDECREF_SET(__pyx_v_docString, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "src/bison/cython/bison_.pyx":869
+    /* "src/bison/cython/bison_.pyx":871
  *     for h in handlers:
  *         docString = h.__doc__
  *         update(docString)             # <<<<<<<<<<<<<<
  * 
  *     # done
  */
-    __Pyx_TraceLine(869,0,__PYX_ERR(0, 869, __pyx_L1_error))
-    __pyx_t_3 = __pyx_pf_5bison_6bison__16hashParserObject_update(__pyx_v_update, __pyx_v_docString); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 869, __pyx_L1_error)
+    __Pyx_TraceLine(871,0,__PYX_ERR(0, 871, __pyx_L1_error))
+    __pyx_t_3 = __pyx_pf_5bison_6bison__16hashParserObject_update(__pyx_v_update, __pyx_v_docString); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 871, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "src/bison/cython/bison_.pyx":867
+    /* "src/bison/cython/bison_.pyx":869
  * 
  *     # now add in the methods' docstrings
  *     for h in handlers:             # <<<<<<<<<<<<<<
  *         docString = h.__doc__
  *         update(docString)
  */
-    __Pyx_TraceLine(867,0,__PYX_ERR(0, 867, __pyx_L1_error))
+    __Pyx_TraceLine(869,0,__PYX_ERR(0, 869, __pyx_L1_error))
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "src/bison/cython/bison_.pyx":872
+  /* "src/bison/cython/bison_.pyx":874
  * 
  *     # done
  *     return hasher.hexdigest()             # <<<<<<<<<<<<<<
  */
-  __Pyx_TraceLine(872,0,__PYX_ERR(0, 872, __pyx_L1_error))
+  __Pyx_TraceLine(874,0,__PYX_ERR(0, 874, __pyx_L1_error))
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_hasher, __pyx_n_s_hexdigest); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 872, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_hasher, __pyx_n_s_hexdigest); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 874, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_6 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -13120,14 +13175,14 @@ static PyObject *__pyx_pf_5bison_6bison__4hashParserObject(CYTHON_UNUSED PyObjec
   }
   __pyx_t_1 = (__pyx_t_6) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_6) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 872, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 874, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/bison/cython/bison_.pyx":812
+  /* "src/bison/cython/bison_.pyx":814
  * 
  * 
  * def hashParserObject(parser):             # <<<<<<<<<<<<<<
@@ -13470,6 +13525,7 @@ static struct PyModuleDef __pyx_moduledef = {
 
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_u_CMD_Output, __pyx_k_CMD_Output, sizeof(__pyx_k_CMD_Output), 0, 1, 0, 0},
+  {&__pyx_kp_u_Compiling, __pyx_k_Compiling, sizeof(__pyx_k_Compiling), 0, 1, 0, 0},
   {&__pyx_kp_u_Deleting_temporary_bison_output, __pyx_k_Deleting_temporary_bison_output, sizeof(__pyx_k_Deleting_temporary_bison_output), 0, 1, 0, 0},
   {&__pyx_n_s_EXTENSION_SUFFIXES, __pyx_k_EXTENSION_SUFFIXES, sizeof(__pyx_k_EXTENSION_SUFFIXES), 0, 0, 1, 1},
   {&__pyx_kp_u_Hash_discrepancy_need_to_rebuild, __pyx_k_Hash_discrepancy_need_to_rebuild, sizeof(__pyx_k_Hash_discrepancy_need_to_rebuild), 0, 1, 0, 0},
@@ -13637,8 +13693,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
   {&__pyx_n_s_importlib, __pyx_k_importlib, sizeof(__pyx_k_importlib), 0, 0, 1, 1},
   {&__pyx_kp_u_include_Python_h, __pyx_k_include_Python_h, sizeof(__pyx_k_include_Python_h), 0, 1, 0, 0},
-  {&__pyx_kp_u_include_tmp_lex_h, __pyx_k_include_tmp_lex_h, sizeof(__pyx_k_include_tmp_lex_h), 0, 1, 0, 0},
-  {&__pyx_kp_u_include_tokens_h, __pyx_k_include_tokens_h, sizeof(__pyx_k_include_tokens_h), 0, 1, 0, 0},
+  {&__pyx_kp_u_include_lex_yy_h, __pyx_k_include_lex_yy_h, sizeof(__pyx_k_include_lex_yy_h), 0, 1, 0, 0},
+  {&__pyx_kp_u_include_tmp_tab_h, __pyx_k_include_tmp_tab_h, sizeof(__pyx_k_include_tmp_tab_h), 0, 1, 0, 0},
   {&__pyx_n_s_init, __pyx_k_init, sizeof(__pyx_k_init), 0, 0, 1, 1},
   {&__pyx_n_s_initialize, __pyx_k_initialize, sizeof(__pyx_k_initialize), 0, 0, 1, 1},
   {&__pyx_kp_u_int_debug, __pyx_k_int_debug, sizeof(__pyx_k_int_debug), 0, 1, 0, 0},
@@ -13873,14 +13929,14 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__33);
   __Pyx_GIVEREF(__pyx_tuple__33);
 
-  /* "src/bison/cython/bison_.pyx":742
+  /* "src/bison/cython/bison_.pyx":744
  * 
  *             if parser.verbose:
  *                 print("Deleting temporary bison output files:")             # <<<<<<<<<<<<<<
  * 
  *             for f in [parser.bisonCFile, parser.bisonHFile, parser.flexCFile, "tmp.output"]:
  */
-  __pyx_tuple__36 = PyTuple_Pack(1, __pyx_kp_u_Deleting_temporary_bison_output); if (unlikely(!__pyx_tuple__36)) __PYX_ERR(0, 742, __pyx_L1_error)
+  __pyx_tuple__36 = PyTuple_Pack(1, __pyx_kp_u_Deleting_temporary_bison_output); if (unlikely(!__pyx_tuple__36)) __PYX_ERR(0, 744, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__36);
   __Pyx_GIVEREF(__pyx_tuple__36);
 
@@ -13903,17 +13959,17 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__38);
   __Pyx_GIVEREF(__pyx_tuple__38);
 
-  /* "src/bison/cython/bison_.pyx":826
+  /* "src/bison/cython/bison_.pyx":828
  *     hasher = hashlib.new('sha1')
  * 
  *     def update(o):             # <<<<<<<<<<<<<<
  *         if type(o) == type(""):
  *             o=o.encode("utf-8")
  */
-  __pyx_tuple__42 = PyTuple_Pack(1, __pyx_n_s_o); if (unlikely(!__pyx_tuple__42)) __PYX_ERR(0, 826, __pyx_L1_error)
+  __pyx_tuple__42 = PyTuple_Pack(1, __pyx_n_s_o); if (unlikely(!__pyx_tuple__42)) __PYX_ERR(0, 828, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__42);
   __Pyx_GIVEREF(__pyx_tuple__42);
-  __pyx_codeobj__43 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__42, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_bison_cython_bison__pyx, __pyx_n_s_update, 826, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__43)) __PYX_ERR(0, 826, __pyx_L1_error)
+  __pyx_codeobj__43 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__42, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_bison_cython_bison__pyx, __pyx_n_s_update, 828, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__43)) __PYX_ERR(0, 828, __pyx_L1_error)
 
   /* "src/bison/cython/bison_.pyx":80
  * import textwrap
@@ -13938,41 +13994,41 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GIVEREF(__pyx_tuple__46);
   __pyx_codeobj_ = (PyObject*)__Pyx_PyCode_New(1, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__46, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_bison_cython_bison__pyx, __pyx_n_s_distutils_dir_name, 138, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj_)) __PYX_ERR(0, 138, __pyx_L1_error)
 
-  /* "src/bison/cython/bison_.pyx":785
+  /* "src/bison/cython/bison_.pyx":787
  * 
  * 
  * def cmpLines(meth1, meth2):             # <<<<<<<<<<<<<<
  *     """
  *     Used as a sort() argument for sorting parse target handler methods by
  */
-  __pyx_tuple__47 = PyTuple_Pack(4, __pyx_n_s_meth1, __pyx_n_s_meth2, __pyx_n_s_line1, __pyx_n_s_line2); if (unlikely(!__pyx_tuple__47)) __PYX_ERR(0, 785, __pyx_L1_error)
+  __pyx_tuple__47 = PyTuple_Pack(4, __pyx_n_s_meth1, __pyx_n_s_meth2, __pyx_n_s_line1, __pyx_n_s_line2); if (unlikely(!__pyx_tuple__47)) __PYX_ERR(0, 787, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__47);
   __Pyx_GIVEREF(__pyx_tuple__47);
-  __pyx_codeobj__39 = (PyObject*)__Pyx_PyCode_New(2, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__47, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_bison_cython_bison__pyx, __pyx_n_s_cmpLines, 785, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__39)) __PYX_ERR(0, 785, __pyx_L1_error)
+  __pyx_codeobj__39 = (PyObject*)__Pyx_PyCode_New(2, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__47, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_bison_cython_bison__pyx, __pyx_n_s_cmpLines, 787, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__39)) __PYX_ERR(0, 787, __pyx_L1_error)
 
-  /* "src/bison/cython/bison_.pyx":799
+  /* "src/bison/cython/bison_.pyx":801
  *     return (line1 > line2) - (line1 < line2)
  * 
  * def keyLines(meth):             # <<<<<<<<<<<<<<
  *     """
  *     Used as a sort() 'key' argument for sorting parse target handler methods by
  */
-  __pyx_tuple__48 = PyTuple_Pack(2, __pyx_n_s_meth, __pyx_n_s_line); if (unlikely(!__pyx_tuple__48)) __PYX_ERR(0, 799, __pyx_L1_error)
+  __pyx_tuple__48 = PyTuple_Pack(2, __pyx_n_s_meth, __pyx_n_s_line); if (unlikely(!__pyx_tuple__48)) __PYX_ERR(0, 801, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__48);
   __Pyx_GIVEREF(__pyx_tuple__48);
-  __pyx_codeobj__40 = (PyObject*)__Pyx_PyCode_New(1, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__48, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_bison_cython_bison__pyx, __pyx_n_s_keyLines, 799, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__40)) __PYX_ERR(0, 799, __pyx_L1_error)
+  __pyx_codeobj__40 = (PyObject*)__Pyx_PyCode_New(1, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__48, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_bison_cython_bison__pyx, __pyx_n_s_keyLines, 801, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__40)) __PYX_ERR(0, 801, __pyx_L1_error)
 
-  /* "src/bison/cython/bison_.pyx":812
+  /* "src/bison/cython/bison_.pyx":814
  * 
  * 
  * def hashParserObject(parser):             # <<<<<<<<<<<<<<
  *     """
  *     Calculates an sha1 hex 'hash' of the lex script
  */
-  __pyx_tuple__49 = PyTuple_Pack(14, __pyx_n_s_parser, __pyx_n_s_hasher, __pyx_n_s_update, __pyx_n_s_update, __pyx_n_s_tokens, __pyx_n_s_direction, __pyx_n_s_handlerNames, __pyx_n_s_tmp, __pyx_n_s_name_2, __pyx_n_s_m, __pyx_n_s_attr, __pyx_n_s_handlers, __pyx_n_s_h, __pyx_n_s_docString); if (unlikely(!__pyx_tuple__49)) __PYX_ERR(0, 812, __pyx_L1_error)
+  __pyx_tuple__49 = PyTuple_Pack(14, __pyx_n_s_parser, __pyx_n_s_hasher, __pyx_n_s_update, __pyx_n_s_update, __pyx_n_s_tokens, __pyx_n_s_direction, __pyx_n_s_handlerNames, __pyx_n_s_tmp, __pyx_n_s_name_2, __pyx_n_s_m, __pyx_n_s_attr, __pyx_n_s_handlers, __pyx_n_s_h, __pyx_n_s_docString); if (unlikely(!__pyx_tuple__49)) __PYX_ERR(0, 814, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__49);
   __Pyx_GIVEREF(__pyx_tuple__49);
-  __pyx_codeobj__41 = (PyObject*)__Pyx_PyCode_New(1, 0, 14, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__49, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_bison_cython_bison__pyx, __pyx_n_s_hashParserObject, 812, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__41)) __PYX_ERR(0, 812, __pyx_L1_error)
+  __pyx_codeobj__41 = (PyObject*)__Pyx_PyCode_New(1, 0, 14, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__49, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_bison_cython_bison__pyx, __pyx_n_s_hashParserObject, 814, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__41)) __PYX_ERR(0, 814, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -14049,7 +14105,7 @@ static int __Pyx_modinit_type_init_code(void) {
   if (PyObject_SetAttr(__pyx_m, __pyx_n_s_ParserEngine, (PyObject *)&__pyx_type_5bison_6bison__ParserEngine) < 0) __PYX_ERR(0, 84, __pyx_L1_error)
   if (__Pyx_setup_reduce((PyObject*)&__pyx_type_5bison_6bison__ParserEngine) < 0) __PYX_ERR(0, 84, __pyx_L1_error)
   __pyx_ptype_5bison_6bison__ParserEngine = &__pyx_type_5bison_6bison__ParserEngine;
-  if (PyType_Ready(&__pyx_type_5bison_6bison____pyx_scope_struct__hashParserObject) < 0) __PYX_ERR(0, 812, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_5bison_6bison____pyx_scope_struct__hashParserObject) < 0) __PYX_ERR(0, 814, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_5bison_6bison____pyx_scope_struct__hashParserObject.tp_print = 0;
   #endif
@@ -14495,43 +14551,43 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   PyType_Modified(__pyx_ptype_5bison_6bison__ParserEngine);
 
-  /* "src/bison/cython/bison_.pyx":785
+  /* "src/bison/cython/bison_.pyx":787
  * 
  * 
  * def cmpLines(meth1, meth2):             # <<<<<<<<<<<<<<
  *     """
  *     Used as a sort() argument for sorting parse target handler methods by
  */
-  __Pyx_TraceLine(785,0,__PYX_ERR(0, 785, __pyx_L1_error))
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_5bison_6bison__1cmpLines, NULL, __pyx_n_s_bison_bison); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 785, __pyx_L1_error)
+  __Pyx_TraceLine(787,0,__PYX_ERR(0, 787, __pyx_L1_error))
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_5bison_6bison__1cmpLines, NULL, __pyx_n_s_bison_bison); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 787, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_cmpLines, __pyx_t_1) < 0) __PYX_ERR(0, 785, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_cmpLines, __pyx_t_1) < 0) __PYX_ERR(0, 787, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "src/bison/cython/bison_.pyx":799
+  /* "src/bison/cython/bison_.pyx":801
  *     return (line1 > line2) - (line1 < line2)
  * 
  * def keyLines(meth):             # <<<<<<<<<<<<<<
  *     """
  *     Used as a sort() 'key' argument for sorting parse target handler methods by
  */
-  __Pyx_TraceLine(799,0,__PYX_ERR(0, 799, __pyx_L1_error))
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_5bison_6bison__3keyLines, NULL, __pyx_n_s_bison_bison); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 799, __pyx_L1_error)
+  __Pyx_TraceLine(801,0,__PYX_ERR(0, 801, __pyx_L1_error))
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_5bison_6bison__3keyLines, NULL, __pyx_n_s_bison_bison); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 801, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_keyLines, __pyx_t_1) < 0) __PYX_ERR(0, 799, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_keyLines, __pyx_t_1) < 0) __PYX_ERR(0, 801, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "src/bison/cython/bison_.pyx":812
+  /* "src/bison/cython/bison_.pyx":814
  * 
  * 
  * def hashParserObject(parser):             # <<<<<<<<<<<<<<
  *     """
  *     Calculates an sha1 hex 'hash' of the lex script
  */
-  __Pyx_TraceLine(812,0,__PYX_ERR(0, 812, __pyx_L1_error))
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_5bison_6bison__5hashParserObject, NULL, __pyx_n_s_bison_bison); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 812, __pyx_L1_error)
+  __Pyx_TraceLine(814,0,__PYX_ERR(0, 814, __pyx_L1_error))
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_5bison_6bison__5hashParserObject, NULL, __pyx_n_s_bison_bison); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 814, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_hashParserObject, __pyx_t_1) < 0) __PYX_ERR(0, 812, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_hashParserObject, __pyx_t_1) < 0) __PYX_ERR(0, 814, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "src/bison/cython/bison_.pyx":1
