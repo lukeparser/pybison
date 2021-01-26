@@ -38,6 +38,11 @@ from .bison_ import ParserEngine
 from .node import BisonNode
 from .convert import bisonToPython
 
+import logging
+
+LOGGER = logging.getLogger(__name__)
+
+
 WIN_CHOCO_DIR = "C:\\ProgramData\\chocolatey\\lib\\winflexbison3\\tools\\"
 WIN_FLEX = join( WIN_CHOCO_DIR, 'win_flex.exe')
 WIN_BISON = join( WIN_CHOCO_DIR, 'win_bison.exe')
@@ -249,7 +254,7 @@ class BisonParser(object):
                 except:
                     hdlrline = handler.__init__.__code__.co_firstlineno
 
-                print("BisonParser._handle: call handler at line {} with: {}".format(
+                LOGGER.info("BisonParser._handle: call handler at line {} with: {}".format(
                     hdlrline, str((targetname, option, names, values)))
                 )
             try:
@@ -262,7 +267,7 @@ class BisonParser(object):
             #    print("handler for {} returned {}".format(targetname, repr(self.last)))
         else:
             if self.verbose:
-                print("no handler for {}, using default".format(targetname))
+                LOGGER.info("no handler for {}, using default".format(targetname))
 
             cls = self.default_node_class
             self.last = cls(target=targetname, option=option, names=names,
@@ -332,7 +337,7 @@ class BisonParser(object):
             - debug - enables garrulous parser debugging output, default 0
         """
         if self.verbose:
-            print('Parser.run: calling engine')
+            LOGGER.info('Parser.run: calling engine')
 
         filename = None
         # grab keywords
@@ -367,9 +372,9 @@ class BisonParser(object):
             self.read = read
 
         if self.verbose and self.marker:
-            print('Parser.run(): self.marker (', self.marker, ') is set')
+            LOGGER.info('Parser.run(): self.marker ({}) is set'.format(self.marker))
         if self.verbose and self.file and self.file.closed:
-            print('Parser.run(): self.file', self.file, 'is closed')
+            LOGGER.info('Parser.run(): self.file {} is closed'.format(self.file))
 
         error_count = 0
         self.last = None
@@ -390,16 +395,16 @@ class BisonParser(object):
                 self.report_last_error(filename, e)
 
             if self.verbose:
-                print('Parser.run: back from engine')
+                LOGGER.info('Parser.run: back from engine')
 
             if hasattr(self, 'hook_run'):
                 self.last = self.hook_run(filename, self.last)
 
             if self.verbose and not self.marker:
-                print('last:', self.last)
+                LOGGER.info('last:{}'.format(self.last))
 
         if self.verbose:
-            print('last:', self.last)
+            LOGGER.info('last:{}'.format(self.last))
 
         # restore old values
         self.file = oldfile
@@ -407,7 +412,7 @@ class BisonParser(object):
         self.marker = 0
 
         if self.verbose:
-            print('------------------ result=', self.last)
+            LOGGER.info('------------------ result={}'.format(self.last))
 
         # close the file if we opened one
         if i_opened_a_file and fileobj:
@@ -428,14 +433,13 @@ class BisonParser(object):
         """
         # default to stdin
         if self.verbose:
-            print('Parser.read: want %s bytes' % nbytes)
+            LOGGER.info('Parser.read: want %s bytes' % nbytes)
 
         _bytes = self.file.readline(nbytes).replace(b'\r\n', b'\n').replace(b'\r', b'\n')
 
         if self.verbose:
-            print('Parser.read: got %s bytes' % len(_bytes))
-            print(_bytes)
-
+            LOGGER.info('Parser.read: got %s bytes' % len(_bytes))
+            LOGGER.info(_bytes)
         return _bytes
 
     def report_last_error(self, filename, error):
@@ -475,7 +479,7 @@ class BisonParser(object):
         if self.verbose:
             traceback.print_exc()
 
-        print('ERROR:', error)
+        LOGGER.error(error)
 
     def report_syntax_error(self, msg, yytext, first_line, first_col, last_line, last_col):
 
