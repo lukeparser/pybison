@@ -19,6 +19,7 @@ for a commercial license.
 
 from __future__ import absolute_import
 from __future__ import print_function
+import logging.config
 
 import shutil
 from os.path import dirname, join
@@ -207,6 +208,7 @@ class BisonParser(object):
             self.defaultNodeClass = nodeClass
 
         self.verbose = kw.get('verbose', False)
+        self.config_logger()
         if self.verbose:
             self.bisonCmd.append('--verbose')
 
@@ -268,6 +270,41 @@ class BisonParser(object):
 
         # assumedly the last thing parsed is at the top of the tree
         return self.last
+
+    def config_logger(self):
+        if self.verbose:
+            level = 'DEBUG'
+        else:
+            level = 'INFO'
+        logging.config.dictConfig({
+            'version': 1,
+            'disable_existing_loggers': False,
+            'formatters': {
+                'standard': {
+                    'format': '%(asctime)s [%(levelname)s] %(name)s: %(message)s'
+                },
+            },
+            'handlers': {
+                'default': {
+                    'level': 'DEBUG',
+                    'formatter': 'standard',
+                    'class': 'logging.StreamHandler',
+                    'stream': 'ext://sys.stdout',  # Default is stderr
+                },
+            },
+            'loggers': {
+                'bison': {  # root logger
+                    'handlers': ['default'],
+                    'level': level,
+                    'propagate': True
+                },
+                '__main__': {  # if __name__ == '__main__'
+                    'handlers': ['default'],
+                    'level': level,
+                    'propagate': False
+                },
+            }
+        })
 
     def handle_timeout(self, signum, frame):
         raise TimeoutError("Computation exceeded timeout limit.")
