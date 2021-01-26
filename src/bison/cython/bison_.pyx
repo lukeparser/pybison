@@ -2,6 +2,9 @@
 """
 Pyrex-generated portion of pybison
 """
+import logging
+LOGGER = logging.getLogger(__name__)
+
 
 cdef extern from "Python.h":
     IF PY3:
@@ -69,7 +72,6 @@ cdef extern from "../c/bisondynlib.h":
 
 import sys, os, hashlib, re, traceback
 import shutil
-import setuptools
 import distutils.log
 import distutils.sysconfig
 import distutils.ccompiler
@@ -81,6 +83,7 @@ import textwrap
 reSpaces = re.compile("\\s+")
 
 unquoted = '[^\'"]%s[^\'"]?'
+
 
 cdef class ParserEngine:
     """
@@ -156,6 +159,7 @@ cdef class ParserEngine:
 
         Opens the library and imports the parser entry point.
         """
+
         parser = self.parser
         verbose = parser.verbose
 
@@ -185,20 +189,20 @@ cdef class ParserEngine:
             libHash = PyUnicode_FromString(self.libHash)
         ELSE:
             libHash = PyString_FromString(self.libHash)
-
         if self.parserHash != libHash:
             if verbose:
-                print("Hash discrepancy, need to rebuild bison lib")
-                print("  current parser class: %s" % self.parserHash)
-                print("         bison library: %s" % libHash)
+                LOGGER.info("Hash discrepancy, need to rebuild bison lib")
+                LOGGER.info("  current parser class: %s" % self.parserHash)
+                LOGGER.info("         bison library: %s" % libHash)
             self.closeLib()
             self.buildLib()
             self.openLib()
         else:
             if verbose:
-                print("Hashes match, no need to rebuild bison engine lib")
+                LOGGER.info("Hashes match, no need to rebuild bison engine lib")
 
     def possible_so(self, so_dir):
+        LOGGER.debug("call def possible_so")
         import fnmatch
         regex_str =  '*' + self.parser.bisonEngineLibName + machinery.EXTENSION_SUFFIXES[0]
         return [
@@ -223,6 +227,7 @@ cdef class ParserEngine:
         use glib instead (or create windows equivalents), in which case I'd
         greatly appreciate you sending me a patch.
         """
+        LOGGER.debug("call def openLib")
         cdef char *libFilename
         cdef char *err
         cdef void *handle
@@ -239,7 +244,7 @@ cdef class ParserEngine:
         parser = self.parser
 
         if parser.verbose:
-            print("Opening library {}".format(self.libFilename_py))
+            LOGGER.debug("Opening library {}".format(self.libFilename_py))
 
         handle = bisondynlib_open(libFilename)
         if handle == NULL:
@@ -248,24 +253,25 @@ cdef class ParserEngine:
 
         err = bisondynlib_err()
         if err:
-            print('ParserEngine.openLib: error "{}"\n'.format(err))
+            LOGGER.error('ParserEngine.openLib: error "{}"\n'.format(err))
             return
 
         # extract symbols
         self.libHash = bisondynlib_lookup_hash(handle)
 
         if parser.verbose:
-            print("Successfully loaded library")
+            LOGGER.info("Successfully loaded library")
 
     def generate_exception_handler(self):
-        s = ''
-        s += '          {\n'
-        s += '            PyObject* obj = PyErr_Occurred();\n'
-        s += '            if (obj) {\n'
-        s += '              //yyerror(&yylloc, "exception raised");\n'
-        s += '              YYERROR;\n'
-        s += '            }\n'
-        s += '          }\n'
+        LOGGER.debug("call generate_exception_handler")
+        s = '''
+            {
+                PyObject* obj = PyErr_Occurred();
+                if (obj) {
+                      // yyerror(&yylloc, "exception raised");
+                      YYERROR;
+                }
+            }'''
         return s
 
     def buildLib(self):
@@ -279,7 +285,7 @@ cdef class ParserEngine:
             3. Compiling bison/lex files to C
             4. Compiling the C files, and link into a dynamic lib
         """
-
+        LOGGER.debug("call def buildLib")
         # -------------------------------------------------
         # rip the pertinent grammar specs from parser class
         parser = self.parser
@@ -311,7 +317,7 @@ cdef class ParserEngine:
             os.unlink(buildDirectory + parser.bisonFile)
 
         if parser.verbose:
-            print("generating bison file: {}".format(buildDirectory + parser.bisonFile))
+            LOGGER.debug("generating bison file: {}".format(buildDirectory + parser.bisonFile))
 
         f = open(buildDirectory + parser.bisonFile, "w")
         write = f.write
@@ -630,7 +636,7 @@ cdef class ParserEngine:
         bisonCmd = parser.bisonCmd + [buildDirectory + parser.bisonFile]
 
         if parser.verbose:
-            print("bison cmd: {}".format(' '.join(bisonCmd)))
+            LOGGER.info("bison cmd: {}".format(' '.join(bisonCmd)))
 
         # env.spawn(bisonCmd)
         proc = subprocess.Popen(' '.join(bisonCmd), stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
@@ -639,13 +645,13 @@ cdef class ParserEngine:
             raise Exception(err)
 
         if parser.verbose:
-            print("CMD Output: {}".format(out))
+            LOGGER.info("CMD Output: {}".format(out))
 
         if parser.verbose:
-            print("renaming bison output files")
-            print("{} => {}{}".format(parser.bisonCFile, buildDirectory,
+            LOGGER.info("renaming bison output files")
+            LOGGER.info("{} => {}{}".format(parser.bisonCFile, buildDirectory,
                                       parser.bisonCFile1))
-            print("{} => {}{}".format(parser.bisonHFile, buildDirectory,
+            LOGGER.info("{} => {}{}".format(parser.bisonHFile, buildDirectory,
                                       parser.bisonHFile1))
 
         if os.path.isfile(buildDirectory + parser.bisonCFile1):
@@ -668,7 +674,7 @@ cdef class ParserEngine:
         flexCmd = parser.flexCmd + [buildDirectory + parser.flexFile]
 
         if parser.verbose:
-            print("flex cmd: {}".format(' '.join(flexCmd)))
+            LOGGER.info("flex cmd: {}".format(' '.join(flexCmd)))
 
         # env.spawn(flexCmd)
         proc = subprocess.Popen(' '.join(flexCmd), stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
@@ -677,12 +683,12 @@ cdef class ParserEngine:
             raise Exception(err)
 
         if parser.verbose:
-            print("CMD Output: {}".format(out))
+            LOGGER.info("CMD Output: {}".format(out))
 
         if os.path.isfile(buildDirectory + parser.flexCFile1):
             os.unlink(buildDirectory + parser.flexCFile1)
         if parser.verbose:
-            print("{} => {}{}".format(parser.flexCFile, buildDirectory, parser.flexCFile1))
+            LOGGER.info("{} => {}{}".format(parser.flexCFile, buildDirectory, parser.flexCFile1))
         shutil.copy(parser.flexCFile, buildDirectory + parser.flexCFile1)
         # delete 'local' file
         os.remove(parser.flexCFile)
@@ -690,7 +696,7 @@ cdef class ParserEngine:
         if os.path.isfile(buildDirectory + parser.flexHFile1):
             os.unlink(buildDirectory + parser.flexHFile1)
         if parser.verbose:
-            print("{} => {}{}".format(parser.flexHFile, buildDirectory, parser.flexHFile1))
+            LOGGER.info("{} => {}{}".format(parser.flexHFile, buildDirectory, parser.flexHFile1))
         shutil.copy(parser.flexHFile, buildDirectory + parser.flexHFile1)
         # delete 'local' file
         # os.remove(parser.flexHFile)
@@ -703,7 +709,7 @@ cdef class ParserEngine:
                       + machinery.EXTENSION_SUFFIXES[0]
 
         if parser.verbose:
-            print("Compiling: {}".format(libFileName))
+            LOGGER.info("Compiling: {}".format(libFileName))
         # -----------------------------------------
         # Now compile the files into a shared lib
         objs = env.compile([buildDirectory + parser.bisonCFile1,
@@ -719,7 +725,7 @@ cdef class ParserEngine:
             os.rename(libFileName, libFileName+".bak")
 
         if parser.verbose:
-            print("linking: {} => {}".format(', '.join(objs), libFileName))
+            LOGGER.info("linking: {} => {}".format(', '.join(objs), libFileName))
 
         if sys.platform.startswith("darwin"):
             # on OSX, ld throws undefined symbol for shared library references
@@ -756,27 +762,29 @@ cdef class ParserEngine:
                 try:
                     os.remove(f)
                 except:
-                    print("Warning: failed to delete temporary file {}".format(f))
+                    LOGGER.warning("failed to delete temporary file {}".format(f))
 
             if parser.verbose:
-                print("Deleting temporary bison output files:")
+                LOGGER.info("Deleting temporary bison output files:")
 
             for f in [parser.bisonCFile, parser.bisonHFile, parser.flexCFile, "tmp.output"]:
                 if os.path.isfile(f):
                     if parser.verbose:
-                        print('rm {}'.format(f))
+                        LOGGER.info('rm {}'.format(f))
                     os.remove(f)
 
     def closeLib(self):
         """
         Does the necessary cleanups and closes the parser library
         """
+        LOGGER.debug("call def closeLib")
         bisondynlib_close(self.libHandle)
 
     def runEngine(self, debug=0):
         """
         Runs the binary parser engine, as loaded from the lib
         """
+        LOGGER.debug("call def runEngine")
         cdef void *handle
 
         cdef void *cbvoid
@@ -799,6 +807,7 @@ cdef class ParserEngine:
         """
         Clean up and bail
         """
+        LOGGER.debug("call __del__")
         self.closeLib()
 
 
