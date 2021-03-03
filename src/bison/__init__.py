@@ -161,6 +161,37 @@ class BisonParser(object):
 
     lasterror = None
 
+    logging_level: int = logging.WARNING
+    logging_config = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'formatters': {
+            'standard': {
+                'format': '%(asctime)s [%(levelname)s] %(name)s: %(message)s'
+            },
+        },
+        'handlers': {
+            'default': {
+                'level': 'DEBUG',
+                'formatter': 'standard',
+                'class': 'logging.StreamHandler',
+                'stream': 'ext://sys.stdout',  # Default is stderr
+            },
+        },
+        'loggers': {
+            'bison': {  # root logger
+                'handlers': ['default'],
+                'level': logging_level,
+                'propagate': True
+            },
+            '__main__': {  # if __name__ == '__main__'
+                'handlers': ['default'],
+                'level': logging_level,
+                'propagate': False
+            },
+        }
+    }
+
     def __init__(self, buildDirectory=None, **kw):
         """
         Abstract representation of parser
@@ -178,7 +209,7 @@ class BisonParser(object):
             - defaultNodeClass - the class to use for creating parse nodes, default
               is self.defaultNodeClass (in this base class, BisonNode)
         """
-        self.debug = kw.get('debug', 0)
+        self.debug = kw.get('debug', False)
 
         if buildDirectory is not None:
             self.buildDirectory = buildDirectory
@@ -213,9 +244,11 @@ class BisonParser(object):
             self.defaultNodeClass = nodeClass
 
         self.verbose = kw.get('verbose', False)
-        self.config_logger()
         if self.verbose:
             self.bisonCmd.append('--verbose')
+            self.logging_level = logging.INFO
+        if self.debug:
+            self.logging_level = logging.DEBUG
 
         self.interactive = kw.get('interactive', False)
         self.debugSymbols = kw.get('debugSymbols', False)
@@ -234,8 +267,17 @@ class BisonParser(object):
 
         self.BisonSyntaxError = BisonSyntaxError
 
+        # setup logging with dict config
+        self._set_logging_level()
+        logging.config.dictConfig(self.logging_config)
+
     def __getitem__(self, idx):
         return self.last[idx]
+
+    def _set_logging_level(self):
+        """Sets logging level of all loggers with `logging_level`."""
+        for logger in self.logging_config["loggers"]:
+            self.logging_config["loggers"][logger]["level"] = self.logging_level
 
     def _handle(self, targetname, option, names, values):
         """
@@ -275,41 +317,6 @@ class BisonParser(object):
 
         # assumedly the last thing parsed is at the top of the tree
         return self.last
-
-    def config_logger(self):
-        if self.verbose:
-            level = 'DEBUG'
-        else:
-            level = 'INFO'
-        logging.config.dictConfig({
-            'version': 1,
-            'disable_existing_loggers': False,
-            'formatters': {
-                'standard': {
-                    'format': '%(asctime)s [%(levelname)s] %(name)s: %(message)s'
-                },
-            },
-            'handlers': {
-                'default': {
-                    'level': 'DEBUG',
-                    'formatter': 'standard',
-                    'class': 'logging.StreamHandler',
-                    'stream': 'ext://sys.stdout',  # Default is stderr
-                },
-            },
-            'loggers': {
-                'bison': {  # root logger
-                    'handlers': ['default'],
-                    'level': level,
-                    'propagate': True
-                },
-                '__main__': {  # if __name__ == '__main__'
-                    'handlers': ['default'],
-                    'level': level,
-                    'propagate': False
-                },
-            }
-        })
 
     def handle_timeout(self, signum, frame):
         raise TimeoutError("Computation exceeded timeout limit.")
