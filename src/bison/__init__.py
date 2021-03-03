@@ -315,7 +315,7 @@ class BisonParser(object):
             self.last = cls(target=targetname, option=option, names=names,
                             values=values)
 
-        # assumedly the last thing parsed is at the top of the tree
+        # assumed the last thing parsed is at the top of the tree
         return self.last
 
     def handle_timeout(self, signum, frame):
@@ -366,9 +366,7 @@ class BisonParser(object):
 
         read = kw.get('read', self.read)
 
-        debug = kw.get('debug', False)
-
-        # back up existing attribs
+        # back up existing attributes
         oldfile = self.file
         oldread = self.read
 
