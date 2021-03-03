@@ -1834,7 +1834,7 @@ int check_type()
 # -----------------------------------------
 
 
-def main(*args):
+def main():
     """
     Unit-testing func
     """
