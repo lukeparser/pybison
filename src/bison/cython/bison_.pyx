@@ -244,7 +244,7 @@ cdef class ParserEngine:
         parser = self.parser
 
         if parser.verbose:
-            LOGGER.debug("Opening library {}".format(self.libFilename_py))
+            LOGGER.info("Opening library {}".format(self.libFilename_py))
 
         handle = bisondynlib_open(libFilename)
         if handle == NULL:
@@ -623,11 +623,11 @@ cdef class ParserEngine:
         ]
 
         if parser.verbose:
-            print("Included files needed: {}".format(";".join(included_files)))
+            LOGGER.info("Included files needed: {}".format(";".join(included_files)))
 
         for inc_f in included_files:
             if parser.verbose:
-                print("Copying file {} => {}".format(inc_f, buildDirectory + inc_f))
+                LOGGER.info("Copying file {} => {}".format(inc_f, buildDirectory + inc_f))
             shutil.copy(inc_f, buildDirectory + inc_f)
 
         # --------------------------------- #
