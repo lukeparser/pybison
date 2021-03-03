@@ -305,8 +305,8 @@ class BisonParser(object):
                 self.last = e
                 return e
 
-            # if self.verbose:
-            #    print("handler for {} returned {}".format(targetname, repr(self.last)))
+            if self.verbose:
+                LOGGER.info("handler for {} returned {}".format(targetname, repr(self.last)))
         else:
             if self.verbose:
                 LOGGER.info("no handler for {}, using default".format(targetname))
@@ -322,6 +322,9 @@ class BisonParser(object):
         raise TimeoutError("Computation exceeded timeout limit.")
 
     def reset(self):
+        """Reset engine."""
+        if self.verbose:
+            LOGGER.info("Reset engine '{}'.".format(self.bisonEngineLibName))
         self.marker = 0
         self.engine.reset()
 
