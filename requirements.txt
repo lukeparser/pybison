@@ -1,2 +1,4 @@
 six
 Cython
+pytest
+pytest-cov
