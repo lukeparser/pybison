@@ -1,7 +1,3 @@
-[tool.cibuildwheel]
-# Skip 32-bit builds
-skip = ["*-win32", "*-manylinux_i686", "pp*"]
-
 [tool.cibuildwheel.linux]
 before-all = "yum install -y atlas-devel && python3 -m pip install -U six Cython"
 
