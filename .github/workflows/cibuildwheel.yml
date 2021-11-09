@@ -26,10 +26,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up Python ${{ matrix.python-version }}
+      - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version:  ${{ matrix.python-version }}
+          python-version:  3.x
 
       - name: Set up QEMU
         if: matrix.cibw_archs == 'aarch64'
