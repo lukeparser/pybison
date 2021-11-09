@@ -4,7 +4,7 @@ skip = ["pp*", "cp310-*", "*musllinux*"]
 
 [tool.cibuildwheel.linux]
 before-all = "yum install -y atlas-devel && python3 -m pip install -U pip && python3 -m pip install -r requirements.txt"
-archs = ["x86_64", "aarch64"]
+archs = ["x86_64"]
 
 [tool.cibuildwheel.macos]
 before-all = "python3 -m pip install -U pip && python3 -m pip install -r requirements.txt"
