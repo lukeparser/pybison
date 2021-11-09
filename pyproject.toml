@@ -1,8 +1,15 @@
+[tool.cibuildwheel]
+build = ["cp36-*", "cp37-*", "cp38-*", "cp39-*"]
+skip = ["pp*", "cp310-*", "*musllinux*"]
+
 [tool.cibuildwheel.linux]
-before-all = "yum install -y atlas-devel && python3 -m pip install -U six Cython"
+before-all = "yum install -y atlas-devel && python3 -m pip install -U pip && python3 -m pip install -r requirements.txt"
+archs = ["x86_64", "aarch64"]
 
 [tool.cibuildwheel.macos]
-before-all = "python3 -m pip install -U pip && python3 -m pip install -r requirements.txt && python3 -m pip install wheel setuptools"
+before-all = "python3 -m pip install -U pip && python3 -m pip install -r requirements.txt"
+archs = ["x86_64", "arm64"]
 
 [tool.cibuildwheel.windows]
-before-all = "python3 -m pip install -U pip && python3 -m pip install -r requirements.txt && python3 -m pip install wheel setuptools"
+before-all = "python3 -m pip install -U pip && python3 -m pip install -r requirements.txt"
+archs = ["AMD64"]
