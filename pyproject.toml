@@ -1,0 +1,2 @@
+[tool.cibuildwheel]
+skip = ["*_i686", "*-win32", "pp*", "*-musllinux_*"]
