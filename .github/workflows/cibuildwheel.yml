@@ -18,6 +18,7 @@ jobs:
       matrix:
         os: [ubuntu-20.04, windows-2019, macos-10.15]
         cibw_archs: ["auto"]
+        cibw_skip: ["*_i686", "*-win32", "pp*", "*-musllinux_*"]
         include:
           - os: ubuntu-20.04
             cibw_archs: "aarch64"
