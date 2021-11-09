@@ -7,7 +7,50 @@ on:
   workflow_dispatch:
 
 jobs:
-  build_wheels:
+  auto-tag:
+    name: Add release tag
+    runs-on: ubuntu-latest
+    outputs:
+      sha: ${{ steps.autotag.outputs.tagsha }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Autoadd release Tags
+        uses: jaliborc/action-general-autotag@1.0.1
+        id: autotag
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          source_file: "src/bison/__init__.py"
+          # this is the semver regex https://semver.org/#is-there-a-suggested-regular-expression-regex-to-check-a-semver-string
+          # with an capture group (around everything), but all other groups are non capturing
+          # double escape's where necessary
+          extraction_regex: "__version__\\s*=\\s*[\\'\"]((?:0|[1-9]\\d*)\\.(?:0|[1-9]\\d*)\\.(?:0|[1-9]\\d*)(?:-(?:(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+(?:[0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?)[\\'\"]"
+          tag_message: "Release"
+          tag_format: "v{version}"
+      - name: Show version
+        if: steps.autotag.outputs.tagsha
+        run: echo ${{ steps.autotag.outputs.tagsha }}
+
+  deploy:
+    name: Deploy to PyPI
+    runs-on: ubuntu-latest
+    needs: [auto-tag, build-wheels]
+    if: ${{ needs.auto-tag.outputs.sha }}
+    steps:
+      - name: Download all the dists
+        uses: actions/download-artifact@v2
+        with:
+          name: python-package-distributions
+          path: dist/
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@master
+        with:
+          skip_existing: true
+          user: __token__
+          password: ${{ secrets.PYPI_PASSWORD }}
+
+
+  build-wheels:
     needs: [build_sdist]
     name: Build wheels on ${{ matrix.os }} (${{ matrix.cibw_archs }})
     runs-on: ${{ matrix.os }}
@@ -70,6 +113,7 @@ jobs:
   build_sdist:
     name: Build source distribution
     runs-on: ubuntu-latest
+    needs: [auto-tag]
     steps:
       - uses: actions/checkout@v2
 
