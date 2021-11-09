@@ -9,10 +9,11 @@ on:
 jobs:
   build_wheels:
     needs: [build_sdist]
-    name: ${{ matrix.os }} (${{ matrix.cibw_archs }})
+    name: Build wheels on ${{ matrix.os }} (${{ matrix.cibw_archs }})
     runs-on: ${{ matrix.os }}
     env:
       CIBW_ARCHS_MACOS: "x86_64 arm64"
+      CIBW_SKIP: "*_i686 *-win32 pp* *-musllinux_*"
     strategy:
       fail-fast: false
       matrix:
