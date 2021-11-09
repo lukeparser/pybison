@@ -1,0 +1,12 @@
+[tool.cibuildwheel]
+# Skip 32-bit builds
+skip = ["*-win32", "*-manylinux_i686", "pp*"]
+
+[tool.cibuildwheel.linux]
+before-all = "yum install -y atlas-devel && python3 -m pip install -U six Cython"
+
+[tool.cibuildwheel.macos]
+before-all = "python3 -m pip install -U pip && python3 -m pip install -r requirements.txt && python3 -m pip install wheel setuptools"
+
+[tool.cibuildwheel.windows]
+before-all = "python3 -m pip install -U pip && python3 -m pip install -r requirements.txt && python3 -m pip install wheel setuptools"
