@@ -1,6 +1,9 @@
 name: Build CI wheels
 
 on:
+  push:
+    branches:
+      - dev-cibw
   workflow_dispatch:
 
 jobs:
