@@ -8,7 +8,8 @@ on:
 
 jobs:
   build_wheels:
-    name: Build wheels on ${{ matrix.os }}
+    needs: [build_sdist]
+    name: ${{ matrix.os }} ${{ matrix.cibw_archs }} py${{ matrix.python-version }} wheel
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
