@@ -89,7 +89,7 @@ def find_meta(meta):
 if sys.platform == 'win32':
     libs = []
     extra_link_args = ['/debug', '/Zi']
-    bisondynlibModule = str(Path("c") / "bisondynlib-win32.c")
+    bisondynlibModule = str(Path("src") / "bison" / "c" / "bisondynlib-win32.c")
     extra_compile_args = ['/Od', '/Zi', '-D__builtin_expect(a,b)=(a)']  # , '/DCYTHON_TRACE=1']
     for root, dirs, files in os.walk(str(Path("src") / "bison" / "winflexbison")):
         PACKAGE_DATA.extend(join(root.replace(str(Path("src") / "bison") + os.path.sep, ''), f) for f in files)
@@ -98,13 +98,13 @@ elif sys.platform.startswith('linux'):
     libs = ['dl']
     extra_link_args = []
     extra_compile_args = []  # ['-DCYTHON_TRACE=1']
-    bisondynlibModule = str(Path("c") / "bisondynlib-linux.c")
+    bisondynlibModule = str(Path("src") / "bison" / "c" / "bisondynlib-linux.c")
 
 elif sys.platform.startswith('darwin'):
     libs = ['dl']
     extra_link_args = []
     extra_compile_args = []
-    bisondynlibModule = str(Path("c") / "bisondynlib-linux.c")
+    bisondynlibModule = str(Path("src") / "bison" / "c" / "bisondynlib-linux.c")
     from distutils import sysconfig
     v: dict = sysconfig.get_config_vars()
     v['LDSHARED'] = v['LDSHARED'].replace('-bundle', '-dynamiclib')
@@ -119,8 +119,8 @@ PACKAGE_DATA.append(str(Path("cython") / "bison_.c"))
 
 # cython
 SOURCES = [
-    str(Path("cython") / "bison_.pyx"),
-    str(Path("c") / "bison_callback.c"),
+    str(Path("src") / "bison" / "cython" / "bison_.pyx"),
+    str(Path("src") / "bison" / "c" / "bison_callback.c"),
     bisondynlibModule
 ]
 
