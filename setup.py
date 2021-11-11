@@ -88,25 +88,26 @@ def find_meta(meta):
     raise RuntimeError("Unable to find __{meta}__ string.".format(meta=meta))
 
 
+extra_compile_args = []
+extra_link_args = []
+define_macros = []
+
 # package_data depending on system
 if sys.platform == 'win32':
     libs = []
-    extra_link_args = ['/debug', '/Zi']
+    extra_link_args += ['/debug', '/Zi']
     bisondynlibModule = str(Path("src") / "bison" / "c" / "bisondynlib-win32.c")
-    extra_compile_args = ['/Od', '/Zi', '-D__builtin_expect(a,b)=(a)']  # , '/DCYTHON_TRACE=1']
+    extra_compile_args += ['/Od', '/Zi', '-D__builtin_expect(a,b)=(a)']  # , '/DCYTHON_TRACE=1']
     for root, dirs, files in os.walk(str(Path("src") / "bison" / "winflexbison")):
         PACKAGE_DATA.extend(join(root.replace(str(Path("src") / "bison") + os.path.sep, ''), f) for f in files)
 
 elif sys.platform.startswith('linux'):
     libs = ['dl']
-    extra_link_args = []
-    extra_compile_args = []  # ['-DCYTHON_TRACE=1']
+    # extra_compile_args += ['-DCYTHON_TRACE=1']
     bisondynlibModule = str(Path("src") / "bison" / "c" / "bisondynlib-linux.c")
 
 elif sys.platform.startswith('darwin'):
     libs = ['dl']
-    extra_link_args = []
-    extra_compile_args = []
     bisondynlibModule = str(Path("src") / "bison" / "c" / "bisondynlib-linux.c")
     from distutils import sysconfig
     v: dict = sysconfig.get_config_vars()
@@ -121,10 +122,6 @@ SOURCES = [
     str(Path("src") / "bison" / "c" / "bison_callback.c"),
     bisondynlibModule
 ]
-
-extra_compile_args = []
-extra_link_args = []
-define_macros = []
 
 # compile with cython if available
 try:
@@ -169,7 +166,6 @@ if __name__ == "__main__":
         classifiers=CLASSIFIERS,
         install_requires=INSTALL_REQUIRES,
         setup_requires=SETUP_REQUIRES,
-        # from old setup
         cmdclass=cmd_class,
         ext_modules=ext_modules,
         scripts=SCRIPTS,
