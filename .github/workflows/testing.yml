@@ -1,4 +1,4 @@
-name: Build CI wheels
+name: Test build wheels
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
 
 jobs:
   call-build-step:
-    uses: lukeparser/pybison/.github/workflows/cibuildwheel.yml@master
+    uses: lukeparser/pybison/.github/workflows/cibuildwheel.yml@dev-setup
     with:
       fail-fast: false
       deploy: false
