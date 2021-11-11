@@ -9,7 +9,7 @@ on:
 
 jobs:
   call-build-step:
-    uses: ./.github/workflows/cibuildwheel.yml@latest
+    uses: lukeparser/pybison/.github/workflows/cibuildwheel.yml@latest
     with:
       fail-fast: false
       deploy: false
