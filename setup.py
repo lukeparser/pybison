@@ -114,12 +114,8 @@ else:
 
 PACKAGE_DATA.append(str(Path("c") / "bisondynlib-linux.c"))
 PACKAGE_DATA.append(str(Path("c") / "bisondynlib-win32.c"))
-
-PY_MODULES = set()
-for file_root, dir_names, filenames in os.walk('src'):
-    for filename in fnmatch.filter(filenames, '*.py'):
-        PY_MODULES |= {file_root}
-        break
+PACKAGE_DATA.append(str(Path("cython") / "bison_.pyx"))
+PACKAGE_DATA.append(str(Path("cython") / "bison_.c"))
 
 # cython
 SOURCES = [
@@ -178,7 +174,6 @@ if __name__ == "__main__":
         # from old setup
         cmdclass=cmd_class,
         ext_modules=ext_modules,
-        py_modules=PY_MODULES,
         scripts=SCRIPTS,
         package_dir={"": "src"},
         package_data={'bison': PACKAGE_DATA},
