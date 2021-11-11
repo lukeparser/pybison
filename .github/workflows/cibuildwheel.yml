@@ -5,6 +5,19 @@ on:
     branches:
       - master
 
+  workflow_call:
+    inputs:
+      fail-fast:
+        description: "Fail fast setting for building wheels."
+        default: true
+        required: false
+        type: boolean
+      deploy:
+        description: "Allow deployment of build wheels."
+        default: true
+        required: false
+        type: boolean
+
 jobs:
   auto-tag:
     name: Add release tag
@@ -34,7 +47,7 @@ jobs:
     name: Deploy to PyPI
     runs-on: ubuntu-latest
     needs: [auto-tag, build-wheels]
-    if: ${{ needs.auto-tag.outputs.sha }}
+    if: ${{ needs.auto-tag.outputs.sha && inputs.deploy }}
     steps:
       - name: Download all the dists
         uses: actions/download-artifact@v2
@@ -57,7 +70,7 @@ jobs:
       CIBW_ARCHS_MACOS: "x86_64 arm64"
       CIBW_SKIP: "*_i686 *-win32 pp* *-musllinux_*"
     strategy:
-      fail-fast: true
+      fail-fast: ${{ inputs.fail-fast }}
       matrix:
         os: [ubuntu-20.04, windows-2019, macos-10.15]
         cibw_archs: ["auto"]

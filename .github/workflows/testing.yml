@@ -1,0 +1,15 @@
+name: Build CI wheels
+
+on:
+  push:
+    branches:
+      - '*'
+      - '!master'
+      - '!main'
+
+jobs:
+  call-build-step:
+    uses: ./.github/workflows/cibuildwheel@latest
+    with:
+      fail-fast: false
+      deploy: false
