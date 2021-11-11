@@ -8,7 +8,7 @@ on:
       - '!main'
 
 jobs:
-  call-build-step:
+  CIBW:
     uses: lukeparser/pybison/.github/workflows/cibuildwheel.yml@dev-setup
     with:
       fail-fast: false
