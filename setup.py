@@ -5,7 +5,6 @@ import codecs
 import os
 import re
 import sys
-import fnmatch
 from pathlib import Path
 from os.path import join
 from setuptools import find_packages, setup
