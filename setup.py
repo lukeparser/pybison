@@ -6,6 +6,7 @@ import os
 import re
 import sys
 import fnmatch
+from pathlib import Path
 from os.path import join
 from setuptools import find_packages, setup
 
@@ -47,11 +48,11 @@ SETUP_REQUIRES = [
     # 'Cython'
 ]
 PACKAGE_DATA = [
-    "src/bison/c/bison_callback.c",
-    "src/bison/c/bison_callback.h",
-    "src/bison/c/bisondynlib.h"
+    str(Path("c") / "bison_callback.c"),
+    str(Path("c") / "bison_callback.h"),
+    str(Path("c") / "bisondynlib.h"),
 ]
-SCRIPTS = ['utils/bison2py']
+SCRIPTS = [str(Path("utils") / "bison2py")]
 
 
 ###################################################################
@@ -88,31 +89,31 @@ def find_meta(meta):
 if sys.platform == 'win32':
     libs = []
     extra_link_args = ['/debug', '/Zi']
-    bisondynlibModule = 'src/bison/c/bisondynlib-win32.c'
-    extra_compile_args = ['/Od', '/Zi', '-D__builtin_expect(a,b)=(a)', '/DCYTHON_TRACE=1']
-    for root, dirs, files in os.walk('src/bison/winflexbison'):
-        PACKAGE_DATA.extend(join(root.replace('src/bison/', ''), f) for f in files)
+    bisondynlibModule = str(Path("c") / "bisondynlib-win32.c")
+    extra_compile_args = ['/Od', '/Zi', '-D__builtin_expect(a,b)=(a)']  # , '/DCYTHON_TRACE=1']
+    for root, dirs, files in os.walk(str(Path("src") / "bison" / "winflexbison")):
+        PACKAGE_DATA.extend(join(root.replace(str(Path("src") / "bison") + os.path.sep, ''), f) for f in files)
 
 elif sys.platform.startswith('linux'):
     libs = ['dl']
     extra_link_args = []
     extra_compile_args = []  # ['-DCYTHON_TRACE=1']
-    bisondynlibModule = 'src/bison/c/bisondynlib-linux.c'
+    bisondynlibModule = str(Path("c") / "bisondynlib-linux.c")
 
 elif sys.platform.startswith('darwin'):
     libs = ['dl']
     extra_link_args = []
     extra_compile_args = []
-    bisondynlibModule = 'src/bison/c/bisondynlib-linux.c'
+    bisondynlibModule = str(Path("c") / "bisondynlib-linux.c")
     from distutils import sysconfig
-    v = sysconfig.get_config_vars()
+    v: dict = sysconfig.get_config_vars()
     v['LDSHARED'] = v['LDSHARED'].replace('-bundle', '-dynamiclib')
 
 else:
-    print('Sorry, your platform is not supported.')
-    sys.exit(1)
+    raise RuntimeError(f"Platform '{sys.platform}' is not supported.")
 
-PACKAGE_DATA.append(bisondynlibModule)
+PACKAGE_DATA.append(str(Path("c") / "bisondynlib-linux.c"))
+PACKAGE_DATA.append(str(Path("c") / "bisondynlib-win32.c"))
 
 PY_MODULES = set()
 for file_root, dir_names, filenames in os.walk('src'):
@@ -122,8 +123,8 @@ for file_root, dir_names, filenames in os.walk('src'):
 
 # cython
 SOURCES = [
-    'src/bison/cython/bison_.pyx',
-    'src/bison/c/bison_callback.c',
+    str(Path("cython") / "bison_.pyx"),
+    str(Path("c") / "bison_callback.c"),
     bisondynlibModule
 ]
 
@@ -139,7 +140,7 @@ try:
     cython_args = {'cython_compile_time_env': {"PY3": sys.version_info.major >= 3}}
 except ImportError:
     from setuptools import Extension
-    print('Cython does not appear to be installed.  Attempting to use pre-made cpp file...')
+    print('Cython does not appear to be installed. Attempting to use pre-made cpp file...')
     cmd_class = {}
     cython_args = {}
     SOURCES = [s.replace(".pyx", ".c") for s in SOURCES]
@@ -170,7 +171,6 @@ if __name__ == "__main__":
         long_description=read("README.md"),
         long_description_content_type="text/markdown",
         packages=PACKAGES,
-        package_dir={"": "src"},
         zip_safe=False,
         classifiers=CLASSIFIERS,
         install_requires=INSTALL_REQUIRES,
@@ -180,6 +180,7 @@ if __name__ == "__main__":
         ext_modules=ext_modules,
         py_modules=PY_MODULES,
         scripts=SCRIPTS,
+        package_dir={"": "src"},
         package_data={'bison': PACKAGE_DATA},
         python_requires='>=3.7',
     )
