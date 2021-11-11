@@ -51,6 +51,10 @@ PACKAGE_DATA = [
     str(Path("c") / "bison_callback.c"),
     str(Path("c") / "bison_callback.h"),
     str(Path("c") / "bisondynlib.h"),
+    str(Path("c") / "bisondynlib-linux.c"),
+    str(Path("c") / "bisondynlib-win32.c"),
+    str(Path("cython") / "bison_.pyx"),
+    str(Path("cython") / "bison_.c"),
 ]
 SCRIPTS = [str(Path("utils") / "bison2py")]
 
@@ -111,11 +115,6 @@ elif sys.platform.startswith('darwin'):
 
 else:
     raise RuntimeError(f"Platform '{sys.platform}' is not supported.")
-
-PACKAGE_DATA.append(str(Path("c") / "bisondynlib-linux.c"))
-PACKAGE_DATA.append(str(Path("c") / "bisondynlib-win32.c"))
-PACKAGE_DATA.append(str(Path("cython") / "bison_.pyx"))
-PACKAGE_DATA.append(str(Path("cython") / "bison_.c"))
 
 # cython
 SOURCES = [
