@@ -99,9 +99,9 @@ class BisonParser(object):
     bisonHFile = 'tmp.tab.h'
 
     # C output file from bison gets renamed to this.
-    bisonCFile1 = bisonCFile  # 'tmp.bison.c'
+    bisonCFile1 = bisonCFile  # 'tmp.tab.c'
     # Bison-generated header file gets renamed to this.
-    bisonHFile1 = bisonHFile  # 'tokens.h'
+    bisonHFile1 = bisonHFile  # 'tmp.tab.h'
 
     # flex file names
     flexFile = 'tmp.l'
