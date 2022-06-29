@@ -205,7 +205,7 @@
     #include &lt;string.h&gt;
     #include "Python.h"
     #define YYSTYPE void *
-    #include "tokens.h"
+    #include "tmp.tab.h"
     extern void *py_parser;
     extern void (*py_input)(PyObject *parser, char *buf, int *result, int max_size);
     #define returntoken(tok) yylval = PyUnicode_FromString(strdup(yytext)); return (tok);
@@ -231,11 +231,11 @@
     just give them opaque pointers, and <b>void *</b> will suffice just fine.
     
     <b><pre>
-    #include "tokens.h"</pre></b>
+    #include "tmp.tab.h"</pre></b>
     
     When PyBison first instantiates any given parser class (and auto-generates, processes,
     compiles, links the grammar/scanner files into a dynamic lib), the bison program generates
-    a header file of token definitions, which gets renamed to <b>tokens.h</b>. Your scanner
+    a header file of token definitions, which gets renamed to <b>tmp.tab.h</b>. Your scanner
     script will need this file, so the token macros will be defined and resolved to the correct
     token numbers.
     
@@ -690,7 +690,7 @@
     #include &lt;string.h&gt;
     #include "Python.h"
     #define YYSTYPE void *
-    #include "tokens.h"
+    #include "tmp.tab.h"
     extern void *py_parser;
     extern void (*py_input)(PyObject *parser, char *buf, int *result, int max_size);
     #define returntoken(tok) yylval = PyUnicode_FromString(strdup(yytext)); return (tok);
@@ -775,7 +775,7 @@
     #include &lt;string.h&gt;
     #include "Python.h"
     #define YYSTYPE void *
-    #include "tokens.h"
+    #include "tmp.tab.h"
     extern void *py_parser;
     extern void (*py_input)(PyObject *parser, char *buf, int *result, int max_size);
     #define returntoken(tok) yylval = PyUnicode_FromString(strdup(yytext)); return (tok);
