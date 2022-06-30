@@ -112,7 +112,7 @@ elif sys.platform.startswith('linux'):
 elif sys.platform.startswith('darwin'):
     libs = ['dl']
     bisondynlibModule = str(Path("src") / "bison" / "c" / "bisondynlib-linux.c")
-    from distutils import sysconfig
+    import sysconfig
     v: dict = sysconfig.get_config_vars()
     v['LDSHARED'] = v['LDSHARED'].replace('-bundle', '-dynamiclib')
 
