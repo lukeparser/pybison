@@ -254,6 +254,11 @@ class BisonParser(object):
         if self.debug:
             self.logging_level = logging.DEBUG
 
+        # setup logging with dict config
+        self._set_logging_level()
+        logging.config.dictConfig(self.logging_config)
+
+
         self.interactive = kw.get('interactive', False)
         self.debugSymbols = kw.get('debugSymbols', False)
 
@@ -270,10 +275,6 @@ class BisonParser(object):
         self.engine = ParserEngine(self)
 
         self.BisonSyntaxError = BisonSyntaxError
-
-        # setup logging with dict config
-        self._set_logging_level()
-        logging.config.dictConfig(self.logging_config)
 
     def __getitem__(self, idx):
         return self.last[idx]
