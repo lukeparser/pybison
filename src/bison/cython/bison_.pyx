@@ -594,9 +594,6 @@ cdef class ParserEngine:
 
         # -----------------------------------------------
         # now generate the lex script
-        if os.path.isfile(buildDirectory + parser.flexFile):
-            os.unlink(buildDirectory + parser.flexFile)
-
         f = open(buildDirectory + parser.flexFile, 'w')
         f.write(textwrap.dedent(gLex))
         f.close()
@@ -639,7 +636,7 @@ cdef class ParserEngine:
             LOGGER.info("bison cmd: {}".format(' '.join(bisonCmd)))
 
         # env.spawn(bisonCmd)
-        proc = subprocess.Popen(' '.join(bisonCmd), stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+        proc = subprocess.Popen(' '.join(bisonCmd), stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True, cwd=buildDirectory)
         (out, err) = proc.communicate()
         if proc.returncode:
             LOGGER.error(out)
@@ -647,27 +644,8 @@ cdef class ParserEngine:
 
         if parser.verbose:
             LOGGER.info("CMD Output: {}".format(out))
-
-        if parser.verbose:
-            LOGGER.info("renaming bison output files")
-            LOGGER.info("{} => {}{}".format(parser.bisonCFile, buildDirectory,
-                                      parser.bisonCFile1))
-            LOGGER.info("{} => {}{}".format(parser.bisonHFile, buildDirectory,
-                                      parser.bisonHFile1))
-
-        if os.path.isfile(buildDirectory + parser.bisonCFile1):
-            os.unlink(buildDirectory + parser.bisonCFile1)
-
-        shutil.copy(parser.bisonCFile, buildDirectory + parser.bisonCFile1)
-        # delete 'local' file
-        os.remove(parser.bisonCFile)
-
-        if os.path.isfile(buildDirectory + parser.bisonHFile1):
-            os.unlink(buildDirectory + parser.bisonHFile1)
-
-        shutil.copy(parser.bisonHFile, buildDirectory + parser.bisonHFile1)
-        # delete 'local' file
-        os.remove(parser.bisonHFile)
+            LOGGER.info("bison C file: {}{}".format(buildDirectory, parser.bisonCFile1))
+            LOGGER.info("bison H file: {}{}".format(buildDirectory, parser.bisonHFile1))
 
         # -----------------------------------------
         # Now run lex on the lex file
@@ -678,30 +656,15 @@ cdef class ParserEngine:
             LOGGER.info("flex cmd: {}".format(' '.join(flexCmd)))
 
         # env.spawn(flexCmd)
-        proc = subprocess.Popen(' '.join(flexCmd), stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+        proc = subprocess.Popen(' '.join(flexCmd), stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True, cwd=buildDirectory)
         (out, err) = proc.communicate()
         if proc.returncode:
             raise Exception(err)
 
         if parser.verbose:
             LOGGER.info("CMD Output: {}".format(out))
-
-        if os.path.isfile(buildDirectory + parser.flexCFile1):
-            os.unlink(buildDirectory + parser.flexCFile1)
-        if parser.verbose:
-            LOGGER.info("{} => {}{}".format(parser.flexCFile, buildDirectory, parser.flexCFile1))
-        shutil.copy(parser.flexCFile, buildDirectory + parser.flexCFile1)
-        # delete 'local' file
-        os.remove(parser.flexCFile)
-
-        if os.path.isfile(buildDirectory + parser.flexHFile1):
-            os.unlink(buildDirectory + parser.flexHFile1)
-        if parser.verbose:
-            LOGGER.info("{} => {}{}".format(parser.flexHFile, buildDirectory, parser.flexHFile1))
-        shutil.copy(parser.flexHFile, buildDirectory + parser.flexHFile1)
-        # delete 'local' file
-        # os.remove(parser.flexHFile)
-
+            LOGGER.info("flex C file: {}{}".format(buildDirectory, parser.flexCFile1))
+            LOGGER.info("flex H file: {}{}".format(buildDirectory, parser.flexHFile1))
 
         if parser._buildOnlyCFiles:
             return
@@ -711,10 +674,16 @@ cdef class ParserEngine:
 
         if parser.verbose:
             LOGGER.info("Compiling: {}".format(libFileName))
+
         # -----------------------------------------
         # Now compile the files into a shared lib
-        objs = env.compile([buildDirectory + parser.bisonCFile1,
-                            buildDirectory + parser.flexCFile1],
+
+        # cd to buildDirectory
+        wd = os.getcwd()
+        os.chdir(buildDirectory)
+
+        objs = env.compile([parser.bisonCFile1,
+                            parser.flexCFile1],
                            extra_preargs=parser.cflags_pre,
                            extra_postargs=parser.cflags_post,
                            debug=parser.debugSymbols)
@@ -736,6 +705,9 @@ cdef class ParserEngine:
 
         # link 'em into a shared lib
         env.link_shared_object(objs, libFileName)
+
+        # move back to working directory
+        os.chdir(wd)
 
         #cdef char *incdir
         #incdir = PyString_AsString(get_python_inc())
