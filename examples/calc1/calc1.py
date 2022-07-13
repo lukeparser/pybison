@@ -18,6 +18,9 @@ class Parser(BisonParser):
     debugSymbols=True
     keepfiles = True
     import os
+
+    options = ["%define api.value.type {void *}"]
+
     #os.environ['LINK'] = '/debug'
     # ----------------------------------------------------------------
     # lexer tokens - these must match those in your lex script (below)
@@ -225,7 +228,6 @@ class Parser(BisonParser):
     #include <stdio.h>
     #include <string.h>
     #include "Python.h"
-    #define YYSTYPE void *
     #include "tmp.tab.h"
     extern void *py_parser;
     extern void (*py_input)(PyObject *parser, char *buf, int *result, int max_size);

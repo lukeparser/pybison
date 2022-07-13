@@ -13,6 +13,8 @@ class Parser(BisonParser):
     Implements the calculator parser. Grammar rules are defined in the method
     docstrings. Scanner rules are in the 'lexscript' attribute.
     """
+    options = ["%define api.value.type {void *}"]
+
     # ----------------------------------------------------------------
     # lexer tokens - these must match those in your lex script (below)
     # ----------------------------------------------------------------
@@ -106,7 +108,6 @@ class Parser(BisonParser):
     #include <stdio.h>
     #include <string.h>
     #include "Python.h"
-    #define YYSTYPE void *
     #include "tmp.tab.h"
     extern void *py_parser;
     extern void (*py_input)(PyObject *parser, char *buf, int *result,

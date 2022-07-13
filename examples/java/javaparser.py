@@ -26,6 +26,7 @@ class Parser(BisonParser):
     changes are detected, a new dynamic lib for the parser engine
     will be generated automatically.
     """
+    options = ["%define api.value.type {void *}"]
 
     # -------------------------------------------------
     # Default class to use for creating new parse nodes
@@ -1978,7 +1979,6 @@ Escunichar   \\u{H}{H}{H}{H}
 #include <stdio.h>
 #include <string.h>
 #include "Python.h"
-#define YYSTYPE void *
 #include "tmp.tab.h"
 extern void *py_parser;
 extern void (*py_input)(PyObject *parser, char *buf, int *result, int max_size);

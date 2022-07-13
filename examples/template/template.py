@@ -67,6 +67,9 @@ class Parser(BisonParser):
     Describe your parser here
     """
 
+    # bison options
+    options = ["%define api.value.type {void *}"]
+
     # basename of binary parser engine dynamic lib
     bisonEngineLibName = "template-engine"
 
@@ -121,7 +124,6 @@ class Parser(BisonParser):
 #include <stdio.h>
 #include <string.h>
 #include "Python.h"
-#define YYSTYPE void *
 #include "tmp.tab.h"
 //int yylineno = 0;
 int yywrap() { return(1); }
