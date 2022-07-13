@@ -10,6 +10,8 @@ class Parser(BisonParser):
     def __init__(self, **kwargs):
         self.bisonEngineLibName = self.__class__.__name__ + '_engine'
 
+        options = ["%define api.value.type {void *}"]
+
         tokens = [[x.strip() for x in y.split('=')]
                   for y in self.__doc__.split('\n')
                   if y.strip() != '']
