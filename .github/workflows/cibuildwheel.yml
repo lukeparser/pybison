@@ -1,5 +1,9 @@
 name: Build CI wheels
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.number }}-${{ github.event.type }}
+  cancel-in-progress: true
+
 on:
   workflow_call:
     inputs:
