@@ -68,7 +68,7 @@ jobs:
 
 
   build-wheels:
-    needs: [build_sdist]
+    needs: [build_sdist, testing]
     name: Build wheels on ${{ matrix.os }} (${{ matrix.cibw_archs }})
     runs-on: ${{ matrix.os }}
     env:
