@@ -145,6 +145,13 @@ jobs:
       - name: Build sdist
         run: python setup.py sdist
 
+      - name: Check source distribution
+        run: |
+          mkdir -p /tmp/installation_dir && cd /tmp/installation_dir
+          python -m pip install -v $( ls ${GITHUB_WORKSPACE}/dist/*.tar.gz )
+          cd /tmp && python -c "import bison"
+          cd ${GITHUB_WORKSPACE}
+
       - name: Store source distribution
         uses: actions/upload-artifact@v3
         with:
