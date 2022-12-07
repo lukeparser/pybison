@@ -80,10 +80,7 @@ class MinimalParser(BisonParser):
 
         """
 
-        buildDirectory = (
-            os.path.join(os.path.dirname(__file__), "compiled") + os.path.sep
-        )
-        super(MinimalParser, self).__init__(buildDirectory=buildDirectory, **kwargs)
+        super(MinimalParser, self).__init__(**kwargs)
 
     # ---------------------------------------------------------------
     # These methods are the python handlers for the bison targets.
