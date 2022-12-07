@@ -317,6 +317,7 @@ cdef class ParserEngine:
             os.unlink(buildDirectory + parser.bisonFile)
 
         if parser.verbose:
+            LOGGER.info("build directory: {}".format(buildDirectory))
             LOGGER.debug("generating bison file: {}".format(buildDirectory + parser.bisonFile))
 
         f = open(buildDirectory + parser.bisonFile, "w")
@@ -630,12 +631,11 @@ cdef class ParserEngine:
         # --------------------------------- #
         # Now run bison on the grammar file #
         # --------------------------------- #
-        bisonCmd = parser.bisonCmd + [buildDirectory + parser.bisonFile]
+        bisonCmd = parser.bisonCmd + [parser.bisonFile]
 
         if parser.verbose:
             LOGGER.info("bison cmd: {}".format(' '.join(bisonCmd)))
 
-        # env.spawn(bisonCmd)
         proc = subprocess.Popen(' '.join(bisonCmd), stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True, cwd=buildDirectory)
         (out, err) = proc.communicate()
         if proc.returncode:
@@ -649,13 +649,11 @@ cdef class ParserEngine:
 
         # -----------------------------------------
         # Now run lex on the lex file
-        #os.system('lex tmp.l')
-        flexCmd = parser.flexCmd + [buildDirectory + parser.flexFile]
+        flexCmd = parser.flexCmd + [parser.flexFile]
 
         if parser.verbose:
             LOGGER.info("flex cmd: {}".format(' '.join(flexCmd)))
 
-        # env.spawn(flexCmd)
         proc = subprocess.Popen(' '.join(flexCmd), stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True, cwd=buildDirectory)
         (out, err) = proc.communicate()
         if proc.returncode:
