@@ -1,3 +1,5 @@
+[![The pybison logo.](doc/pybison.svg)](https://github.com/lukeparser/pybison)
+
 # PyBison
 [![python versions](https://img.shields.io/pypi/pyversions/pybison)](https://pypi.org/project/pybison)
 [![wheel](https://img.shields.io/pypi/wheel/pybison)](https://pypi.org/project/pybison/#files)
