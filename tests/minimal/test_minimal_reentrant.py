@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 from bison import BisonParser
-import os
 
 
 class MinimalParser(BisonParser):
@@ -92,7 +91,8 @@ class MinimalParser(BisonParser):
     # verbatim to bison to build the parser engine library.
     # ---------------------------------------------------------------
 
-    def on_input(self, target, option, names, values):
+    @staticmethod
+    def on_input(target, option, names, values):
         """
         input : definition
               | definition NEWLINE input
@@ -100,7 +100,8 @@ class MinimalParser(BisonParser):
         append = "" if option == 0 else values[2]
         return f"{target.upper()}({values[0]})\n{append}"
 
-    def on_definition(self, target, option, names, values):
+    @staticmethod
+    def on_definition(target, option, names, values):
         """
         definition : STRING EQUAL NUMBER
         """
