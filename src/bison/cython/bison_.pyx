@@ -126,6 +126,9 @@ cdef class ParserEngine:
         """
         self.parser = parser
 
+        if parser.verbose:
+            distutils.log.set_verbosity(1)
+
         self.libFilename_py = parser.buildDirectory \
                               + parser.bisonEngineLibName \
                               + machinery.EXTENSION_SUFFIXES[0]
@@ -162,9 +165,6 @@ cdef class ParserEngine:
 
         parser = self.parser
         verbose = parser.verbose
-
-        if verbose:
-            distutils.log.set_verbosity(1)
 
         # search for a shared object
         filenames = self.possible_so(parser.buildDirectory)
