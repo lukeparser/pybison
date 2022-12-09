@@ -1,3 +1,7 @@
+tests/**/compiled/
+
+
+
 .idea
 
 *.sw[a-z]
