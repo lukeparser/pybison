@@ -134,7 +134,8 @@ cdef class ParserEngine:
                               + machinery.EXTENSION_SUFFIXES[0]
 
         self.parserHash = hashParserObject(self.parser)
-
+        if self.parser.debug:
+            LOGGER.debug(f"Parser hash: {self.parserHash}")
 
         if parser._buildOnlyCFiles:
             self.buildLib()
@@ -260,7 +261,7 @@ cdef class ParserEngine:
         self.libHash = bisondynlib_lookup_hash(handle)
 
         if parser.verbose:
-            LOGGER.info("Successfully loaded library")
+            LOGGER.info(f"Successfully loaded library ({self.libHash})")
 
     def generate_exception_handler(self):
         LOGGER.debug("call generate_exception_handler")
@@ -770,6 +771,7 @@ cdef class ParserEngine:
         try:
             ret = bisondynlib_run(handle, parser, cbvoid, invoid, debug)
         except Exception as e:
+            LOGGER.debug(e)
             ret=None
 
         return ret
