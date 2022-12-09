@@ -351,6 +351,7 @@ class BisonParser(object):
         """
         if self.verbose:
             LOGGER.info('Parser.run: calling engine')
+            LOGGER.info(f'Engine lib name: {self.bisonEngineLibName}')
 
         filename = None
         # grab keywords
