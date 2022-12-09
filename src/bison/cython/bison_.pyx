@@ -73,7 +73,7 @@ cdef extern from "../c/bisondynlib.h":
 import sys, os, hashlib, re, traceback
 import shutil
 import distutils.log
-import distutils.sysconfig
+import sysconfig
 import distutils.ccompiler
 import subprocess
 from pathlib import Path
@@ -604,11 +604,11 @@ cdef class ParserEngine:
             env = distutils.ccompiler.new_compiler(verbose=parser.verbose)
             env.initialize()
             env.add_library('python{v.major}{v.minor}'.format(v=sys.version_info))
-            env.add_include_dir(distutils.sysconfig.get_python_inc())
+            env.add_include_dir(sysconfig.get_path('include'))
             env.add_library_dir(os.path.join(sys.prefix, 'libs'))
         else:
             env = distutils.ccompiler.new_compiler(verbose=parser.verbose)
-            env.add_include_dir(distutils.sysconfig.get_python_inc())
+            env.add_include_dir(sysconfig.get_path('include'))
             env.define_macro('__declspec(x)')
 
         # gather possible include directories from lexscript
