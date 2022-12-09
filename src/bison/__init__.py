@@ -258,7 +258,6 @@ class BisonParser(object):
         self._set_logging_level()
         logging.config.dictConfig(self.logging_config)
 
-
         self.interactive = kw.get('interactive', False)
         self.debugSymbols = kw.get('debugSymbols', False)
 
@@ -317,8 +316,7 @@ class BisonParser(object):
                 LOGGER.info("no handler for {}, using default".format(targetname))
 
             cls = self.default_node_class
-            self.last = cls(target=targetname, option=option, names=names,
-                            values=values)
+            self.last = cls(target=targetname, option=option, names=names, values=values)
 
         # assumed the last thing parsed is at the top of the tree
         return self.last
