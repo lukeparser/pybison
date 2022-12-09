@@ -668,8 +668,7 @@ cdef class ParserEngine:
         if parser._buildOnlyCFiles:
             return
 
-        libFileName = buildDirectory + parser.bisonEngineLibName \
-                      + machinery.EXTENSION_SUFFIXES[0]
+        libFileName = buildDirectory + parser.bisonEngineLibName + machinery.EXTENSION_SUFFIXES[0]
 
         if parser.verbose:
             LOGGER.info("Compiling: {}".format(libFileName))
@@ -708,9 +707,6 @@ cdef class ParserEngine:
         # move back to working directory
         os.chdir(wd)
 
-        #cdef char *incdir
-        #incdir = PyString_AsString(get_python_inc())
-        #bisondynlib_build(self.libFilename_py, incdir)
 
         # --------------------------------------------
         # clean up, if we succeeded
@@ -813,7 +809,7 @@ def keyLines(meth):
 
 def hashParserObject(parser):
     """
-    Calculates an sha1 hex 'hash' of the lex script
+    Calculates a sha1 hex 'hash' of the lex script
     and grammar rules in a parser class instance.
 
     This is based on the raw text of the lex script attribute,
