@@ -10,22 +10,21 @@ class Parser(BisonParser):
     def __init__(self, **kwargs):
         self.bisonEngineLibName = self.__class__.__name__ + '_engine'
 
-        options = ["%define api.value.type {void *}"]
+        self.options = [
+            "%define api.pure full",
+            "%define api.push-pull push",
+            "%lex-param {yyscan_t scanner}",
+            "%parse-param {yyscan_t scanner}",
+            "%define api.value.type {void *}",
+        ]
 
         tokens = [[x.strip() for x in y.split('=')]
                   for y in self.__doc__.split('\n')
                   if y.strip() != '']
 
-        self.precedences = (
-        )
+        self.precedences = ()
 
-        attribs = dir(self)
-        handlers = [getattr(self, x) for x in attribs
-                    if x.startswith('on_')]
-        start = [x.__name__.replace('on_', '')
-                 for x in handlers if getattr(x, '__start__', False)]
-        assert len(start) == 1, 'needs exactly one start node, found {}!'.format(len(start))
-        self.start = start[0]
+        self.start = "value"
         return_location = kwargs.pop('return_location', False)
         if return_location:
             fmt = "{} {{ returntoken_loc({}); }}"
@@ -38,43 +37,33 @@ class Parser(BisonParser):
 
         self.tokens = sorted(list(set([x[1] for x in tokens if not x[1].startswith('_')])))
         self.lexscript = r"""
+%option reentrant bison-bridge bison-locations
 %{
 // Start node is: """ + self.start + r"""
-#include <stdio.h>
-#include <string.h>
-#include "Python.h"
 #include "tmp.tab.h"
-int yycolumn = 1;
-int yywrap() { return(1); }
+#include "Python.h"
+
 extern void *py_parser;
 extern void (*py_input)(PyObject *parser, char *buf, int *result, int max_size);
-#define returntoken(tok) yylval = PyUnicode_FromString(strdup(yytext)); return (tok);
-#define returntoken_loc(tok) yylval = PyTuple_Pack(3, PyUnicode_FromString(strdup(yytext)), PyTuple_Pack(2, PyLong_FromLong(yylloc.first_line), PyLong_FromLong(yylloc.first_column)), PyTuple_Pack(2, PyLong_FromLong(yylloc.last_line), PyLong_FromLong(yylloc.last_column))); return (tok);
-#define YY_INPUT(buf,result,max_size) { (*py_input)(py_parser, buf, &result, max_size); }
-#define YY_USER_ACTION yylloc.first_line = yylloc.last_line; \
-    yylloc.first_column = yylloc.last_column; \
-    for(int i = 0; yytext[i] != '\0'; i++) { \
-        if(yytext[i] == '\n') { \
-            yylloc.last_line++; \
-            yylloc.last_column = 0; \
-        } \
-        else { \
-            yylloc.last_column++; \
-        } \
-    }
+
+PyMODINIT_FUNC PyInit_JSONParser(void) { /* windows needs this function */ }
+
+#define returntoken(tok)                                       \
+        *yylval = (void*)PyUnicode_FromString(strdup(yytext)); \
+        return tok;
+#define YY_INPUT(buf,result,max_size) {                        \
+    (*py_input)(py_parser, buf, &result, max_size);            \
+}
 %}
 
 %%
 """ + lex_rules + """
 
 %%
+
+int yywrap(yyscan_t scanner) { return 1; }
     """
-        super(Parser, self).__init__(**kwargs)
-
-
-def start(method):
-    method.__start__ = True
-    return method
+        super().__init__(**kwargs)
 
 
 class JSONParser(Parser):
@@ -92,8 +81,8 @@ class JSONParser(Parser):
         [ \t\n]                             = _
     """
 
-    @start
-    def on_value(self, target, option, names, values):
+    @staticmethod
+    def on_value(target, option, names, values):
         """
         value
         : string
@@ -113,14 +102,16 @@ class JSONParser(Parser):
                     'null': None}[values[0]]
         return values[0]
 
-    def on_string(self, target, option, names, values):
+    @staticmethod
+    def on_string(target, option, names, values):
         """
         string
         : STRING
         """
         return values[0][1:-1]
 
-    def on_object(self, target, option, names, values):
+    @staticmethod
+    def on_object(target, option, names, values):
         """
         object
         : O_START O_END
@@ -128,7 +119,8 @@ class JSONParser(Parser):
         """
         return {} if option == 0 else dict(values[1])
 
-    def on_members(self, target, option, names, values):
+    @staticmethod
+    def on_members(target, option, names, values):
         """
         members
         : pair
@@ -136,16 +128,18 @@ class JSONParser(Parser):
         """
         if option == 0:
             return [values[0]]
-        return [values[0]]+ values[2]
+        return [values[0]] + values[2]
 
-    def on_pair(self, target, option, names, values):
+    @staticmethod
+    def on_pair(target, option, names, values):
         """
         pair
         : string COLON value
         """
-        return (values[0], values[2])
+        return values[0], values[2]
 
-    def on_array(self, target, option, names, values):
+    @staticmethod
+    def on_array(target, option, names, values):
         """
         array
         : A_START A_END
@@ -155,7 +149,8 @@ class JSONParser(Parser):
             return ()
         return values[1]
 
-    def on_elements(self, target, option, names, values):
+    @staticmethod
+    def on_elements(target, option, names, values):
         """
         elements
         : value
@@ -169,7 +164,7 @@ class JSONParser(Parser):
 if __name__ == '__main__':
 
     start = time.time()
-    j = JSONParser(verbose=True, debugSymbols=False)
+    j = JSONParser(verbose=True, debug=False)
     duration = time.time() - start
     print('instantiate parser', duration)
 
