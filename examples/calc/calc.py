@@ -13,15 +13,23 @@ class Parser(BisonParser):
     Implements the calculator parser. Grammar rules are defined in the method
     docstrings. Scanner rules are in the 'lexscript' attribute.
     """
-    options = ["%define api.value.type {void *}"]
+    options = [
+        "%define api.pure full",
+        "%define api.push-pull push",
+        "%lex-param {yyscan_t scanner}",
+        "%parse-param {yyscan_t scanner}",
+        "%define api.value.type {void *}",
+    ]
 
     # ----------------------------------------------------------------
     # lexer tokens - these must match those in your lex script (below)
     # ----------------------------------------------------------------
-    tokens = ['NUMBER',
-              'PLUS', 'MINUS', 'TIMES', 'DIVIDE', 'POW',
-              'LPAREN', 'RPAREN',
-              'NEWLINE', 'QUIT']
+    tokens = [
+        'NUMBER',
+        'PLUS', 'MINUS', 'TIMES', 'DIVIDE', 'POW',
+        'LPAREN', 'RPAREN',
+        'NEWLINE', 'QUIT'
+    ]
 
     # ------------------------------
     # precedences
@@ -31,16 +39,7 @@ class Parser(BisonParser):
         ('left', ('TIMES', 'DIVIDE')),
         ('left', ('NEG', )),
         ('right', ('POW', )),
-        )
-
-    # ------------------------------------------------------------------
-    # override default read method with a version that prompts for input
-    # ------------------------------------------------------------------
-    def read(self, nbytes):
-        try:
-            return input("> ").encode("ascii") + b"\n"
-        except EOFError:
-            return ''
+    )
 
     # ---------------------------------------------------------------
     # These methods are the python handlers for the bison targets.
@@ -81,7 +80,6 @@ class Parser(BisonParser):
             | exp POW exp
             | LPAREN exp RPAREN
         """
-        #print "on_exp: got %s %s %s %s" % (target, option, names, values)
         if option == 0:
             return float(values[0])
         elif option == 1:
@@ -103,17 +101,15 @@ class Parser(BisonParser):
     # raw lex script, verbatim here
     # -----------------------------------------
     lexscript = r"""
+    %option reentrant bison-bridge bison-locations
     %{
-    //int yylineno = 0;
-    #include <stdio.h>
-    #include <string.h>
     #include "Python.h"
     #include "tmp.tab.h"
     extern void *py_parser;
-    extern void (*py_input)(PyObject *parser, char *buf, int *result,
-                            int max_size);
+    extern void (*py_input)(PyObject *parser, char *buf, int *result, int max_size);
+    PyMODINIT_FUNC PyInit_Parser(void) { /* windows needs this function */ }
     #define returntoken(tok) \
-            yylval = PyUnicode_FromString(strdup(yytext)); return (tok);
+            *yylval = (void*)PyUnicode_FromString(strdup(yytext)); return (tok);
     #define YY_INPUT(buf,result,max_size) { \
         (*py_input)(py_parser, buf, &result, max_size); \
     }
@@ -132,13 +128,13 @@ class Parser(BisonParser):
     "quit" { printf("lex: got QUIT\n"); yyterminate(); returntoken(QUIT); }
 
     [ \t\v\f] {}
-    [\n]   {yylineno++; returntoken(NEWLINE); }
+    [\n]   { returntoken(NEWLINE); }
     .      { printf("unknown char %c ignored, yytext=0x%lx\n", yytext[0],
                     yytext); /* ignore bad chars */}
 
     %%
 
-    yywrap() { return(1); }
+    int yywrap(yyscan_t scanner) { return(1); }
     """
 
 
@@ -154,4 +150,11 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     p = Parser(keepfiles=args.keepfiles, verbose=args.verbose)
-    p.run(debug=args.debug)
+
+    while True:
+        try:
+            s = input()
+            r = p.parse_string(s, debug=args.debug)
+            print(r)
+        except (KeyboardInterrupt, EOFError):
+            break
