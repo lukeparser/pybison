@@ -4,14 +4,13 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <title>PyBison Walkthrough</title>
+    <title>PyBison Walkthrough (OUTDATED!)</title>
   </head>
   <body>
     <!--@    @+others-->
     <!--@+node:body-->
-    <center>Back to <a href="index.html">PyBison Homepage</a></center>
-    
-    <h1>PyBison Walkthrough</h1>
+
+    <h1>PyBison Walkthrough (OUTDATED!)</h1>
     
     <!--@+others-->
     <!--@+node:intro-->
@@ -54,7 +53,7 @@
     <h3>1.1. Introducing the bison2py Utility</h3>
     <blockquote>
     
-    bison2py munges your new (or legacy) grammar (.y) and scanner (.l) files, and
+    bison2py munges your legacy grammar (.y) and scanner (.l) files, and
     generates a new Python file containing classes and unit test code for your
     PyBison parser.<br>
     <br>
@@ -343,8 +342,6 @@
     
     <!--@-node:1. procure grammar/scanner scripts-->
     <!--@+node:2. prepare parser class-->
-    <a name="chap2">
-    
     <h2>2. Prepare Your Parser Class</h2>
     
     <blockquote>
@@ -804,7 +801,7 @@
     """
     </pre></b>
     
-    <blockquote style=""color:#900000"><big><b>NOTE</b> - if you are using recent versions of flex (ie, the ones which violate
+    <blockquote style="color:#900000"><big><b>NOTE</b> - if you are using recent versions of flex (ie, the ones which violate
     the ANSI standards for lex/flex), you'll have to change the lexing code above;
     removing the line <b>int yylineno = 0;</b></big></blockquote><br>
     <br>
@@ -1020,10 +1017,6 @@
     
     </blockquote>
     
-    <!--@-node:5. conclusion-->
-    <!--@-others-->
-        <hr>
-        <address><a href="mailto:david@freenet.co.nz">David McNab</a></address>
     <!-- Created: Fri Apr 23 01:27:41 NZST 2004 -->
     <!-- hhmts start -->
     <!-- hhmts end -->
