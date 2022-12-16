@@ -4,6 +4,7 @@ A more advanced calculator example, with variable storage and scientific
 functions (courtesy of python 'math' module)
 """
 import math
+import sys
 
 from bison import BisonParser
 from six.moves import input
@@ -14,24 +15,26 @@ class Parser(BisonParser):
     Implements the calculator parser. Grammar rules are defined in the method docstrings.
     Scanner rules are in the 'lexscript' attribute.
     """
-    verbose = True
-    debugSymbols=True
-    keepfiles = True
-    import os
+    options = [
+        "%define api.pure full",
+        "%define api.push-pull push",
+        "%lex-param {yyscan_t scanner}",
+        "%parse-param {yyscan_t scanner}",
+        "%define api.value.type {void *}",
+    ]
 
-    options = ["%define api.value.type {void *}"]
-
-    #os.environ['LINK'] = '/debug'
     # ----------------------------------------------------------------
     # lexer tokens - these must match those in your lex script (below)
     # ----------------------------------------------------------------
-    tokens = ['NUMBER',
-              'PLUS', 'MINUS', 'TIMES', 'DIVIDE', 'MOD', 'POW',
-              'LPAREN', 'RPAREN',
-              'NEWLINE', 'QUIT',
-              'EQUALS', 'PI', 'E',
-              'IDENTIFIER',
-              'HELP']
+    tokens = [
+        'NUMBER',
+        'PLUS', 'MINUS', 'TIMES', 'DIVIDE', 'MOD', 'POW',
+        'LPAREN', 'RPAREN',
+        'NEWLINE', 'QUIT',
+        'EQUALS', 'PI', 'E',
+        'IDENTIFIER',
+        'HELP'
+    ]
     
     # ------------------------------
     # precedences
@@ -41,28 +44,14 @@ class Parser(BisonParser):
         ('left', ('TIMES', 'DIVIDE', 'MOD')),
         ('left', ('NEG', )),
         ('right', ('POW', )),
-        )
+    )
     
     # --------------------------------------------
     # basename of binary parser engine dynamic lib
     # --------------------------------------------
     bisonEngineLibName = "calc1-engine"
 
-    # ------------------------------------------------------------------
-    # override default read method with a version that prompts for input
-    # ------------------------------------------------------------------
-    def read(self, nbytes):
-        try:
-            return input("> ") + "\n"
-        except EOFError:
-            return ''
-
-    # -----------------------------------------------------------
-    # override default run method to set up our variables storage
-    # -----------------------------------------------------------
-    def run(self, *args, **kw):
-        self.vars = {}
-        BisonParser.run(self, *args, **kw)
+    vars = {}
 
     # ---------------------------------------------------------------
     # These methods are the python handlers for the bison targets.
@@ -76,7 +65,7 @@ class Parser(BisonParser):
     
     # Declare the start target here (by name)
     start = "input"
-    
+
     def on_input(self, target, option, names, values):
         """
         input :
@@ -89,9 +78,9 @@ class Parser(BisonParser):
         """
         line : NEWLINE
              | exp NEWLINE
-             | IDENTIFIER EQUALS exp NEWLINE
+             | IDENTIFIER EQUALS exp
              | HELP
-             | error
+             | myquit
         """
         if option == 1:
             print(values[0])
@@ -101,9 +90,6 @@ class Parser(BisonParser):
             return values[2]
         elif option == 3:
             self.show_help()
-        elif option == 4:
-            line, msg, near = self.lasterror
-            print("Line %s: \"%s\" near %s" % (line, msg, repr(near)))
 
     def on_exp(self, target, option, names, values):
         """
@@ -143,7 +129,7 @@ class Parser(BisonParser):
         try:
             return values[0] / values[2]
         except:
-            return self.error("Division by zero error")
+            return print("Error: Division by zero.")
 
     def on_modexp(self, target, option, names, values):
         """
@@ -151,8 +137,8 @@ class Parser(BisonParser):
         """
         try:
             return values[0] % values[2]
-        except Exception as e:
-            return self.error("Modulus by zero error")
+        except:
+            return print("Error: Modulus by zero.")
 
     def on_powexp(self, target, option, names, values):
         """
@@ -164,7 +150,7 @@ class Parser(BisonParser):
         """
         negexp : MINUS exp %prec NEG
         """
-        return values[1]
+        return - values[1]
 
     def on_parenexp(self, target, option, names, values):
         """
@@ -179,22 +165,19 @@ class Parser(BisonParser):
         if values[0] in self.vars:
             return self.vars[values[0]]
         else:
-            print("error: no such variable", values[0])
-            return(Exception(""))
-            return self.error("No such variable '%s'" % values[0])
+            print(f"Error: No such variable '{values[0]}'.")
 
     def on_functioncall(self, target, option, names, values):
         """
         functioncall : IDENTIFIER LPAREN exp RPAREN
         """
-        # print(values)
         func = getattr(math, values[0], None)
         if not callable(func):
-            return self.error("No such function '%s'" % values[0])
+            print("Error: No such function '%s'" % values[0])
         try:
             return func(values[2])
         except Exception as e:
-            return self.error(e.args[0])
+            print(e)
 
     def on_constant(self, target, option, names, values):
         """
@@ -202,12 +185,13 @@ class Parser(BisonParser):
                  | E
         """
         return getattr(math, values[0])
+
     def on_myquit(self, target, option, names, values):
         """
         myquit : QUIT
         """
-        print("i am in quit")
-        return -1
+        print("Goodbye!")
+        sys.exit(0)
 
     # -----------------------------------------
     # Display help
@@ -224,15 +208,18 @@ class Parser(BisonParser):
     # raw lex script, verbatim here
     # -----------------------------------------
     lexscript = r"""
+    %option reentrant bison-bridge bison-locations
     %{
-    #include <stdio.h>
-    #include <string.h>
     #include "Python.h"
     #include "tmp.tab.h"
     extern void *py_parser;
     extern void (*py_input)(PyObject *parser, char *buf, int *result, int max_size);
-    #define returntoken(tok) yylval = PyUnicode_FromString(strdup(yytext)); return (tok);
-    #define YY_INPUT(buf,result,max_size) { (*py_input)(py_parser, buf, &result, max_size); }
+    PyMODINIT_FUNC PyInit_Parser(void) { /* windows needs this function */ }
+    #define returntoken(tok) \
+            *yylval = (void*)PyUnicode_FromString(strdup(yytext)); return (tok);
+    #define YY_INPUT(buf,result,max_size) { \
+        (*py_input)(py_parser, buf, &result, max_size); \
+    }
     %}
     
     %%
@@ -247,20 +234,20 @@ class Parser(BisonParser):
     "**"   { returntoken(POW); }
     "/"    { returntoken(DIVIDE); }
     "%"    { returntoken(MOD); }
-    "quit" { printf("lex: got QUIT\n"); returntoken(QUIT); }
+    "quit" { returntoken(QUIT); }
     "="    { returntoken(EQUALS); }
     "e"    { returntoken(E); }
     "pi"   { returntoken(PI); }
-    "help" { returntoken(HELP); }
     [a-zA-Z_][0-9a-zA-Z_]* { returntoken(IDENTIFIER); }
-    
-    [ \t\v\f]             {}
-    [\n]		{yylineno++; returntoken(NEWLINE); }
-    .       { printf("unknown char %c ignored, yytext=0x%lx\n", yytext[0], yytext); /* ignore bad chars */}
-    
+
+    [ \t\v\f] {}
+    [\n]   { returntoken(NEWLINE); }
+    .      { printf("unknown char %c ignored, yytext=0x%lx\n", yytext[0],
+                    yytext); /* ignore bad chars */}
+
     %%
     
-    yywrap() { return(1); }
+    int yywrap(yyscan_t scanner) { return(1); }
     """
 
 
@@ -277,4 +264,11 @@ if __name__ == '__main__':
 
     p = Parser(keepfiles=args.keepfiles, verbose=args.verbose)
     print("Scientific calculator example. Type 'help' for help")
-    p.run(debug=args.debug)
+
+    while True:
+        try:
+            s = input()
+            r = p.parse_string(s, debug=args.debug)
+            print(r)
+        except (KeyboardInterrupt, EOFError):
+            break
