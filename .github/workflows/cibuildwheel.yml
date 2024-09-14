@@ -106,8 +106,8 @@ jobs:
         run: |
           python -m cibuildwheel --output-dir dist
         env:
-          CIBW_BUILD: "{c,p}p3*"
-          CIBW_SKIP: "{c,p}p3{6..9}-*"
+          CIBW_BUILD: "cp3*"
+          CIBW_SKIP: "cp3{6..9}-*"
           CIBW_MANYLINUX_X86_64_IMAGE: manylinux_2_28
           CIBW_MANYLINUX_AARCH64_IMAGE: manylinux_2_28
           CIBW_BEFORE_ALL_LINUX: dnf install -y atlas-devel
@@ -118,7 +118,7 @@ jobs:
         run: |
           python -m cibuildwheel --output-dir dist
         env:
-          CIBW_BUILD: "{c,p}p37-* {c,p}p38-* {c,p}p39-*"
+          CIBW_BUILD: "cp37-* cp38-* cp39-*"
           CIBW_MANYLINUX_X86_64_IMAGE: manylinux2014
           CIBW_MANYLINUX_AARCH64_IMAGE: manylinux2014
           CIBW_BEFORE_ALL_LINUX: yum install -y atlas-devel
