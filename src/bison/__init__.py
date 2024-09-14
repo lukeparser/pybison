@@ -18,8 +18,6 @@ depart from the GPL licensing requirements, please contact the author and apply
 for a commercial license.
 """
 
-from __future__ import absolute_import
-from __future__ import print_function
 import logging.config
 
 import shutil
@@ -28,15 +26,8 @@ from os.path import join
 import sys
 import os
 import traceback
-try:
-    from io import BytesIO as IO
-except:
-    from cStringIO import StringIO as IO  # python 2 backport
-
-try:
-    from pathlib import Path
-except ImportError:
-    from pathlib2 import Path  # python 2 backport
+from io import BytesIO
+from pathlib import Path
 
 from .bison_ import ParserEngine
 from .node import BisonNode
@@ -52,7 +43,7 @@ WIN_FLEX = join(WIN_CHOCO_DIR, 'win_flex.exe')
 WIN_BISON = join(WIN_CHOCO_DIR, 'win_bison.exe')
 
 
-__version__ = '0.6.4'
+__version__ = '0.6.3'
 __uri__ = 'https://github.com/lukeparser/pybison'
 __author__ = 'David McNab'
 __maintainer__ = 'Lukeparser Team'
@@ -335,7 +326,7 @@ class BisonParser(object):
 
     def parse_string(self, string, debug=False):
         """Supply file-like object containing the string."""
-        file = IO(string.encode('utf-8'))
+        file = BytesIO(string.encode('utf-8'))
         return self.run(file=file, debug=debug)
 
     def parse_file(self, filename):
