@@ -71,16 +71,13 @@ jobs:
     needs: [build_sdist, testing]
     name: Build wheels on ${{ matrix.os }} (${{ matrix.cibw_archs }})
     runs-on: ${{ matrix.os }}
-    env:
-      CIBW_ARCHS_MACOS: "x86_64 arm64"
-      CIBW_SKIP: "*_i686 *-win32 pp* *-musllinux_*"
     strategy:
       fail-fast: ${{ inputs.fail-fast }}
       matrix:
-        os: [ubuntu-20.04, windows-2019, macos-12]
-        cibw_archs: ["auto"]
+        os: [ubuntu-22.04, windows-2022, macos-13, macos-13-arm64]
+        CIBW_ARCHS: ["auto64"]
         include:
-          - os: ubuntu-20.04
+          - os: ubuntu-22.04
             cibw_archs: "aarch64"
     steps:
       - uses: actions/checkout@v4
@@ -100,14 +97,14 @@ jobs:
 
       - name: Install cibuildwheel
         run: |
-          python -m pip install cibuildwheel==2.11.2
+          python -m pip install cibuildwheel
 
       - name: Build wheels for CPython 3.10+
         run: |
           python -m cibuildwheel --output-dir dist
         env:
           CIBW_BUILD: "cp3*"
-          CIBW_SKIP: "{c,p}p3{6..9}-*"
+          CIBW_SKIP: "{c,p}p3{6..9}-* pp* *-musllinux_*"
           CIBW_MANYLINUX_X86_64_IMAGE: manylinux_2_28
           CIBW_MANYLINUX_AARCH64_IMAGE: manylinux_2_28
           CIBW_BEFORE_ALL_LINUX: dnf install -y atlas-devel
@@ -119,6 +116,7 @@ jobs:
           python -m cibuildwheel --output-dir dist
         env:
           CIBW_BUILD: "cp37-* cp38-* cp39-*"
+          CIBW_SKIP: "pp* *-musllinux_*"
           CIBW_MANYLINUX_X86_64_IMAGE: manylinux2014
           CIBW_MANYLINUX_AARCH64_IMAGE: manylinux2014
           CIBW_BEFORE_ALL_LINUX: yum install -y atlas-devel
