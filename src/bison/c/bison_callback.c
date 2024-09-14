@@ -152,7 +152,7 @@ PyObject* py_callback(PyObject *parser, char *target, int option, int nargs, ...
     PyObject *exc = PyErr_Occurred();
     if(unlikely(exc)){
       printf("exception in callback!!\n");
-      return -1;
+      return NULL;
     }
     Py_DECREF(handle);
     Py_DECREF(arglist);
