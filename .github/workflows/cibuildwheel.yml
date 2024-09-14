@@ -110,7 +110,7 @@ jobs:
           CIBW_SKIP: "{c,p}p3{6..9}-*"
           CIBW_MANYLINUX_X86_64_IMAGE: manylinux_2_28
           CIBW_MANYLINUX_AARCH64_IMAGE: manylinux_2_28
-          CIBW_BEFORE_ALL_LINUX: apt-get update && apt-get --yes --allow-downgrades --allow-remove-essential install libatlas-base-dev
+          CIBW_BEFORE_ALL_LINUX: dnf install -y atlas-devel
           CIBW_BEFORE_BUILD: python -m pip install -U pip && python -m pip install -r requirements.txt
           CIBW_ARCHS: ${{ matrix.cibw_archs }}
 
