@@ -7,14 +7,9 @@ LOGGER = logging.getLogger(__name__)
 
 
 cdef extern from "Python.h":
-    IF PY3:
-        object PyBytes_FromString(char *)
-        object PyUnicode_FromString(char *)
-        char *PyBytes_AsString(object o)
-    ELSE:
-        object PyString_FromStringAndSize(char *, int)
-        object PyString_FromString(char *)
-        char *PyString_AsString(object o)
+    object PyBytes_FromString(char *)
+    object PyUnicode_FromString(char *)
+    char *PyBytes_AsString(object o)
     object PyInt_FromLong(long ival)
     long PyInt_AsLong(object io)
 
@@ -185,10 +180,7 @@ cdef class ParserEngine:
         self.openLib()
 
         # hash parser spec, compare to hash val stored in lib
-        IF PY3:
-            libHash = PyUnicode_FromString(self.libHash)
-        ELSE:
-            libHash = PyString_FromString(self.libHash)
+        libHash = PyUnicode_FromString(self.libHash)
         if self.parserHash != libHash:
             if verbose:
                 LOGGER.info("Hash discrepancy, need to rebuild bison lib")
@@ -236,10 +228,7 @@ cdef class ParserEngine:
         filename_bytes = self.libFilename_py.encode("ascii")
         # `filename_bytes` has to be its own variable
         # or it gets gc'ed before libFilename is used
-        IF PY3:
-            libFilename = PyBytes_AsString(filename_bytes)
-        ELSE:
-            libFilename = PyString_AsString(filename_bytes)
+        libFilename = PyBytes_AsString(filename_bytes)
 
         parser = self.parser
 
