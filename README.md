@@ -3,7 +3,7 @@
 # PyBison
 [![python versions](https://img.shields.io/pypi/pyversions/pybison)](https://pypi.org/project/pybison)
 [![wheel](https://img.shields.io/pypi/wheel/pybison)](https://pypi.org/project/pybison/#files)
-[![Build](https://github.com/lukeparser/pybison/workflows/Build/badge.svg)](https://github.com/lukeparser/pybison/actions)
+[![CI build](https://github.com/lukeparser/pybison/actions/workflows/master_trigger.yml/badge.svg)](https://github.com/lukeparser/pybison/actions/workflows/master_trigger.yml)
 
 Welcome to PyBison!  
 Bringing **GNU Bison/Flex**'s raw speed and power to Python  
