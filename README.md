@@ -1,4 +1,4 @@
-[![The pybison logo.](doc/pybison.svg)](https://github.com/lukeparser/pybison)
+[![The pybison logo.](https://raw.githubusercontent.com/lukeparser/pybison/refs/heads/master/doc/pybison.svg)](https://github.com/lukeparser/pybison)
 
 # PyBison
 [![python versions](https://img.shields.io/pypi/pyversions/pybison)](https://pypi.org/project/pybison)
