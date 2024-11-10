@@ -67,9 +67,9 @@ cdef extern from "../c/bisondynlib.h":
 
 import sys, os, hashlib, re, traceback
 import shutil
-import distutils.log
-import distutils.sysconfig
-import distutils.ccompiler
+import setuptools.logging
+from setuptools._distutils import ccompiler
+import sysconfig
 import subprocess
 from pathlib import Path
 from importlib import machinery
@@ -159,7 +159,7 @@ cdef class ParserEngine:
         verbose = parser.verbose
 
         if verbose:
-            distutils.log.set_verbosity(1)
+            setuptools.logging.set_threshold(1)
 
         # search for a shared object
         filenames = self.possible_so(parser.buildDirectory)
@@ -590,14 +590,13 @@ cdef class ParserEngine:
 
         # create and set up a compiler object
         if sys.platform == 'win32':
-            env = distutils.ccompiler.new_compiler(verbose=parser.verbose)
-            env.initialize()
+            env = ccompiler.new_compiler(verbose=parser.verbose)
             env.add_library('python{v.major}{v.minor}'.format(v=sys.version_info))
-            env.add_include_dir(distutils.sysconfig.get_python_inc())
+            env.add_include_dir(sysconfig.get_path('include'))
             env.add_library_dir(os.path.join(sys.prefix, 'libs'))
         else:
-            env = distutils.ccompiler.new_compiler(verbose=parser.verbose)
-            env.add_include_dir(distutils.sysconfig.get_python_inc())
+            env = ccompiler.new_compiler(verbose=parser.verbose)
+            env.add_include_dir(sysconfig.get_path('include'))
             env.define_macro('__declspec(x)')
 
         # gather possible include directories from lexscript
